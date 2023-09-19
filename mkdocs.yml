@@ -1,0 +1,31 @@
+site_name: Hello-Logic
+theme:
+  name: material
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+extra_css:
+  - 'css/custom.css'
+# Page tree
+nav:
+  # - 第 1 章 &nbsp; 什么是逻辑:
+  # - 第 2 章 &nbsp; 谓词逻辑:
+  # - 第 3 章 &nbsp; 模态逻辑:
+  - 第 13 章 &nbsp; 描述逻辑:
+    - 总览: description_logic/overview.md
+    - 背景: description_logic/background.md
+    - 定义: description_logic/definition.md
+    - 推理: description_logic/reasoning.md
+    - 模型: description_logic/model.md
+    - 进展: description_logic/present.md
+    - 算法复杂性: description_logic/complexity.md

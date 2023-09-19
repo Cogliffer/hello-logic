@@ -1,0 +1,5 @@
+.MathJax, .MathJax_Display {
+    overflow: hidden;
+    width: auto;
+    max-width: 100%;
+}
