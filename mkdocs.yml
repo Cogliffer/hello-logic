@@ -11,6 +11,7 @@ markdown_extensions:
       generic: true
 
 extra_javascript:
+  - javascripts/test.js
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
@@ -26,6 +27,6 @@ nav:
     - 背景: description_logic/background.md
     - 定义: description_logic/definition.md
     - 推理: description_logic/reasoning.md
-    - 模型: description_logic/model.md
-    - 进展: description_logic/present.md
     - 算法复杂性: description_logic/complexity.md
+    - 非标准系统: description_logic/non_standard.md
+    - 当代进展: description_logic/present.md
