@@ -23,6 +23,9 @@ $$
 \textbf{P} = \bigcup_{c \ge 1} \textbf{DTIME}(n^c)
 $$
 
+!!! Example
+    在图连通性问题中，给定图 $G$ 和它的两个顶点 $s, t$ ，要求判定 $s$ 在 $G$ 上是否可以连通到 $t$ 。经过 $C_{n}^{2}$ 个步骤后所有的边要么已经被访问要么永远无法访问。这个问题属于 $\textbf{P}$ 。
+
 **定义**（类 $\textbf{NP}$）语言 $L \subseteq \{0, 1\}^*$ 属于 $\textbf{NP}$ ，如果存在多项式 $p: \mathbb{N} \rightarrow \mathbb{N}$ 和一个多项式时间图灵机 $M$（称为 $L$ 的验证器），使得对于任意 $x \in \{0, 1\}^*$ 有
 
 $$
@@ -37,7 +40,25 @@ $$
 \textbf{EXP} = \bigcup_{c \ge 1} \textbf{DTIME}(2^{n^c})
 $$
 
-**命题** $\textbf{P} \subseteq \textbf{NP} \subseteq \textbf{EXP}$
+**定义**（空间受限计算）设 $S:\mathbb{N} \rightarrow \mathbb{N}, L \subseteq \{0,1\}^*$ 。如果存在常数 $c$ 和判定 $L$ 的图灵机 $M$ ，使得对任意长度为 $n$ 的输入， $M$ 完成计算的过程中 $M$ 的带头至多只访问除输入带之外的各条工作带上的 $c \cdot S(n)$ 个储存单元，则称 $L \in \textbf{SPACE}(S(n))$ 。
+
+**定义**（类 $\textbf{PSPACE}$）
+
+$$
+\textbf{PSPACE} = \bigcup_{c \ge 1} \textbf{SPACE}(n^c)
+$$
+
+**命题** $\textbf{P} \subseteq \textbf{NP}  \subseteq \textbf{PSPACE} \subseteq \textbf{EXP}$
 
 ## 描述逻辑中的基本结论
 
+- $\mathcal{ALC}$ 基本推理的复杂性
+  - 在 $TBox$ 无环或者为空的 $\mathcal{ALC}$ 中，概念可满足性计算和包含计算是 $\textbf{PSPACE}$ 完全的。
+  - 在一般 $TBox$ 的 $\mathcal{ALC}$ 中，概念可满足性计算和包含计算是 $\textbf{EXP}$ 完全的。
+  - （直观的理解就是，随着知识库中概念的增加，计算复杂性呈指数级增长，这当然会有问题，至少难以应用）
+  - $\mathcal{ALC}$ 基本推理的复杂性和某些博弈论计算复杂性类似 [SC79] 。
+- 作用映射
+  - 在一般 $TBox$ ，含有全局作用映射的 $\mathcal{ALC}$ 中，概念可满足性计算和包含计算是不可判定的。
+  - 在 $TBox$ 为空，含有局部作用映射的 $\mathcal{ALC}$ 中，概念可满足性计算和包含计算是不可判定的。
+- 具体域
+  - 在一般 $TBox$ ，含有具体域的 $\mathcal{ALC}(D_{+1})$ 中，概念可满足性计算和包含计算是不可判定的。
