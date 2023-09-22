@@ -27,6 +27,6 @@ nav:
     - 1. 背景: description_logic/background.md
     - 2. 定义: description_logic/definition.md
     - 3. 推理问题: description_logic/reasoning.md
-    - 4. 算法复杂性: description_logic/complexity.md
+    - 4. 计算复杂性: description_logic/complexity.md
     - 5. 非标准系统: description_logic/non_standard.md
     - 6. 当代进展: description_logic/present.md
