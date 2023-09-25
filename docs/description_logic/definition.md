@@ -17,10 +17,13 @@
 
 **作用**：
 
-## 语法(Syntax)
+## $\mathcal{ALC}$
+
+Attributive Language with Complements, 
+
+### $\mathcal{ALC}$ 的语法(Syntax)
 $$\begin{align}
-& \textbf{定义 }(Attributive\ Language\ with\ Complements, \mathcal{ALC}) \\
-& 记 \, \mathbf{C} \, 为概念名称的集合，\, \mathbf{R} \, 为作用名称的集合，\,\mathbf{C}\, 与 \,\mathbf{R}\, 不相交。\,\mathcal{ALC}\, \\
+& \textbf{定义 }(\mathcal{ALC}语言) 记 \, \mathbf{C} \, 为概念名称的集合，\, \mathbf{R} \, 为作用名称的集合，\,\mathbf{C}\, 与 \,\mathbf{R}\, 不相交。\,\mathcal{ALC}\, \\
 & 的概念描述集合递归定义如下：\\
 & \bullet 所有的概念名称是 \,\mathcal{ALC}\, 概念描述。\\
 & \bullet \top 和 \bot 是 \,\mathcal{ALC}\, 概念描述。\\
@@ -32,10 +35,10 @@ $$\begin{align}
 & \qquad \forall r . C\, (全称约束)。\\
 \end{align}$$
 
-## 语义(Semantic)
+### 语义(Semantic)
 $$
 \begin{align}
-& \textbf{定义 }一个解释 \mathcal{I} = (\Delta^{\mathcal{I}}, \cdot^{\mathcal{I}}) 是由一个非空集合论域 \Delta^{\mathcal{I}} 和一个映射 \Delta^{\mathcal{I}} 构成，\\
+& \textbf{定义 }一个解释 \mathcal{I} = (\Delta^{\mathcal{I}}, \cdot^{\mathcal{I}}) 是由一个非空集合论域 \Delta^{\mathcal{I}} 和一个映射 \cdot^{\mathcal{I}} 构成，\\
 & 其中映射定义如下：\\
 & \bullet 每一个概念名称 A \in \mathbf{C} 都映射到一个集合 A^{\mathcal{I}} \subseteq \Delta^{\mathcal{I}}。\\
 & \bullet 每一个作用名称 r \in \mathbf{R} 都映射到一个二元关系 r^{\mathcal{I}} \subseteq \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}\\ 
@@ -56,9 +59,10 @@ $$
 \end{align}
 $$
 
-通常，将 $C^{\mathcal{I}}$ 读作概念名称 $C$ 在解释 $\mathcal{I}$ 中的外延 ($extension$)，若 $b \in \Delta^{\mathcal{I}}, (a,b) \in r^{\mathcal{I}}$，则将 $b$ 称作 $a$ 在解释 $\mathcal{I}$ 下的$\,\textit{r-filler}$。
+通常，将 $C^{\mathcal{I}}$ 读作概念名称 $C$ 在解释 $\mathcal{I}$ 中的外延 ($extension$)，若 $C^{\mathcal{I}} \neq \emptyset$ ，则称解释 $\mathcal{I}$ 是概念描述 $C$ 的一个模型。
+<!-- 若 $b \in \Delta^{\mathcal{I}}, (a,b) \in r^{\mathcal{I}}$，则将 $b$ 称作 $a$ 在解释 $\mathcal{I}$ 下的$\,\textit{r-filler}$。 -->
 
-## 有向标记图(Directed Labeled Graph)
+### 有向标记图(Directed Labeled Graph)
 
 一个解释可以自然的用一个有向标号图来表示，其中每个节点表示一个概念名称，每个边表示一个作用名称。例如：
 
@@ -77,19 +81,86 @@ $$
 \end{align}
 $$
 
-# 知识库 KB
+### $\mathcal{ALC}$ 是多模态逻辑
 
-## TBox
+描述逻辑 $\mathcal{ALC}$ 是多模态逻辑 $\mathcal{K}_m$ 的变体是由 Schild 于 1991 发现的 $^{[1]}$ 。概念名称看作命题，作用名称看作可通达关系。 $\mathcal{ALC}$ 的解释就是一个克里普克结构，其中 $\Delta^{\mathcal{I}}$ 是世界集，$\cdot^{\mathcal{I}}$ 既提供世界集上的可通达关系集又给出对命题的赋值。于是基于可通达关系 $r$ ，全称约束 $\forall r.C$ 成为 $\Box_r C$ ，存在约束 $\exists r.C$ 成为 $\diamondsuit_r C$ 。将 $\mathcal{ALC}$ 翻译到一阶逻辑（FOL）的通常方法也和模态逻辑的标准翻译一致。
 
-## ABox
+### $\mathcal{SHOIQ}$ $^{*}$
 
-# 描述逻辑与模态逻辑的关系
+![SHOIQ](assert/SHOIQ.png)
 
-## 标准的描述逻辑是多模态逻辑
+$\mathcal{SHOIQ}$ 的重要性源于它（及其片段）在描述逻辑的两个最有影响力的应用领域中的使用：关于概念数据库模型的推理和语义网中的推理。在后一种应用中， $\mathcal{SHOIQ}$ 的片段对应于 W3C（World Wide Web Consortium） 推荐的标准 Web 本体语言 OWL-DL 。
 
-## 用知识库 KB 刻画语义模型
+### $\mathcal{AL}$ 家族 $^{*}$
 
-In another area of DL research, its model theory, we investigate which kinds of semantic structure, i.e., interpretations or models, we can describe in a KB. [An Introduction to Description Logic. p3]
+$\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqcap D\ |\ \forall r.C\ |\ \exists r.\top$
 
-## 标准系统与非标准系统
-对描述逻辑是重要的，但是在模态逻辑中没有直接的对应
+![AL family](assert/AL%20family.png)
+
+<!-- 作者是在研究可判定性和计算复杂度时做出这种区分的，即在我跳过的那一节，我没看懂这一节-->
+疑问：$\exists r.$ 和 $\forall r.$ （以及 $\sqcap$ 和 $\sqcup$）是对偶算子，为何会影响[可判定性和计算复杂度](../../description_logic/complexity)？
+<!-- 需要再次明确问题，防止提出错误的问题 -->
+
+
+## 知识库 $KB$
+
+知识库 $KB = (TBox, ABox)$
+
+### $TBox$（Terminological Formalisms）
+
+通常的定义是：一个 $TBox\ \mathcal{T}$ 是形如 $A \equiv C$ 的概念定义的有限集合，其中 $A$ 是概念名称， $C$ 是概念描述，并且同一个 $A$ 在 $\mathcal{T}$ 中只出现一次。这时， $A$ 称作 $\mathcal{T}$ 中的原始概念。
+
+- 如果概念名称 $B$ 在 $C$ 中出现，则称 $A$ 直接使用 $B$ ，将"使用"理解为"直接使用"的传递闭包。
+- 若 $\mathcal{T}$ 中存在一个原始概念使用了它本身，则称 $\mathcal{T}$ 含有循环（或一般的 $\mathcal{T}$），否则称为无环的 $\mathcal{T}$ 。
+
+!!! Example
+    $Human \equiv Adam \sqcup Eve \sqcup \exists parent.Human$ 就是含有循环的定义
+
+无环 $TBox$ 的模型：
+
+- 如果 $A^{\mathcal{I}} = C^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足概念定义 $A \equiv C$ 。
+- 如果解释 $\mathcal{I}$ 满足 $TBox\ \mathcal{T}$ 中的所有概念定义，则解释 $\mathcal{I}$ 是 $\mathcal{T}$ 的模型。
+
+一般的 $TBox$ 的模型：
+
+- general concept inclusion axioms (GCIs)： $GCI$ 是形如 $C \sqsubseteq D$ 的形式，其中 $C,D$ 都是（复合）概念描述
+- 如果 $C^{\mathcal{I}} \subseteq D^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足 $GCI\ \ C \sqsubseteq D$ 。
+- 如果解释 $\mathcal{I}$ 满足 $GCI\ \ A \sqsubseteq C,\ C \sqsubseteq A$ 则解释 $\mathcal{I}$ 满足概念定义 $A \equiv C$ 。
+- 如果解释 $\mathcal{I}$ 满足 $TBox\ \mathcal{T}$ 中的所有概念定义，则解释 $\mathcal{I}$ 是 $\mathcal{T}$ 的模型。
+
+!!! Example
+    $Person \sqcap \exists uncle.Father \sqsubseteq \exists cousin.Person$ 表示：所有有*当父亲的叔叔*的人都有表兄妹
+
+$TBox$ 和模态逻辑的关系 $^{*}$
+
+$$
+C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} \neg D \sqcup E
+$$
+
+其中， $\mathcal{T}$ 是由 $GCIs$ 构成的集合， $U^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}$ ，于是 $C_{\mathcal{T}}^{\mathcal{I}} := \Delta^{\mathcal{I}}$
+
+### $ABox$（assertional formalism）
+
+设有可数无穷个个体名称 $a,b,c$ 等等， $ABox$ 是形如 $C(a),\ r(a,b)$ 的断言的有限集合，其中 $C$ 是概念描述， $r$ 是作用描述。
+
+- 对每个个体 $a$ 解释为 $a^{\mathcal{I}} \in \Delta^{\mathcal{I}}$ ，通常遵守唯一名称假设（ $a \neq b 蕴含 a^{\mathcal{I}} \neq b^{\mathcal{I}}$ ）。
+- 如果 $a^{\mathcal{I}} \in C^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足概念断言 $C(a)$ 。
+- 如果 $(a^{\mathcal{I}},b^{\mathcal{I}}) \in r^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足作用断言 $r(a,b)$ 。
+- 如果解释 $\mathcal{I}$ 满足 $ABox\ \mathcal{A}$ 中的所有断言，则解释 $\mathcal{I}$ 是 $\mathcal{A}$ 的模型。
+
+$ABox$ 和模态逻辑的关系 $^{*}$
+
+$$
+C_\mathcal{A} := \sqcap_{D(a)\in\mathcal{A}} \Big( \exists u.(a\sqcap D) \Big) \sqcap \sqcap_{r(a,b)\in\mathcal{A}} \Big( \exists u.(a\sqcap \exists r.b) \Big)
+$$
+
+其中 $u^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}$ ，并且假设每个个体名都存在一个同名的名词（nominals）。于是任意一个 $C_{\mathcal{A}}$ 的模型也是 $\mathcal{A}$ 的模型。事实上名词比 $ABox$ 具有更强的表达力。 
+
+### 用知识库 KB 刻画语义模型 $^{*}$
+
+In another area of DL research, its model theory, we investigate which kinds of semantic structure, i.e., interpretations or models, we can describe in a KB $^{[2]}$. 
+
+## 参考文献
+
+- [1] Klaus Schild. A correspondence theory for terminological logics: Preliminary report. In Proc. of the 12th Int. Joint Conf. on Artificial Intelligence (IJCAI’91), pages 466–471, 1991.
+- [2] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler - **An Introduction to Description Logic** - Cambridge University Press (2017). 3

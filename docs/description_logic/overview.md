@@ -4,16 +4,18 @@
 描述逻辑通常将知识分为两个部分：一个称为TBox（Terminological Box）的术语部分，以及一个称为ABox（Assertional Box）的断言部分。TBox和ABox的组合被称为知识库（Knowledge Base, KB）。TBox表示有关结构的知识，而ABox表示关于具体实例的知识。
 
 ## 知识库的例子
-比如说在 TBox 中可以有：教师是一个教授课程的人，学生是一个参加课程的人，以及学生不教授课程。在 ABox中可以有：亚里士多德是一个人，逻辑学前沿是一门课，亚里士多德参加逻辑学前沿。这些可以用一阶逻辑的句子来表示：
+比如说在 TBox 中可以有：教师是一个教授课程的人，学生是一个参加课程的人，以及学生不教授课程。在 ABox中可以有：柏拉图和亚里士多德都是人，逻辑学前沿是一门课，柏拉图教授逻辑学前沿，亚里士多德参加逻辑学前沿。这些可以用一阶逻辑的句子来表示：
 
 $$
 \begin{align}
     & \forall x (Teacher(x) \Leftrightarrow Person(x) \land \exists y (teaches(x, y) \land Course(y))),\\
     & \forall x (Student(x) \Leftrightarrow Person(x) \land \exists y (attends(x, y) \land Course(y))),\\
     & \forall x ((\exists y \, teaches(x, y)) \Rightarrow \neg Student(x)),\\
+    & Person(\text{Plato}),\\
     & Person(\text{Aristotle}),\\
     & Course(\text{LogicFrontiers}),\\
-    & attends(\text{Aristotle}, \text{LogicFrontiers})
+    & attends(\text{Aristotle}, \text{LogicFrontiers}),\\
+    & teaches(\text{Plato}, \text{LogicFrontiers})\\
 \end{align}
 $$
 
@@ -24,9 +26,11 @@ $$
     & Teacher \equiv Person \sqcap \exists teaches.Course,\\
     & Student \equiv Person \sqcap \exists attends.Course,\\
     & \exists attends.\top \sqsubseteq \neg Student,\\
+    & \text{Plato} : Person,\\
     & \text{Aristotle} : Person,\\
     & \text{LogicFrontiers} : Course,\\
-    & (\text{Aristotle} , \text{LogicFrontiers}) : attends
+    & (\text{Aristotle} , \text{LogicFrontiers}) : attends,\\
+    & (\text{Plato} , \text{LogicFrontiers}) : teaches\\
 \end{align}
 $$
 
@@ -65,4 +69,4 @@ DLs 推理问题的求解计算极其复杂，以至于不得不在表达能力�
 能在模态逻辑找到对应的成为标准部分，非标准的就是没有直接对应的
 
 ## 6. 当代进展
-
+对 DLs 的扩展仍然随着应用的需求不断丰富，同时 DLs 也作为知识表示和推理的基础，在语义网和知识库中占据重要地位。
