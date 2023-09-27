@@ -1,27 +1,27 @@
-# 定义
+# 2 定义
 
-实例：个体实例
-概念名称：抽象类的名字
-作用名称：个体实例间的关系
-概念描述：用概念名称按照语法规则构成的句子，意义上表示对一些实例的抽象出的类的描述/刻画
-实例判断句，实例抽象句
-概念外延句
+论域必须是非空的，可以是无穷集合。
 
-模式：
-以概念描述为参数的概念描述
+**个体名称（individual name）**：个体名，表示论域中的单个元素。
 
-## 单词
-描述逻辑中有如下两种符号：
+**概念名称（concept name）**：类名，外延是论域的有限子集，可以看作一元谓词。
 
-**概念**：
+**作用名称（role name）**：关系名，表示论域中的二元关系，可以看作二元谓词。
 
-**作用**：
+**概念描述（concept description）**：用概念名称和作用名称按照语法规则构成的句子，表示对一些实例的抽象描述/刻画。
 
-## $\mathcal{ALC}$
+**概念定义（defined concept）**：将概念描述定义为一个概念名称。
 
-Attributive Language with Complements, 
+**实例断言（instance assertion）**：断言一个个体名称是一个概念名称的实例。
 
-### $\mathcal{ALC}$ 的语法(Syntax)
+**概念模型（concept patterns）**：含有变量的概念描述。
+
+## 2.1 $\mathcal{ALC}$
+
+$\mathcal{ALC}$ 是带补语的定语语言（Attributive Language with Complements），是基本的描述逻辑语言。
+
+### 2.1.1 $\mathcal{ALC}$ 的语法(Syntax)
+
 $$\begin{align}
 & \textbf{定义 }(\mathcal{ALC}语言) 记 \, \mathbf{C} \, 为概念名称的集合，\, \mathbf{R} \, 为作用名称的集合，\,\mathbf{C}\, 与 \,\mathbf{R}\, 不相交。\,\mathcal{ALC}\, \\
 & 的概念描述集合递归定义如下：\\
@@ -35,7 +35,8 @@ $$\begin{align}
 & \qquad \forall r . C\, (全称约束)。\\
 \end{align}$$
 
-### 语义(Semantic)
+### 2.1.2 语义(Semantic)
+
 $$
 \begin{align}
 & \textbf{定义 }一个解释 \mathcal{I} = (\Delta^{\mathcal{I}}, \cdot^{\mathcal{I}}) 是由一个非空集合论域 \Delta^{\mathcal{I}} 和一个映射 \cdot^{\mathcal{I}} 构成，\\
@@ -62,7 +63,7 @@ $$
 通常，将 $C^{\mathcal{I}}$ 读作概念名称 $C$ 在解释 $\mathcal{I}$ 中的外延 ($extension$)，若 $C^{\mathcal{I}} \neq \emptyset$ ，则称解释 $\mathcal{I}$ 是概念描述 $C$ 的一个模型。
 <!-- 若 $b \in \Delta^{\mathcal{I}}, (a,b) \in r^{\mathcal{I}}$，则将 $b$ 称作 $a$ 在解释 $\mathcal{I}$ 下的$\,\textit{r-filler}$。 -->
 
-### 有向标记图(Directed Labeled Graph)
+### 2.1.3 有向标记图(Directed Labeled Graph)
 
 一个解释可以自然的用一个有向标号图来表示，其中每个节点表示一个概念名称，每个边表示一个作用名称。例如：
 
@@ -81,17 +82,17 @@ $$
 \end{align}
 $$
 
-### $\mathcal{ALC}$ 是多模态逻辑
+### 2.1.4 $\mathcal{ALC}$ 是多模态逻辑
 
 描述逻辑 $\mathcal{ALC}$ 是多模态逻辑 $\mathcal{K}_m$ 的变体是由 Schild 于 1991 发现的 $^{[1]}$ 。概念名称看作命题，作用名称看作可通达关系。 $\mathcal{ALC}$ 的解释就是一个克里普克结构，其中 $\Delta^{\mathcal{I}}$ 是世界集，$\cdot^{\mathcal{I}}$ 既提供世界集上的可通达关系集又给出对命题的赋值。于是基于可通达关系 $r$ ，全称约束 $\forall r.C$ 成为 $\Box_r C$ ，存在约束 $\exists r.C$ 成为 $\diamondsuit_r C$ 。将 $\mathcal{ALC}$ 翻译到一阶逻辑（FOL）的通常方法也和模态逻辑的标准翻译一致。
 
-### $\mathcal{SHOIQ}$ $^{*}$
+### 2.1.5 $\mathcal{SHOIQ}$ $^{*}$
 
 ![SHOIQ](assert/SHOIQ.png)
 
 $\mathcal{SHOIQ}$ 的重要性源于它（及其片段）在描述逻辑的两个最有影响力的应用领域中的使用：关于概念数据库模型的推理和语义网中的推理。在后一种应用中， $\mathcal{SHOIQ}$ 的片段对应于 W3C（World Wide Web Consortium） 推荐的标准 Web 本体语言 OWL-DL 。
 
-### $\mathcal{AL}$ 家族 $^{*}$
+### 2.1.6 $\mathcal{AL}$ 家族 $^{*}$
 
 $\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqcap D\ |\ \forall r.C\ |\ \exists r.\top$
 
@@ -102,11 +103,11 @@ $\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqca
 <!-- 需要再次明确问题，防止提出错误的问题 -->
 
 
-## 知识库 $KB$
+## 2.2 知识库 $KB$
 
 知识库 $KB = (TBox, ABox)$
 
-### $TBox$（Terminological Formalisms）
+### 2.2.1 $TBox$（Terminological Formalisms）
 
 通常的定义是：一个 $TBox\ \mathcal{T}$ 是形如 $A \equiv C$ 的概念定义的有限集合，其中 $A$ 是概念名称， $C$ 是概念描述，并且同一个 $A$ 在 $\mathcal{T}$ 中只出现一次。这时， $A$ 称作 $\mathcal{T}$ 中的原始概念。
 
@@ -126,6 +127,7 @@ $\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqca
 - general concept inclusion axioms (GCIs)： $GCI$ 是形如 $C \sqsubseteq D$ 的形式，其中 $C,D$ 都是（复合）概念描述
 - 如果 $C^{\mathcal{I}} \subseteq D^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足 $GCI\ \ C \sqsubseteq D$ 。
 - 如果解释 $\mathcal{I}$ 满足 $GCI\ \ A \sqsubseteq C,\ C \sqsubseteq A$ 则解释 $\mathcal{I}$ 满足概念定义 $A \equiv C$ 。
+- 有限个 $GCI$ 构成的集合是 $\mathcal{T}$ 。
 - 如果解释 $\mathcal{I}$ 满足 $TBox\ \mathcal{T}$ 中的所有概念定义，则解释 $\mathcal{I}$ 是 $\mathcal{T}$ 的模型。
 
 !!! Example
@@ -138,8 +140,9 @@ C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} \neg D
 $$
 
 其中， $\mathcal{T}$ 是由 $GCIs$ 构成的集合， $U^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}$ ，于是 $C_{\mathcal{T}}^{\mathcal{I}} := \Delta^{\mathcal{I}}$
+<!-- 存在问题 -->
 
-### $ABox$（assertional formalism）
+### 2.2.2 $ABox$（assertional formalism）
 
 设有可数无穷个个体名称 $a,b,c$ 等等， $ABox$ 是形如 $C(a),\ r(a,b)$ 的断言的有限集合，其中 $C$ 是概念描述， $r$ 是作用描述。
 
@@ -156,7 +159,7 @@ $$
 
 其中 $u^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}$ ，并且假设每个个体名都存在一个同名的名词（nominals）。于是任意一个 $C_{\mathcal{A}}$ 的模型也是 $\mathcal{A}$ 的模型。事实上名词比 $ABox$ 具有更强的表达力。 
 
-### 用知识库 KB 刻画语义模型 $^{*}$
+### 2.2.3 用知识库 KB 刻画语义模型 $^{*}$
 
 In another area of DL research, its model theory, we investigate which kinds of semantic structure, i.e., interpretations or models, we can describe in a KB $^{[2]}$. 
 
