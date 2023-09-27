@@ -18,7 +18,7 @@
 
 ## 2.1 $\mathcal{ALC}$
 
-$\mathcal{ALC}$ 是带补语的定语语言（Attributive Language with Complements），是基本的描述逻辑语言。
+$\mathcal{ALC}$ 是带补语的定语语言（Attributive Language with Complements），由 Schmidt-Schauß 和 Smolka 在 1991 年提出，是基本的描述逻辑语言。
 
 ### 2.1.1 $\mathcal{ALC}$ 的语法(Syntax)
 
@@ -84,13 +84,16 @@ $$
 
 ### 2.1.4 $\mathcal{ALC}$ 是多模态逻辑
 
-描述逻辑 $\mathcal{ALC}$ 是多模态逻辑 $\mathcal{K}_m$ 的变体是由 Schild 于 1991 发现的 $^{[1]}$ 。概念名称看作命题，作用名称看作可通达关系。 $\mathcal{ALC}$ 的解释就是一个克里普克结构，其中 $\Delta^{\mathcal{I}}$ 是世界集，$\cdot^{\mathcal{I}}$ 既提供世界集上的可通达关系集又给出对命题的赋值。于是基于可通达关系 $r$ ，全称约束 $\forall r.C$ 成为 $\Box_r C$ ，存在约束 $\exists r.C$ 成为 $\diamondsuit_r C$ 。将 $\mathcal{ALC}$ 翻译到一阶逻辑（FOL）的通常方法也和模态逻辑的标准翻译一致。
+描述逻辑 $\mathcal{ALC}$ 是多模态逻辑 $\mathcal{K}_{(m)}$ 的变体是由 Schild 于 1991 发现的 $^{[1]}$ 。概念名称看作命题，作用名称看作可通达关系。 $\mathcal{ALC}$ 的解释就是一个克里普克结构，其中 $\Delta^{\mathcal{I}}$ 是世界集，$\cdot^{\mathcal{I}}$ 既提供世界集上的可通达关系集又给出对命题的赋值。于是基于可通达关系 $r$ ，全称约束 $\forall r.C$ 成为 $\Box_r C$ ，存在约束 $\exists r.C$ 成为 $\diamondsuit_r C$ 。将 $\mathcal{ALC}$ 翻译到一阶逻辑（FOL）的通常方法也和模态逻辑的标准翻译一致。
 
 ### 2.1.5 $\mathcal{SHOIQ}$ $^{*}$
 
 ![SHOIQ](assert/SHOIQ.png)
 
 $\mathcal{SHOIQ}$ 的重要性源于它（及其片段）在描述逻辑的两个最有影响力的应用领域中的使用：关于概念数据库模型的推理和语义网中的推理。在后一种应用中， $\mathcal{SHOIQ}$ 的片段对应于 W3C（World Wide Web Consortium） 推荐的标准 Web 本体语言 OWL-DL 。
+
+!!! Notes
+    The **World Wide Web Consortium (W3C)** is the international organization dedicated to the development of HTML and other related languages ​​used in the creation of websites. In just 25 years, W3C has enabled, thanks to its standards, the emergence of an open, interoperable and accessible Web for everyone, everywhere: HTML, CSS and more than 400 other Web technologies on which all websites are based, and which consolidate the entertainment, communications, digital publishing and even finance industries.
 
 ### 2.1.6 $\mathcal{AL}$ 家族 $^{*}$
 
@@ -99,7 +102,8 @@ $\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqca
 ![AL family](assert/AL%20family.png)
 
 <!-- 作者是在研究可判定性和计算复杂度时做出这种区分的，即在我跳过的那一节，我没看懂这一节-->
-疑问：$\exists r.$ 和 $\forall r.$ （以及 $\sqcap$ 和 $\sqcup$）是对偶算子，为何会影响[可判定性和计算复杂度](../../description_logic/complexity)？
+!!! Question
+    疑问：$\exists r.$ 和 $\forall r.$ （以及 $\sqcap$ 和 $\sqcup$）是对偶算子，为何会影响[可判定性和计算复杂度](../../description_logic/complexity)？
 <!-- 需要再次明确问题，防止提出错误的问题 -->
 
 
@@ -124,14 +128,19 @@ $\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqca
 
 一般的 $TBox$ 的模型：
 
-- general concept inclusion axioms (GCIs)： $GCI$ 是形如 $C \sqsubseteq D$ 的形式，其中 $C,D$ 都是（复合）概念描述
-- 如果 $C^{\mathcal{I}} \subseteq D^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足 $GCI\ \ C \sqsubseteq D$ 。
-- 如果解释 $\mathcal{I}$ 满足 $GCI\ \ A \sqsubseteq C,\ C \sqsubseteq A$ 则解释 $\mathcal{I}$ 满足概念定义 $A \equiv C$ 。
-- 有限个 $GCI$ 构成的集合是 $\mathcal{T}$ 。
-- 如果解释 $\mathcal{I}$ 满足 $TBox\ \mathcal{T}$ 中的所有概念定义，则解释 $\mathcal{I}$ 是 $\mathcal{T}$ 的模型。
+- general concept inclusion axioms (GCIs)： $GCI$ 是形如 $C \sqsubseteq D$ 的形式，其中 $C,D$ 都是（复合）概念描述。
 
 !!! Example
     $Person \sqcap \exists uncle.Father \sqsubseteq \exists cousin.Person$ 表示：所有有*当父亲的叔叔*的人都有表兄妹
+
+- 如果 $C^{\mathcal{I}} \subseteq D^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足 $GCI\ \ C \sqsubseteq D$ 。
+- 如果解释 $\mathcal{I}$ 满足 $GCI\ \ A \sqsubseteq C,\ C \sqsubseteq A$ 则解释 $\mathcal{I}$ 满足概念定义 $A \equiv C$ 。
+
+!!! Notes
+    $\mathcal{T}$ 可以归结为有限个 $GCI$ 构成的集合。
+    
+    蕴含式 $C \rightarrow D$ 有效当且仅当 $C \sqsubseteq D$。
+- 如果解释 $\mathcal{I}$ 满足 $TBox\ \mathcal{T}$ 中的所有概念定义，则解释 $\mathcal{I}$ 是 $\mathcal{T}$ 的模型。
 
 $TBox$ 和模态逻辑的关系 $^{*}$
 
@@ -140,7 +149,17 @@ C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} \neg D
 $$
 
 其中， $\mathcal{T}$ 是由 $GCIs$ 构成的集合， $U^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}$ ，于是 $C_{\mathcal{T}}^{\mathcal{I}} := \Delta^{\mathcal{I}}$
-<!-- 存在问题 -->
+
+!!! Question
+    为何不是
+
+    $$
+    C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} E
+    $$
+
+    这样定义的话，如果解释 $\mathcal{I}$ 满足 $C_{\mathcal{T}}$ 则也满足 $\mathcal{T}$ 。
+
+    作者提到和 universal modality 有关。
 
 ### 2.2.2 $ABox$（assertional formalism）
 
@@ -166,4 +185,5 @@ In another area of DL research, its model theory, we investigate which kinds of 
 ## 参考文献
 
 - [1] Klaus Schild. A correspondence theory for terminological logics: Preliminary report. In Proc. of the 12th Int. Joint Conf. on Artificial Intelligence (IJCAI’91), pages 466–471, 1991.
-- [2] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler - **An Introduction to Description Logic** - Cambridge University Press (2017). 3
+- [2] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler - An Introduction to Description Logic - Cambridge University Press (2017). 3
+- [3] Manfred Schmidt-Schauß and Gert Smolka. Attributive concept descriptions with complements. Artificial Intelligence, 48(1):1–26, 1991.
