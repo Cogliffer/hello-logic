@@ -58,12 +58,12 @@ $$
 
 ### 5.2.1 从实例抽象出新概念
 
-**定义（Least common subsumers，lcs）**在一个描述逻辑 $\mathcal{L}$ 中，一个概念描述 $E$ 是概念描述 $C_1, C_2, \cdots, C_n$ 的最小公共类当且仅当：
+**定义（Least common subsumers，lcs）**在一个描述逻辑 $\mathcal{L}$ 中，一个概念描述 $E$ 是概念描述 $C_1, C_2, \cdots, C_n$ 的 $lcs$ 当且仅当：
 
 1. 对所有的 $i = 1, \cdots, n$ ，$C_i \sqsubseteq E$ ，
 2. 如果存在 $E'$ 使得对所有的 $i = 1, \cdots, n ，C_i \sqsubseteq E'$ ，则 $E \sqsubseteq E'$ 。
 
-**定义（Most specific concepts，msc）**在一个描述逻辑 $\mathcal{L}$ 中，一个概念描述 $E$ 是个体实例 $a$ 的最具体抽象当且仅当：
+**定义（Most specific concepts，msc）**在一个描述逻辑 $\mathcal{L}$ 中，一个概念描述 $E$ 是个体实例 $a$ 的 $msc$ 当且仅当：
 
 1. $\mathcal{A} \models E(a)$ ，
 2. 如果存在 $E'$ 使得 $\mathcal{A} \models E'(a)$ ，则 $E \sqsubseteq E'$ 。

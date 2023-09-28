@@ -21,6 +21,5 @@
 - Realization (抽象化)：给定一个 ABox $\mathcal{A}$ ，一个 TBox $\mathcal{T}$ 以及个体实例 $a$ ，计算 $\mathcal{T}$ 中满足 $\mathcal{A} \models_{\mathcal{T}} A(a)$ 的概念名称 $A$ 构成的集合，记为 $R_{\mathcal{A},\mathcal{T}}(a)$，并用包含关系 $\sqsubseteq_{\mathcal{T}}$ 找到最小的。
 - Retrieval (实例化)：给定一个 ABox $\mathcal{A}$ ，一个 TBox $\mathcal{T}$ 以及概念 $C$ ，计算 $\mathcal{A}$ 中满足 $\mathcal{A} \models_{\mathcal{T}} C(a)$ 的个体实例 $a$ 构成的集合，记为 $\mathcal{I}_{\mathcal{A},\mathcal{T}}(C)$ 。
 
-## 3.4 为何需要研究复合推理问题？
-
-
+!!! Question
+    既然复杂推理可以归结为简单问题，那为何需要研究复合推理问题？

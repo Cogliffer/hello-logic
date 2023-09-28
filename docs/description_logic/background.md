@@ -25,5 +25,5 @@
 
 ## 1.6 会议
 
-- DL 2023 : the 36th International Workshop on Description Logics
-- KR 2023 : the 20th International Conference on Principles of Knowledge Representation and Reasoning
+- [DL 2023](https://dl2023.w.uib.no/) : the 36th International Workshop on Description Logics
+- [KR 2023](https://kr.org/KR2023/) : the 20th International Conference on Principles of Knowledge Representation and Reasoning

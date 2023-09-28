@@ -1,8 +1,6 @@
 # 2 定义
 
-论域必须是非空的，可以是无穷集合。
-
-**个体名称（individual name）**：个体名，表示论域中的单个元素。
+论域必须是非空的，可以是无穷集合。论域中的元素可以称为实例（instance）。
 
 **概念名称（concept name）**：类名，外延是论域的有限子集，可以看作一元谓词。
 
@@ -11,6 +9,10 @@
 **概念描述（concept description）**：用概念名称和作用名称按照语法规则构成的句子，表示对一些实例的抽象描述/刻画。
 
 **概念定义（defined concept）**：将概念描述定义为一个概念名称。
+
+**名词概念（nominal concept）**：外延只有一个元素的概念名称。
+
+**个体名称（individual name）**：个体名，只能出现在 $ABox$ 中，表示论域中的单个元素。
 
 **实例断言（instance assertion）**：断言一个个体名称是一个概念名称的实例。
 
@@ -84,7 +86,7 @@ $$
 
 ### 2.1.4 $\mathcal{ALC}$ 是多模态逻辑
 
-描述逻辑 $\mathcal{ALC}$ 是多模态逻辑 $\mathcal{K}_{(m)}$ 的变体是由 Schild 于 1991 发现的 $^{[1]}$ 。概念名称看作命题，作用名称看作可通达关系。 $\mathcal{ALC}$ 的解释就是一个克里普克结构，其中 $\Delta^{\mathcal{I}}$ 是世界集，$\cdot^{\mathcal{I}}$ 既提供世界集上的可通达关系集又给出对命题的赋值。于是基于可通达关系 $r$ ，全称约束 $\forall r.C$ 成为 $\Box_r C$ ，存在约束 $\exists r.C$ 成为 $\diamondsuit_r C$ 。将 $\mathcal{ALC}$ 翻译到一阶逻辑（FOL）的通常方法也和模态逻辑的标准翻译一致。
+描述逻辑 $\mathcal{ALC}$ 是多模态逻辑 $\mathcal{K}_{(m)}$ 的变体是由 Schild 于 1991 发现的 $^{[1]}$ 。概念名称看作命题，作用名称看作可通达关系。 $\mathcal{ALC}$ 的解释就是一个克里普克结构，其中 $\Delta^{\mathcal{I}}$ 是世界集，$\cdot^{\mathcal{I}}$ 既提供世界集上的可通达关系集又给出对命题的赋值。于是基于可通达关系 $r$ ，全称约束 $\forall r.C$ 成为 $\Box_r C$ ，存在约束 $\exists r.C$ 成为 $\lozenge_r C$ 。将 $\mathcal{ALC}$ 翻译到一阶逻辑（FOL）的通常方法也和模态逻辑的标准翻译一致。
 
 ### 2.1.5 $\mathcal{SHOIQ}$ $^{*}$
 
@@ -92,7 +94,7 @@ $$
 
 $\mathcal{SHOIQ}$ 的重要性源于它（及其片段）在描述逻辑的两个最有影响力的应用领域中的使用：关于概念数据库模型的推理和语义网中的推理。在后一种应用中， $\mathcal{SHOIQ}$ 的片段对应于 W3C（World Wide Web Consortium） 推荐的标准 Web 本体语言 OWL-DL 。
 
-!!! Notes
+!!! Other
     The **World Wide Web Consortium (W3C)** is the international organization dedicated to the development of HTML and other related languages ​​used in the creation of websites. In just 25 years, W3C has enabled, thanks to its standards, the emergence of an open, interoperable and accessible Web for everyone, everywhere: HTML, CSS and more than 400 other Web technologies on which all websites are based, and which consolidate the entertainment, communications, digital publishing and even finance industries.
 
 ### 2.1.6 $\mathcal{AL}$ 家族 $^{*}$
@@ -139,7 +141,7 @@ $\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqca
 !!! Notes
     $\mathcal{T}$ 可以归结为有限个 $GCI$ 构成的集合。
     
-    蕴含式 $C \rightarrow D$ 有效当且仅当 $C \sqsubseteq D$。
+    蕴含式 $C \rightarrow D$ 存在模型当且仅当在这个模型中 $C \sqsubseteq D$。理解为：所有的 $C$ 都是 $D$ 。
 - 如果解释 $\mathcal{I}$ 满足 $TBox\ \mathcal{T}$ 中的所有概念定义，则解释 $\mathcal{I}$ 是 $\mathcal{T}$ 的模型。
 
 $TBox$ 和模态逻辑的关系 $^{*}$
