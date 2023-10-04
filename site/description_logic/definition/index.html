@@ -1,0 +1,814 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../background/">
+      
+      
+        <link rel="next" href="../reasoning/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>2. 定义 - Hello-Logic</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Hello-Logic" class="md-header__button md-logo" aria-label="Hello-Logic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hello-Logic
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. 定义
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hello-Logic" class="md-nav__button md-logo" aria-label="Hello-Logic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hello-Logic
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          第 13 章 &nbsp; 描述逻辑
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          第 13 章 &nbsp; 描述逻辑
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        0. 总览
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background/" class="md-nav__link">
+        1. 背景
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2. 定义
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2. 定义
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-mathcalalc" class="md-nav__link">
+    2.1 \(\mathcal{ALC}\)
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 \(\mathcal{ALC}\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#211-mathcalalc-syntax" class="md-nav__link">
+    2.1.1 \(\mathcal{ALC}\) 的语法(Syntax)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212-semantic" class="md-nav__link">
+    2.1.2 语义(Semantic)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213-directed-labeled-graph" class="md-nav__link">
+    2.1.3 有向标记图(Directed Labeled Graph)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214-mathcalalc" class="md-nav__link">
+    2.1.4 \(\mathcal{ALC}\) 是多模态逻辑
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215-mathcalshoiq" class="md-nav__link">
+    2.1.5 \(\mathcal{SHOIQ}\) \(^{*}\)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216-mathcalal" class="md-nav__link">
+    2.1.6 \(\mathcal{AL}\) 家族 \(^{*}\)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-kb" class="md-nav__link">
+    2.2 知识库 \(KB\)
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 知识库 \(KB\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-tboxterminological-formalisms" class="md-nav__link">
+    2.2.1 \(TBox\)（Terminological Formalisms）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-aboxassertional-formalism" class="md-nav__link">
+    2.2.2 \(ABox\)（assertional formalism）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-kb" class="md-nav__link">
+    2.2.3 用知识库 KB 刻画语义模型 \(^{*}\)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reasoning/" class="md-nav__link">
+        3. 推理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complexity/" class="md-nav__link">
+        4. 计算复杂性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../non_standard/" class="md-nav__link">
+        5. 非标准系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../present/" class="md-nav__link">
+        6. 当代进展
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snapshot/" class="md-nav__link">
+        附录
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-mathcalalc" class="md-nav__link">
+    2.1 \(\mathcal{ALC}\)
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 \(\mathcal{ALC}\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#211-mathcalalc-syntax" class="md-nav__link">
+    2.1.1 \(\mathcal{ALC}\) 的语法(Syntax)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212-semantic" class="md-nav__link">
+    2.1.2 语义(Semantic)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213-directed-labeled-graph" class="md-nav__link">
+    2.1.3 有向标记图(Directed Labeled Graph)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214-mathcalalc" class="md-nav__link">
+    2.1.4 \(\mathcal{ALC}\) 是多模态逻辑
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215-mathcalshoiq" class="md-nav__link">
+    2.1.5 \(\mathcal{SHOIQ}\) \(^{*}\)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216-mathcalal" class="md-nav__link">
+    2.1.6 \(\mathcal{AL}\) 家族 \(^{*}\)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-kb" class="md-nav__link">
+    2.2 知识库 \(KB\)
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 知识库 \(KB\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-tboxterminological-formalisms" class="md-nav__link">
+    2.2.1 \(TBox\)（Terminological Formalisms）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-aboxassertional-formalism" class="md-nav__link">
+    2.2.2 \(ABox\)（assertional formalism）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-kb" class="md-nav__link">
+    2.2.3 用知识库 KB 刻画语义模型 \(^{*}\)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="2">2 定义</h1>
+<p>论域必须是非空的，可以是无穷集合。论域中的元素可以称为实例（instance）。</p>
+<p><strong>概念名称（concept name）</strong>：类名，外延是论域的有限子集，可以看作一元谓词。</p>
+<p><strong>作用名称（role name）</strong>：关系名，表示论域中的二元关系，可以看作二元谓词。</p>
+<details>
+<summary>“ role ”为何翻译为“作用”？</summary>
+role 有人直译为“角色”，有人更一般的翻译为“关系”，而“作用”是更恰当的翻译。理由如下，在大英百科全书中 role 有词条：“a function or part performed especially in a particular operation or process”，其中 function 可以翻译为作用，另外， role 本质上是算子，算子就是作用于对象之上的，因此，role 翻译为“作用”更为恰当。
+</details>
+
+<p><strong>概念描述（concept description）</strong>：用概念名称和作用名称按照语法规则构成的句子，表示对一些实例的抽象描述/刻画。</p>
+<p><strong>概念定义（defined concept）</strong>：将概念描述定义为一个概念名称。</p>
+<p><strong>名词概念（nominal concept）</strong>：外延只有一个元素的概念名称。</p>
+<p><strong>个体名称（individual name）</strong>：个体名，只能出现在 <span class="arithmatex">\(ABox\)</span> 中，表示论域中的单个元素。</p>
+<p><strong>实例断言（instance assertion）</strong>：断言一个个体名称是一个概念名称的实例。</p>
+<p><strong>概念模型（concept patterns）</strong>：含有变量的概念描述。</p>
+<h2 id="21-mathcalalc">2.1 <span class="arithmatex">\(\mathcal{ALC}\)</span></h2>
+<p><span class="arithmatex">\(\mathcal{ALC}\)</span> 是带补语的定语语言（Attributive Language with Complements），由 Schmidt-Schauß 和 Smolka 在 1991 年提出，是基本的描述逻辑语言。</p>
+<h3 id="211-mathcalalc-syntax">2.1.1 <span class="arithmatex">\(\mathcal{ALC}\)</span> 的语法(Syntax)</h3>
+<div class="arithmatex">\[\begin{align}
+&amp; \textbf{定义 }(\mathcal{ALC}语言) 记 \, \mathbf{C} \, 为概念名称的集合，\, \mathbf{R} \, 为作用名称的集合，\,\mathbf{C}\, 与 \,\mathbf{R}\, 不相交。\,\mathcal{ALC}\, \\
+&amp; 的概念描述集合递归定义如下：\\
+&amp; \bullet 所有的概念名称是 \,\mathcal{ALC}\, 概念描述。\\
+&amp; \bullet \top 和 \bot 是 \,\mathcal{ALC}\, 概念描述。\\
+&amp; \bullet 如果 \,C\, 和 \,D\, 是 \,\mathcal{ALC}\, 概念描述，并且 \,r\, 是一个作用名称，那么下面的也是 \,\mathcal{ALC}\, 概念描述：\\
+&amp; \qquad \,C\, \sqcap \,D\, (合取)，\\
+&amp; \qquad \,C\, \sqcup \,D\, (析取)，\\
+&amp; \qquad \neg \,C\, (非)，\\
+&amp; \qquad \exists r . C\, (存在约束)，\\
+&amp; \qquad \forall r . C\, (全称约束)。\\
+\end{align}\]</div>
+<h3 id="212-semantic">2.1.2 语义(Semantic)</h3>
+<div class="arithmatex">\[
+\begin{align}
+&amp; \textbf{定义 }一个解释 \mathcal{I} = (\Delta^{\mathcal{I}}, \cdot^{\mathcal{I}}) 是由一个非空集合论域 \Delta^{\mathcal{I}} 和一个映射 \cdot^{\mathcal{I}} 构成，\\
+&amp; 其中映射定义如下：\\
+&amp; \bullet 每一个概念名称 A \in \mathbf{C} 都映射到一个集合 A^{\mathcal{I}} \subseteq \Delta^{\mathcal{I}}。\\
+&amp; \bullet 每一个作用名称 r \in \mathbf{R} 都映射到一个二元关系 r^{\mathcal{I}} \subseteq \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}\\ 
+\end{align}
+\]</div>
+<p>映射 <span class="arithmatex">\(\cdot^{\mathcal{I}}\)</span> 可以扩展到 <span class="arithmatex">\(\top, \bot\)</span> 以及复杂概念中：</p>
+<div class="arithmatex">\[
+\begin{align}
+    \top^{\mathcal{I}} &amp; = \Delta^{\mathcal{I}},\\
+    \bot^{\mathcal{I}} &amp; = \emptyset,\\
+    (C \sqcap D)^{\mathcal{I}} &amp; = C^{\mathcal{I}} \cap D^{\mathcal{I}},\\
+    (C \sqcup D)^{\mathcal{I}} &amp; = C^{\mathcal{I}} \cup D^{\mathcal{I}},\\
+    (\neg C)^{\mathcal{I}} &amp; = \Delta^{\mathcal{I}} \setminus C^{\mathcal{I}},\\
+    (\exists r . C)^{\mathcal{I}} &amp; = \{ d \in \Delta^{\mathcal{I}} | 存在一个 e \in \Delta^{\mathcal{I}} ，使得 (d,e) \in r^{\mathcal{I}} 并且 e \in C^{\mathcal{I}} \},\\
+    (\forall r . C)^{\mathcal{I}} &amp; = \{ d \in \Delta^{\mathcal{I}} | 对于每一个 e \in \Delta^{\mathcal{I}} ，如果 (d,e) \in r^{\mathcal{I}} 那么 e \in C^{\mathcal{I}} \}。\\
+\end{align}
+\]</div>
+<p>通常，将 <span class="arithmatex">\(C^{\mathcal{I}}\)</span> 读作概念名称 <span class="arithmatex">\(C\)</span> 在解释 <span class="arithmatex">\(\mathcal{I}\)</span> 中的外延 (<span class="arithmatex">\(extension\)</span>)，若 <span class="arithmatex">\(C^{\mathcal{I}} \neq \emptyset\)</span> ，则称解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是概念描述 <span class="arithmatex">\(C\)</span> 的一个模型。</p>
+<!-- 若 $b \in \Delta^{\mathcal{I}}, (a,b) \in r^{\mathcal{I}}$，则将 $b$ 称作 $a$ 在解释 $\mathcal{I}$ 下的$\,\textit{r-filler}$。 -->
+
+<h3 id="213-directed-labeled-graph">2.1.3 有向标记图(Directed Labeled Graph)</h3>
+<p>一个解释可以自然的用一个有向标号图来表示，其中每个节点表示一个概念名称，每个边表示一个作用名称。例如：</p>
+<p><img alt="image" src="../assert/an%20example%20of%20directed%20labeled%20graph.png" /></p>
+<p>对应如下的解释：</p>
+<div class="arithmatex">\[
+\begin{align}
+    \Delta^{\mathcal{I}} &amp; = \{ t, c1, c2, Aristotle \},\\
+    Teacher^{\mathcal{I}} &amp; = \{ t \},\\
+    Course^{\mathcal{I}} &amp; = \{ c1, c2\},\\
+    Person^{\mathcal{I}} &amp; = \{ Aristotle \},\\
+    teaches^{\mathcal{I}} &amp; = \{ (t,c1), (t,c2) \},\\
+    attends^{\mathcal{I}} &amp; = \{ (Aristotle, c1) \}.\\
+\end{align}
+\]</div>
+<h3 id="214-mathcalalc">2.1.4 <span class="arithmatex">\(\mathcal{ALC}\)</span> 是多模态逻辑</h3>
+<p>描述逻辑 <span class="arithmatex">\(\mathcal{ALC}\)</span> 是多模态逻辑 <span class="arithmatex">\(\mathcal{K}_{(m)}\)</span> 的变体是由 Schild 于 1991 发现的 <span class="arithmatex">\(^{[1]}\)</span> 。概念名称看作命题，作用名称看作可通达关系。 <span class="arithmatex">\(\mathcal{ALC}\)</span> 的解释就是一个克里普克结构，其中 <span class="arithmatex">\(\Delta^{\mathcal{I}}\)</span> 是世界集，<span class="arithmatex">\(\cdot^{\mathcal{I}}\)</span> 既提供世界集上的可通达关系集又给出对命题的赋值。于是基于可通达关系 <span class="arithmatex">\(r\)</span> ，全称约束 <span class="arithmatex">\(\forall r.C\)</span> 成为 <span class="arithmatex">\(\Box_r C\)</span> ，存在约束 <span class="arithmatex">\(\exists r.C\)</span> 成为 <span class="arithmatex">\(\lozenge_r C\)</span> 。将 <span class="arithmatex">\(\mathcal{ALC}\)</span> 翻译到一阶逻辑（FOL）的通常方法也和模态逻辑的标准翻译一致。</p>
+<h3 id="215-mathcalshoiq">2.1.5 <span class="arithmatex">\(\mathcal{SHOIQ}\)</span> <span class="arithmatex">\(^{*}\)</span></h3>
+<p><img alt="SHOIQ" src="../assert/SHOIQ.png" /></p>
+<p><span class="arithmatex">\(\mathcal{SHOIQ}\)</span> 的重要性源于它（及其片段）在描述逻辑的两个最有影响力的应用领域中的使用：关于概念数据库模型的推理和语义网中的推理。在后一种应用中， <span class="arithmatex">\(\mathcal{SHOIQ}\)</span> 的片段对应于 W3C（World Wide Web Consortium） 推荐的标准 Web 本体语言 OWL-DL 。</p>
+<div class="admonition other">
+<p class="admonition-title">Other</p>
+<p>The <strong>World Wide Web Consortium (W3C)</strong> is the international organization dedicated to the development of HTML and other related languages ​​used in the creation of websites. In just 25 years, W3C has enabled, thanks to its standards, the emergence of an open, interoperable and accessible Web for everyone, everywhere: HTML, CSS and more than 400 other Web technologies on which all websites are based, and which consolidate the entertainment, communications, digital publishing and even finance industries.</p>
+</div>
+<h3 id="216-mathcalal">2.1.6 <span class="arithmatex">\(\mathcal{AL}\)</span> 家族 <span class="arithmatex">\(^{*}\)</span></h3>
+<p><span class="arithmatex">\(\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqcap D\ |\ \forall r.C\ |\ \exists r.\top\)</span></p>
+<p><img alt="AL family" src="../assert/AL%20family.png" /></p>
+<!-- 作者是在研究可判定性和计算复杂度时做出这种区分的，即在我跳过的那一节，我没看懂这一节-->
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>疑问：<span class="arithmatex">\(\exists r.\)</span> 和 <span class="arithmatex">\(\forall r.\)</span> （以及 <span class="arithmatex">\(\sqcap\)</span> 和 <span class="arithmatex">\(\sqcup\)</span>）是对偶算子，为何会影响<a href="../../description_logic/complexity">可判定性和计算复杂度</a>？</p>
+</div>
+<!-- 需要再次明确问题，防止提出错误的问题 -->
+
+<h2 id="22-kb">2.2 知识库 <span class="arithmatex">\(KB\)</span></h2>
+<p>知识库 <span class="arithmatex">\(KB = (TBox, ABox)\)</span></p>
+<h3 id="221-tboxterminological-formalisms">2.2.1 <span class="arithmatex">\(TBox\)</span>（Terminological Formalisms）</h3>
+<p>通常的定义是：一个 <span class="arithmatex">\(TBox\ \mathcal{T}\)</span> 是形如 <span class="arithmatex">\(A \equiv C\)</span> 的概念定义的有限集合，其中 <span class="arithmatex">\(A\)</span> 是概念名称， <span class="arithmatex">\(C\)</span> 是概念描述，并且同一个 <span class="arithmatex">\(A\)</span> 在 <span class="arithmatex">\(\mathcal{T}\)</span> 中只出现一次。这时， <span class="arithmatex">\(A\)</span> 称作 <span class="arithmatex">\(\mathcal{T}\)</span> 中的原始概念。</p>
+<ul>
+<li>如果概念名称 <span class="arithmatex">\(B\)</span> 在 <span class="arithmatex">\(C\)</span> 中出现，则称 <span class="arithmatex">\(A\)</span> 直接使用 <span class="arithmatex">\(B\)</span> ，将"使用"理解为"直接使用"的传递闭包。</li>
+<li>若 <span class="arithmatex">\(\mathcal{T}\)</span> 中存在一个原始概念使用了它本身，则称 <span class="arithmatex">\(\mathcal{T}\)</span> 含有循环（或一般的 <span class="arithmatex">\(\mathcal{T}\)</span>），否则称为无环的 <span class="arithmatex">\(\mathcal{T}\)</span> 。</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><span class="arithmatex">\(Human \equiv Adam \sqcup Eve \sqcup \exists parent.Human\)</span> 就是含有循环的定义</p>
+</div>
+<p>无环 <span class="arithmatex">\(TBox\)</span> 的模型：</p>
+<ul>
+<li>如果 <span class="arithmatex">\(A^{\mathcal{I}} = C^{\mathcal{I}}\)</span> 则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足概念定义 <span class="arithmatex">\(A \equiv C\)</span> 。</li>
+<li>如果解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(TBox\ \mathcal{T}\)</span> 中的所有概念定义，则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是 <span class="arithmatex">\(\mathcal{T}\)</span> 的模型。</li>
+</ul>
+<p>一般的 <span class="arithmatex">\(TBox\)</span> 的模型：</p>
+<ul>
+<li>general concept inclusion axioms (GCIs)： <span class="arithmatex">\(GCI\)</span> 是形如 <span class="arithmatex">\(C \sqsubseteq D\)</span> 的形式，其中 <span class="arithmatex">\(C,D\)</span> 都是（复合）概念描述。</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><span class="arithmatex">\(Person \sqcap \exists uncle.Father \sqsubseteq \exists cousin.Person\)</span> 表示：所有有<em>当父亲的叔叔</em>的人都有表兄妹</p>
+</div>
+<ul>
+<li>如果 <span class="arithmatex">\(C^{\mathcal{I}} \subseteq D^{\mathcal{I}}\)</span> 则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(GCI\ \ C \sqsubseteq D\)</span> 。</li>
+<li>如果解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(GCI\ \ A \sqsubseteq C,\ C \sqsubseteq A\)</span> 则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足概念定义 <span class="arithmatex">\(A \equiv C\)</span> 。</li>
+</ul>
+<div class="admonition notes">
+<p class="admonition-title">Notes</p>
+<p><span class="arithmatex">\(\mathcal{T}\)</span> 可以归结为有限个 <span class="arithmatex">\(GCI\)</span> 构成的集合。</p>
+<p>蕴含式 <span class="arithmatex">\(C \rightarrow D\)</span> 存在模型当且仅当在这个模型中 <span class="arithmatex">\(C \sqsubseteq D\)</span>。理解为：所有的 <span class="arithmatex">\(C\)</span> 都是 <span class="arithmatex">\(D\)</span> 。</p>
+</div>
+<ul>
+<li>如果解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(TBox\ \mathcal{T}\)</span> 中的所有概念定义，则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是 <span class="arithmatex">\(\mathcal{T}\)</span> 的模型。</li>
+</ul>
+<p><span class="arithmatex">\(TBox\)</span> 和模态逻辑的关系 <span class="arithmatex">\(^{*}\)</span></p>
+<div class="arithmatex">\[
+C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} \neg D \sqcup E
+\]</div>
+<p>其中， <span class="arithmatex">\(\mathcal{T}\)</span> 是由 <span class="arithmatex">\(GCIs\)</span> 构成的集合， <span class="arithmatex">\(U^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}\)</span> ，于是 <span class="arithmatex">\(C_{\mathcal{T}}^{\mathcal{I}} := \Delta^{\mathcal{I}}\)</span></p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>为何不是</p>
+<div class="arithmatex">\[
+C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} E
+\]</div>
+<p>这样定义的话，如果解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(C_{\mathcal{T}}\)</span> 则也满足 <span class="arithmatex">\(\mathcal{T}\)</span> 。</p>
+<p>作者提到和 universal modality 有关。</p>
+</div>
+<h3 id="222-aboxassertional-formalism">2.2.2 <span class="arithmatex">\(ABox\)</span>（assertional formalism）</h3>
+<p>设有可数无穷个个体名称 <span class="arithmatex">\(a,b,c\)</span> 等等， <span class="arithmatex">\(ABox\)</span> 是形如 <span class="arithmatex">\(C(a),\ r(a,b)\)</span> 的断言的有限集合，其中 <span class="arithmatex">\(C\)</span> 是概念描述， <span class="arithmatex">\(r\)</span> 是作用描述。</p>
+<ul>
+<li>对每个个体 <span class="arithmatex">\(a\)</span> 解释为 <span class="arithmatex">\(a^{\mathcal{I}} \in \Delta^{\mathcal{I}}\)</span> ，通常遵守唯一名称假设（ <span class="arithmatex">\(a \neq b 蕴含 a^{\mathcal{I}} \neq b^{\mathcal{I}}\)</span> ）。</li>
+<li>如果 <span class="arithmatex">\(a^{\mathcal{I}} \in C^{\mathcal{I}}\)</span> 则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足概念断言 <span class="arithmatex">\(C(a)\)</span> 。</li>
+<li>如果 <span class="arithmatex">\((a^{\mathcal{I}},b^{\mathcal{I}}) \in r^{\mathcal{I}}\)</span> 则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足作用断言 <span class="arithmatex">\(r(a,b)\)</span> 。</li>
+<li>如果解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(ABox\ \mathcal{A}\)</span> 中的所有断言，则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是 <span class="arithmatex">\(\mathcal{A}\)</span> 的模型。</li>
+</ul>
+<p><span class="arithmatex">\(ABox\)</span> 和模态逻辑的关系 <span class="arithmatex">\(^{*}\)</span></p>
+<div class="arithmatex">\[
+C_\mathcal{A} := \sqcap_{D(a)\in\mathcal{A}} \Big( \exists u.(a\sqcap D) \Big) \sqcap \sqcap_{r(a,b)\in\mathcal{A}} \Big( \exists u.(a\sqcap \exists r.b) \Big)
+\]</div>
+<p>其中 <span class="arithmatex">\(u^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}\)</span> ，并且假设每个个体名都存在一个同名的名词（nominals）。于是任意一个 <span class="arithmatex">\(C_{\mathcal{A}}\)</span> 的模型也是 <span class="arithmatex">\(\mathcal{A}\)</span> 的模型。事实上名词比 <span class="arithmatex">\(ABox\)</span> 具有更强的表达力。 </p>
+<h3 id="223-kb">2.2.3 用知识库 KB 刻画语义模型 <span class="arithmatex">\(^{*}\)</span></h3>
+<p>In another area of DL research, its model theory, we investigate which kinds of semantic structure, i.e., interpretations or models, we can describe in a KB <span class="arithmatex">\(^{[2]}\)</span>. </p>
+<h2 id="_1">参考文献</h2>
+<ul>
+<li>[1] Klaus Schild. A correspondence theory for terminological logics: Preliminary report. In Proc. of the 12th Int. Joint Conf. on Artificial Intelligence (IJCAI’91), pages 466–471, 1991.</li>
+<li>[2] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler - An Introduction to Description Logic - Cambridge University Press (2017). 3</li>
+<li>[3] Manfred Schmidt-Schauß and Gert Smolka. Attributive concept descriptions with complements. Artificial Intelligence, 48(1):1–26, 1991.</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../javascripts/test.js"></script>
+        
+      
+        
+          <script src="../../javascripts/mathjax.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>

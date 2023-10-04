@@ -6,6 +6,11 @@
 
 **作用名称（role name）**：关系名，表示论域中的二元关系，可以看作二元谓词。
 
+<details>
+<summary>“ role ”为何翻译为“作用”？</summary>
+role 有人直译为“角色”，有人更一般的翻译为“关系”，而“作用”是更恰当的翻译。理由如下，在大英百科全书中 role 有词条：“a function or part performed especially in a particular operation or process”，其中 function 可以翻译为作用，另外， role 本质上是算子，算子就是作用于对象之上的，因此，role 翻译为“作用”更为恰当。
+</details>
+
 **概念描述（concept description）**：用概念名称和作用名称按照语法规则构成的句子，表示对一些实例的抽象描述/刻画。
 
 **概念定义（defined concept）**：将概念描述定义为一个概念名称。
