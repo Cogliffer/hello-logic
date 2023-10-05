@@ -6,22 +6,22 @@
 
 **作用名称（role name）**：关系名，表示论域中的二元关系，可以看作二元谓词。
 
-<details>
-<summary>“ role ”为何翻译为“作用”？</summary>
-role 有人直译为“角色”，有人更一般的翻译为“关系”，而“作用”是更恰当的翻译。理由如下，在大英百科全书中 role 有词条：“a function or part performed especially in a particular operation or process”，其中 function 可以翻译为作用，另外， role 本质上是算子，算子就是作用于对象之上的，因此，role 翻译为“作用”更为恰当。
-</details>
-
 **概念描述（concept description）**：用概念名称和作用名称按照语法规则构成的句子，表示对一些实例的抽象描述/刻画。
 
 **概念定义（defined concept）**：将概念描述定义为一个概念名称。
 
-**名词概念（nominal concept）**：外延只有一个元素的概念名称。
+**专名（nominal concept）**：外延只有一个元素的概念名称。
 
 **个体名称（individual name）**：个体名，只能出现在 $ABox$ 中，表示论域中的单个元素。
 
 **实例断言（instance assertion）**：断言一个个体名称是一个概念名称的实例。
 
 **概念模型（concept patterns）**：含有变量的概念描述。
+
+<details>
+<summary>“ role ”为何翻译为“作用”？</summary>
+role 有人直译为“角色”，有人更一般的翻译为“关系”，而“作用”是更恰当的翻译。理由如下，在大英百科全书中 role 有词条：“a function or part performed especially in a particular operation or process”，其中 function 可以翻译为作用，另外， role 本质上是算子，算子就是作用于对象之上的，因此，role 翻译为“作用”更为恰当。
+</details>
 
 ## 2.1 $\mathcal{ALC}$
 
@@ -62,10 +62,19 @@ $$
     (C \sqcap D)^{\mathcal{I}} & = C^{\mathcal{I}} \cap D^{\mathcal{I}},\\
     (C \sqcup D)^{\mathcal{I}} & = C^{\mathcal{I}} \cup D^{\mathcal{I}},\\
     (\neg C)^{\mathcal{I}} & = \Delta^{\mathcal{I}} \setminus C^{\mathcal{I}},\\
-    (\exists r . C)^{\mathcal{I}} & = \{ d \in \Delta^{\mathcal{I}} | 存在一个 e \in \Delta^{\mathcal{I}} ，使得 (d,e) \in r^{\mathcal{I}} 并且 e \in C^{\mathcal{I}} \},\\
+    (\exists r . C)^{\mathcal{I}} & = \{ d \in \Delta^{\mathcal{I}} | 存在一个 e \in C^{\mathcal{I}} ，使得 (d,e) \in r^{\mathcal{I}} \},\\
     (\forall r . C)^{\mathcal{I}} & = \{ d \in \Delta^{\mathcal{I}} | 对于每一个 e \in \Delta^{\mathcal{I}} ，如果 (d,e) \in r^{\mathcal{I}} 那么 e \in C^{\mathcal{I}} \}。\\
 \end{align}
 $$
+
+!!! Tips
+    在计算机的字符串模式匹配中，" . " 表示匹配任何单个字符，例如用模式 "<.>" 就能匹配 "fne<f\>oej<g\>ihu<o\>aeu" 得到 {f,g,o} 。这里 $\exists r . C$ 和 $\forall r . C$ 可以看作作用在论域 $\Delta^{\mathcal{I}}$ 上的模式匹配。
+
+<!-- $(rDE)^{\mathcal{I}} = \{ (d,e)\ |\ d \in D,e \in E \textrm{ and } r(d,e) \}$
+
+$(r.E)^{\mathcal{I}} = \{ (d,e)\ |\ d \in \Delta^{\mathcal{I}},e \in E \textrm{ and } r(d,e) \}$
+
+$(r..)^{\mathcal{I}} = \{ (d,e)\ |\ r(d,e), d,e \in \Delta^{\mathcal{I}} \}$ -->
 
 通常，将 $C^{\mathcal{I}}$ 读作概念名称 $C$ 在解释 $\mathcal{I}$ 中的外延 ($extension$)，若 $C^{\mathcal{I}} \neq \emptyset$ ，则称解释 $\mathcal{I}$ 是概念描述 $C$ 的一个模型。
 <!-- 若 $b \in \Delta^{\mathcal{I}}, (a,b) \in r^{\mathcal{I}}$，则将 $b$ 称作 $a$ 在解释 $\mathcal{I}$ 下的$\,\textit{r-filler}$。 -->
@@ -96,6 +105,7 @@ $$
 ### 2.1.5 $\mathcal{SHOIQ}$ $^{*}$
 
 ![SHOIQ](assert/SHOIQ.png)
+![SHOIQ](assert/SHOIQ_.png)
 
 $\mathcal{SHOIQ}$ 的重要性源于它（及其片段）在描述逻辑的两个最有影响力的应用领域中的使用：关于概念数据库模型的推理和语义网中的推理。在后一种应用中， $\mathcal{SHOIQ}$ 的片段对应于 W3C（World Wide Web Consortium） 推荐的标准 Web 本体语言 OWL-DL 。
 
@@ -128,28 +138,30 @@ $\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqca
 !!! Example
     $Human \equiv Adam \sqcup Eve \sqcup \exists parent.Human$ 就是含有循环的定义
 
-无环 $TBox$ 的模型：
+#### 2.2.1.1 无环 $TBox$ 的模型：
 
 - 如果 $A^{\mathcal{I}} = C^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足概念定义 $A \equiv C$ 。
 - 如果解释 $\mathcal{I}$ 满足 $TBox\ \mathcal{T}$ 中的所有概念定义，则解释 $\mathcal{I}$ 是 $\mathcal{T}$ 的模型。
 
-一般的 $TBox$ 的模型：
+#### 2.2.1.2 一般的 $TBox$ 的模型：
 
-- general concept inclusion axioms (GCIs)： $GCI$ 是形如 $C \sqsubseteq D$ 的形式，其中 $C,D$ 都是（复合）概念描述。
+- general concept inclusion axioms (GCIs)： $GCI$ 是形如 $C \sqsubseteq D$ 的形式，其中 $C,D$ 都是（复合）概念描述。 $GCI$ 也是 $TBox$ 中的元素。
+
+- 如果 $C^{\mathcal{I}} \subseteq D^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足 $C \sqsubseteq D$ 。
+- 如果解释 $\mathcal{I}$ 满足 $A \sqsubseteq C,\ C \sqsubseteq A$ 则解释 $\mathcal{I}$ 满足概念定义 $A \equiv C$ 。
+- 如果解释 $\mathcal{I}$ 满足 $TBox\ \mathcal{T}$ 中的所有概念定义，则解释 $\mathcal{I}$ 是 $\mathcal{T}$ 的模型。
 
 !!! Example
     $Person \sqcap \exists uncle.Father \sqsubseteq \exists cousin.Person$ 表示：所有有*当父亲的叔叔*的人都有表兄妹
 
-- 如果 $C^{\mathcal{I}} \subseteq D^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足 $GCI\ \ C \sqsubseteq D$ 。
-- 如果解释 $\mathcal{I}$ 满足 $GCI\ \ A \sqsubseteq C,\ C \sqsubseteq A$ 则解释 $\mathcal{I}$ 满足概念定义 $A \equiv C$ 。
-
 !!! Notes
     $\mathcal{T}$ 可以归结为有限个 $GCI$ 构成的集合。
     
-    蕴含式 $C \rightarrow D$ 存在模型当且仅当在这个模型中 $C \sqsubseteq D$。理解为：所有的 $C$ 都是 $D$ 。
-- 如果解释 $\mathcal{I}$ 满足 $TBox\ \mathcal{T}$ 中的所有概念定义，则解释 $\mathcal{I}$ 是 $\mathcal{T}$ 的模型。
+    解释 $\mathcal{I}$ 是蕴含式 $C \rightarrow D$ 的模型当且仅当 $\mathcal{I}$ 满足 $C \sqsubseteq D$。理解为：所有的 $C$ 都是 $D$ 。
 
-$TBox$ 和模态逻辑的关系 $^{*}$
+    用描述逻辑表示三段论：大前提： $C \sqsubseteq D$ ；小前提： $C(a)$ ；结论： $D(a)$
+
+#### 2.2.1.3 $TBox$ 和模态逻辑的关系 $^{*}$
 
 $$
 C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} \neg D \sqcup E
@@ -192,5 +204,5 @@ In another area of DL research, its model theory, we investigate which kinds of 
 ## 参考文献
 
 - [1] Klaus Schild. A correspondence theory for terminological logics: Preliminary report. In Proc. of the 12th Int. Joint Conf. on Artificial Intelligence (IJCAI’91), pages 466–471, 1991.
-- [2] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler - An Introduction to Description Logic - Cambridge University Press (2017). 3
+- [2] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler - An Introduction to Description Logic - Cambridge University Press (2017). 3.
 - [3] Manfred Schmidt-Schauß and Gert Smolka. Attributive concept descriptions with complements. Artificial Intelligence, 48(1):1–26, 1991.

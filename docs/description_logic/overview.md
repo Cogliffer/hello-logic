@@ -25,22 +25,26 @@ $$
 
 $$
 \begin{align}
-    & Teacher \equiv Person \sqcap \exists teaches.Course,\\
-    & Student \equiv Person \sqcap \exists attends.Course,\\
-    & \exists attends.\top \sqsubseteq \neg Student,\\
-    & \text{Plato} : Person,\\
-    & \text{Aristotle} : Person,\\
-    & \text{LogicFrontiers} : Course,\\
-    & (\text{Aristotle} , \text{LogicFrontiers}) : attends,\\
-    & (\text{Plato} , \text{LogicFrontiers}) : teaches\\
+    & TBox : \\
+    & \quad Teacher \equiv Person \sqcap \exists teaches.Course,\\
+    & \quad Student \equiv Person \sqcap \exists attends.Course,\\
+    & \quad \exists teaches.\top \sqsubseteq \neg Student,\\
+    & ABox : \\
+    & \quad Person(\text{Plato}),\\
+    & \quad Person(\text{Aristotle}),\\
+    & \quad Course(\text{LogicFrontiers}),\\
+    & \quad attends(\text{Aristotle}, \text{LogicFrontiers}),\\
+    & \quad teaches(\text{Plato}, \text{LogicFrontiers})\\
 \end{align}
 $$
 
-前三个构成这个知识库的 Tbox ，后三个构成 ABox。我们能从这个知识库中推出亚里士多德是学生，因为亚里士多德是一个参加逻辑前沿课程的人，这个过程可以形式化的完成。
+能从这个知识库中推出亚里士多德是学生，因为亚里士多德是一个参加逻辑前沿课程的人，这个过程可以形式化的完成。
 
 ## 哲学
 
 描述逻辑在这样的知识论前提下进行，将概念区分为抽象类和个体实例，并将名称和意义区分开，由此构建出的具有层次的本体论知识体系。对抽象概念 $C$ 的认识是通过 $C$ 的实例抽象出来的，对概念的意义是通过解释 $\mathcal{I}$ 指向论域中的一些元素实现的。
+
+概念虽然是从实例中定义，但是的确反映出了某种抽象性质（人赋予的，如何客体化出来？用抽象语言描述？），可以用这个性质去约束别的概念。
 
 # 总览
 

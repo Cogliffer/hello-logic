@@ -540,8 +540,8 @@
 <p>将知识引入人工智能领域，推理算法主导转变为知识主导。</p>
 <p>知识图谱架构。模式层：知识类的数据模式。数据层：具体的数据信息。</p>
 <p>知识图谱一般是三元组 <span class="arithmatex">\(G = \{ E,R,F \}\)</span> 。其中 <span class="arithmatex">\(E\)</span> 表示实体集合，其中的元素指代客观存在并且能够相互区分的事物，可以是具体的人、事、物，也可以是抽象的概念。 <span class="arithmatex">\(R\)</span> 中的元素是知识图谱中的边，表示不同实体间的某种联系。 <span class="arithmatex">\(F\)</span> 表示事实的集合，每个事实是一个三元组 <span class="arithmatex">\((h,r,t)\)</span> ，其中 <span class="arithmatex">\(h\)</span> 和 <span class="arithmatex">\(t\)</span> 分别指代事实中的头实体和尾实体，<span class="arithmatex">\(r\)</span> 指代事实中的关系。一般有两种事实模式：(实体，关系，实体) 和（实体，属性，属性值）。事实可以表示为有向图，例如：</p>
-<p><img alt="Triple example 1" src="../assert/Triple%20example1.png" />
-<img alt="Triple example 2" src="../assert/Triple%20example2.png" /></p>
+<p><img alt="Triple example 1" src="../assert/Triple_example_1.png" />
+<img alt="Triple example 2" src="../assert/Triple_example_2.png" /></p>
 <p>知识表示，知识存储，构建技术，知识推理</p>
 <p><strong>属性描述逻辑 <span class="arithmatex">\(\mathcal{ALCH}_@\)</span></strong></p>
 <p><span class="arithmatex">\(\textsf{N}_\textsf{C}\)</span> ： 概念名称的集合；<span class="arithmatex">\(\textsf{N}_\textsf{R}\)</span> ： 作用名称的集合；<span class="arithmatex">\(\textsf{N}_\textsf{I}\)</span> ： 个体名称的集合；<span class="arithmatex">\(\textsf{N}_\textsf{V}\)</span> ： 变量的集合</p>
@@ -559,7 +559,17 @@
 \]</div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><span class="arithmatex">\(ABox : \textrm{awarded}(\textrm{meitner}, \textrm{planck_medal}) @ [ \textrm{year}:1949, \textrm{loc}:\textrm{berlin} ]\)</span></p>
+<ol>
+<li>
+<p><span class="arithmatex">\(ABox : \textrm{awarded}(\textrm{Agostini}, \textrm{Nobel Prize}) @[ \textrm{year}:2023]\)</span></p>
+</li>
+<li>
+<p>闭说明 <span class="arithmatex">\([\textrm{year} : R.\textrm{year} ]\)</span> 表示将 R 中所有属性为 <span class="arithmatex">\(\textrm{year}\)</span> 的属性值对提取出来构成的关系的集合。</p>
+</li>
+<li>
+<p>开说明 <span class="arithmatex">\(\lfloor \textrm{year} : R.\textrm{year} \rfloor\)</span> 表示 2 中关系的所有能够嵌入的有限关系构成的集合。</p>
+</li>
+</ol>
 </div>
 <p>记 <span class="arithmatex">\(\Phi^{\mathcal{I}} := \{\Sigma \subseteq \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}} |\ \Sigma 是有限集合 \}\)</span> 为论域上的所有有限二元关系的集合。</p>
 <div class="arithmatex">\[
@@ -578,13 +588,30 @@
     &amp; {\lfloor a_1:v_1,\cdots,a_n:v_n\rfloor}^{\mathcal{I},\mathcal{Z}} := \{ F\in \Phi^{\mathcal{I}}\ |\ F \supseteq G\ \textrm{for}\ \{G\} = [a_1:v_1,\cdots,a_n:v_n]^{\mathcal{I},\mathcal{Z}} \}
 \end{align*}
 \]</div>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p><span class="arithmatex">\([a:X.b]\)</span> 中的点的用法很像编程中获得 X 的 b 属性的操作。</p>
+</div>
 <p>对于， <span class="arithmatex">\(A \in \textsf{N}_\textsf{C}, r \in \textsf{N}_\textsf{R}, S \in \textbf{S}\)</span> ，定义:
-<span class="arithmatex">\((A@S)^{\mathcal{I},\mathcal{Z}} := \{ \delta \in \Delta^{\mathcal{I}}\ |\ (\delta, F)\in A^{\mathcal{I}} \textrm{ for some } F\in S^{\mathcal{I},\mathcal{Z}} \}\)</span>
-<span class="arithmatex">\((r@S)^{\mathcal{I},\mathcal{Z}} := \{ (\delta,\epsilon) \in \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}\ |\ (\delta,\epsilon, F)\in r^{\mathcal{I}} \textrm{ for some } F\in S^{\mathcal{I},\mathcal{Z}} \}\)</span></p>
+<span class="arithmatex">\((A@S)^{\mathcal{I},\mathcal{Z}} := \{ \delta \in \Delta^{\mathcal{I}}\ |\ \exists R\in S^{\mathcal{I},\mathcal{Z}}\textrm{ 使得 } (\delta, R)\in A^{\mathcal{I}} \}\)</span>
+<span class="arithmatex">\((r@S)^{\mathcal{I},\mathcal{Z}} := \{ (\delta,\epsilon) \in \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}\ |\ \exists R\in S^{\mathcal{I},\mathcal{Z}} \textrm{ 使得 } (\delta,\epsilon, R)\in r^{\mathcal{I}} \}\)</span></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><span class="arithmatex">\(\exists \textrm{awarded}@X.\textrm{Award}@X \sqsubseteq \exists \textrm{known_for}@ \lfloor \textrm{year} : X.\textrm{year} \rfloor .\top\)</span> ，指派 <span class="arithmatex">\(\mathcal{Z} = \{X\rightarrow \{(\textrm{year},2023)\} \}\)</span> 。</p>
+<p>在 2023 年获奖的人，都是在这一年因某个东西而著称的人。</p>
+<p>给定论域 <span class="arithmatex">\(\Delta^{\mathcal{I}} = \{ \textrm{Agostini},\textrm{Nobel Prize},\textrm{2023},\textrm{year},\textrm{attosecond pulses} \}\)</span> </p>
+<p><span class="arithmatex">\(\textrm{Award}^{\mathcal{I}} = \{ (\textrm{Nobel Prize},\{(\textrm{year},2023)\}) \}\)</span></p>
+<p><span class="arithmatex">\(\textrm{awarded}^{\mathcal{I}} = \{ (\textrm{Agostini},\textrm{Nobel Prize},\{(\textrm{year},2023)\}) \}\)</span></p>
+<p><span class="arithmatex">\(\textrm{known_for}^{\mathcal{I}} = \{ (\textrm{Agostini},\textrm{attosecond pulses},\{(\textrm{year},2023)\}) \}\)</span></p>
+</div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>如何在超图上扩展描述逻辑？
 <img alt="超图" src="../assert/Example%20of%20hypergraph.png" /></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>知识图谱的实体集合中允许存在概念，但是描述逻辑的概念不能再出现在论域中，如果允许会怎样？</p>
 </div>
 <h2 id="62">6.2 新生路线</h2>
 <h3 id="621">6.2.1 符合主义和联结主义的结合：概念学习</h3>

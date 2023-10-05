@@ -7,7 +7,7 @@
 **作用名称（role name）**：关系名，表示论域中的二元关系，可以看作二元谓词。
 **概念描述（concept description）**：用概念名称和作用名称按照语法规则构成的句子，表示对一些实例的抽象描述/刻画。
 **概念定义（defined concept）**：将概念描述定义为一个概念名称。
-**名词概念（nominal concept）**：外延只有一个元素的概念名称。
+**专名（nominal concept）**：外延只有一个元素的概念名称。
 **个体名称（individual name）**：个体名，只能出现在 $ABox$ 中，表示论域中的单个元素。
 **实例断言（instance assertion）**：断言一个个体名称是一个概念名称的实例。
 **概念模型（concept patterns）**：含有变量的概念描述。
@@ -67,3 +67,4 @@ $$
 ### 6. $Abox$
 
 设有可数无穷个个体名称 $a,b,c$ 等等， $ABox$ 是形如 $C(a),\ r(a,b)$ 的断言的有限集合，其中 $C$ 是概念描述， $r$ 是作用描述。对每个个体 $a$ 解释为 $a^{\mathcal{I}} \in \Delta^{\mathcal{I}}$ ，通常遵守唯一名称假设（ $a \neq b 蕴含 a^{\mathcal{I}} \neq b^{\mathcal{I}}$ ）。如果 $a^{\mathcal{I}} \in C^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足概念断言 $C(a)$ 。如果 $(a^{\mathcal{I}},b^{\mathcal{I}}) \in r^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足作用断言 $r(a,b)$ 。如果解释 $\mathcal{I}$ 满足 $ABox\ \mathcal{A}$ 中的所有断言，则解释 $\mathcal{I}$ 是 $\mathcal{A}$ 的模型。
+

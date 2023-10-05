@@ -603,7 +603,7 @@ role 有人直译为“角色”，有人更一般的翻译为“关系”，而
 
 <p><strong>概念描述（concept description）</strong>：用概念名称和作用名称按照语法规则构成的句子，表示对一些实例的抽象描述/刻画。</p>
 <p><strong>概念定义（defined concept）</strong>：将概念描述定义为一个概念名称。</p>
-<p><strong>名词概念（nominal concept）</strong>：外延只有一个元素的概念名称。</p>
+<p><strong>专名（nominal concept）</strong>：外延只有一个元素的概念名称。</p>
 <p><strong>个体名称（individual name）</strong>：个体名，只能出现在 <span class="arithmatex">\(ABox\)</span> 中，表示论域中的单个元素。</p>
 <p><strong>实例断言（instance assertion）</strong>：断言一个个体名称是一个概念名称的实例。</p>
 <p><strong>概念模型（concept patterns）</strong>：含有变量的概念描述。</p>
@@ -639,10 +639,20 @@ role 有人直译为“角色”，有人更一般的翻译为“关系”，而
     (C \sqcap D)^{\mathcal{I}} &amp; = C^{\mathcal{I}} \cap D^{\mathcal{I}},\\
     (C \sqcup D)^{\mathcal{I}} &amp; = C^{\mathcal{I}} \cup D^{\mathcal{I}},\\
     (\neg C)^{\mathcal{I}} &amp; = \Delta^{\mathcal{I}} \setminus C^{\mathcal{I}},\\
-    (\exists r . C)^{\mathcal{I}} &amp; = \{ d \in \Delta^{\mathcal{I}} | 存在一个 e \in \Delta^{\mathcal{I}} ，使得 (d,e) \in r^{\mathcal{I}} 并且 e \in C^{\mathcal{I}} \},\\
+    (\exists r . C)^{\mathcal{I}} &amp; = \{ d \in \Delta^{\mathcal{I}} | 存在一个 e \in C^{\mathcal{I}} ，使得 (d,e) \in r^{\mathcal{I}} \},\\
     (\forall r . C)^{\mathcal{I}} &amp; = \{ d \in \Delta^{\mathcal{I}} | 对于每一个 e \in \Delta^{\mathcal{I}} ，如果 (d,e) \in r^{\mathcal{I}} 那么 e \in C^{\mathcal{I}} \}。\\
 \end{align}
 \]</div>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p>在计算机的字符串模式匹配中，" . " 表示匹配任何单个字符，例如用模式 "&lt;.&gt;" 就能匹配 "fne&lt;f>oej&lt;g>ihu&lt;o>aeu" 得到 {f,g,o} 。这里 <span class="arithmatex">\(\exists r . C\)</span> 和 <span class="arithmatex">\(\forall r . C\)</span> 可以看作作用在论域 <span class="arithmatex">\(\Delta^{\mathcal{I}}\)</span> 上的模式匹配。</p>
+</div>
+<!-- $(rDE)^{\mathcal{I}} = \{ (d,e)\ |\ d \in D,e \in E \textrm{ and } r(d,e) \}$
+
+$(r.E)^{\mathcal{I}} = \{ (d,e)\ |\ d \in \Delta^{\mathcal{I}},e \in E \textrm{ and } r(d,e) \}$
+
+$(r..)^{\mathcal{I}} = \{ (d,e)\ |\ r(d,e), d,e \in \Delta^{\mathcal{I}} \}$ -->
+
 <p>通常，将 <span class="arithmatex">\(C^{\mathcal{I}}\)</span> 读作概念名称 <span class="arithmatex">\(C\)</span> 在解释 <span class="arithmatex">\(\mathcal{I}\)</span> 中的外延 (<span class="arithmatex">\(extension\)</span>)，若 <span class="arithmatex">\(C^{\mathcal{I}} \neq \emptyset\)</span> ，则称解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是概念描述 <span class="arithmatex">\(C\)</span> 的一个模型。</p>
 <!-- 若 $b \in \Delta^{\mathcal{I}}, (a,b) \in r^{\mathcal{I}}$，则将 $b$ 称作 $a$ 在解释 $\mathcal{I}$ 下的$\,\textit{r-filler}$。 -->
 
