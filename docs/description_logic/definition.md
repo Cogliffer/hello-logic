@@ -1,6 +1,6 @@
 # 2 定义
 
-论域必须是非空的，可以是无穷集合。论域中的元素可以称为实例（instance）。
+论域必须是非空的，可以是无穷集合。论域中的元素称为实例（instance）。
 
 **概念名称（concept name）**：类名，外延是论域的有限子集，可以看作一元谓词。
 
@@ -152,7 +152,7 @@ $\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqca
 - 如果解释 $\mathcal{I}$ 满足 $TBox\ \mathcal{T}$ 中的所有概念定义，则解释 $\mathcal{I}$ 是 $\mathcal{T}$ 的模型。
 
 !!! Example
-    $Person \sqcap \exists uncle.Father \sqsubseteq \exists cousin.Person$ 表示：所有有*当父亲的叔叔*的人都有表兄妹
+    $Person \sqcap \exists uncle.Father \sqsubseteq \exists cousin.Person$ 表示：如果一个人的叔叔为人父，那这个人有表兄妹。
 
 !!! Notes
     $\mathcal{T}$ 可以归结为有限个 $GCI$ 构成的集合。
