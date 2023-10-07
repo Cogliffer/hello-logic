@@ -74,9 +74,9 @@ $$
 
 ### 6. $Abox$
 
-设有可数无穷个个体名称 $a,b,c$ 等等， $ABox$ 是形如 $C(a),\ r(a,b)$ 的断言的有限集合，其中 $C$ 是概念描述， $r$ 是作用描述。对每个个体 $a$ 解释为 $a^{\mathcal{I}} \in \Delta^{\mathcal{I}}$ ，通常遵守唯一名称假设（ $a \neq b 蕴含 a^{\mathcal{I}} \neq b^{\mathcal{I}}$ ）。如果 $a^{\mathcal{I}} \in C^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足概念断言 $C(a)$ 。如果 $(a^{\mathcal{I}},b^{\mathcal{I}}) \in r^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足作用断言 $r(a,b)$ 。如果解释 $\mathcal{I}$ 满足 $ABox\ \mathcal{A}$ 中的所有断言，则解释 $\mathcal{I}$ 是 $\mathcal{A}$ 的模型。
+设有可数无穷个个体名称 $a,b,c$ 等等， $ABox$ 是形如 $C(a),\ r(a,b)$ 的断言的有限集合，其中 $C$ 是概念描述， $r$ 是作用描述。对每个个体 $a$ 解释为 $a^{\mathcal{I}} \in \Delta^{\mathcal{I}}$ ，通常遵守唯一名称假设（ $a \neq b 蕴涵 a^{\mathcal{I}} \neq b^{\mathcal{I}}$ ）。如果 $a^{\mathcal{I}} \in C^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足概念断言 $C(a)$ 。如果 $(a^{\mathcal{I}},b^{\mathcal{I}}) \in r^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足作用断言 $r(a,b)$ 。如果解释 $\mathcal{I}$ 满足 $ABox\ \mathcal{A}$ 中的所有断言，则解释 $\mathcal{I}$ 是 $\mathcal{A}$ 的模型。
 
-## 7. 推理
+### 7. 推理
 
 T 推理(Terminological Reasoning)
 
@@ -95,7 +95,7 @@ A 推理(Assertional Reasoning)
 - Realization (抽象化)：给定一个 ABox $\mathcal{A}$ ，一个 TBox $\mathcal{T}$ 以及个体实例 $a$ ，计算 $\mathcal{T}$ 中满足 $\mathcal{A} \models_{\mathcal{T}} A(a)$ 的概念名称 $A$ 构成的集合，记为 $R_{\mathcal{A},\mathcal{T}}(a)$，并用包含关系 $\sqsubseteq_{\mathcal{T}}$ 找到最小的。
 - Retrieval (实例化)：给定一个 ABox $\mathcal{A}$ ，一个 TBox $\mathcal{T}$ 以及概念 $C$ ，计算 $\mathcal{A}$ 中满足 $\mathcal{A} \models_{\mathcal{T}} C(a)$ 的个体实例 $a$ 构成的集合，记为 $\mathcal{I}_{\mathcal{A},\mathcal{T}}(C)$ 。
 
-## 8. 具体域
+### 8. 具体域
 - 抽象域 (abstract domain)：论域 $\Delta^{\mathcal{I}}$ 。
 - 具体域 (concrete domain)：一个具体域 $\mathcal{D}$ 是一个有序对 $(\Delta^{\mathcal{D}}, \Phi^{\mathcal{D}})$ ，其中 $\Delta^{\mathcal{D}}$ 是非空集合， $\Phi^{\mathcal{D}}$ 是由谓词名称构成的集合，并且对于 $n$ 元谓词 $P \in \Phi^{\mathcal{D}}$ ，有 $P^{\mathcal{D}} \subseteq (\Delta^{\mathcal{D}})^{n}$ 。
 
@@ -112,7 +112,7 @@ $$
 \end{align*}
 $$
 
-## 9. 属性描述逻辑 $\mathcal{ALCH}_@$
+### 9. 属性描述逻辑 $\mathcal{ALCH}_@$
 
 $\textsf{N}_\textsf{C}$ ： 概念名称的集合；$\textsf{N}_\textsf{R}$ ： 作用名称的集合；$\textsf{N}_\textsf{I}$ ： 个体名称的集合；$\textsf{N}_\textsf{V}$ ： 变量的集合
 
@@ -168,7 +168,7 @@ $$
 \end{align*}
 $$
 
-## 10. 亚里士多德形而上学
+### 10. 亚里士多德形而上学
 
 **“是”的逻辑功能**
 
@@ -182,11 +182,11 @@ $$
 
 **第一实体和第二实体**
 
-判断的主词可以被分为通名和专名：专名只能作为主词来使用；通名也可以用作谓词。专名指示个别事物，是第一实体，而通名指示种和属，是第二实体。
+判断的主词可以被分为通名和专名：专名指示个别事物，是第一实体，而通名指示种和属，是第二实体。专名只能作为主词来使用；通名也可以用作谓词。
 
 *本节所有内容摘抄自 赵敦华《西方哲学史》 pp. 79-82*
 
-## 附录. 一些例子
+### 附录. 一些例子
 
 **基于 $\mathcal{ALC}$ 的知识库的例子：**
 

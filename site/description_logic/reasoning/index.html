@@ -407,8 +407,10 @@
 <h2 id="32-a-assertional-reasoning">3.2 A 推理(Assertional Reasoning)</h2>
 <ul>
 <li>一致性 (Consistency)：如果存在一个 ABox <span class="arithmatex">\(\mathcal{A}\)</span> 和一个 TBox <span class="arithmatex">\(\mathcal{T}\)</span> 的共同模型，那么 <span class="arithmatex">\(\mathcal{A}\)</span> 相对于 <span class="arithmatex">\(\mathcal{T}\)</span> 是一致的。</li>
-<li>实例检测 (Instance Detection)：如果对于一个 TBox <span class="arithmatex">\(\mathcal{T}\)</span> 和一个 ABox <span class="arithmatex">\(\mathcal{A}\)</span> 的任意共同模型 <span class="arithmatex">\(\mathcal{I}\)</span> ，均有 <span class="arithmatex">\(a^{\mathcal{I}} \in C^{\mathcal{I}}\)</span>，那么个体实例 <span class="arithmatex">\(a\)</span> 相对于 <span class="arithmatex">\(\mathcal{T}\)</span> 是概念描述 <span class="arithmatex">\(C\)</span> 的实例，记为 <span class="arithmatex">\(\mathcal{A} \models_{\mathcal{T}} C(a)\)</span> 。</li>
-<li>一个 ABox <span class="arithmatex">\(\mathcal{A}\)</span> 是一致的当且仅当对任意个体名称 <span class="arithmatex">\(a\)</span> 均有 <span class="arithmatex">\(\mathcal{A} \nvDash_{\mathcal{T}} \bot(a)\)</span> 。</li>
+<li>实例检测 (Instance Detection)：如果对于一个 TBox <span class="arithmatex">\(\mathcal{T}\)</span> 和一个 ABox <span class="arithmatex">\(\mathcal{A}\)</span> 的任意共同模型 <span class="arithmatex">\(\mathcal{I}\)</span> ，均有 <span class="arithmatex">\(a^{\mathcal{I}} \in C^{\mathcal{I}}\)</span>，那么个体名称 <span class="arithmatex">\(a\)</span> 相对于 <span class="arithmatex">\(\mathcal{T}\)</span> 是概念描述 <span class="arithmatex">\(C\)</span> 的实例，记为 <span class="arithmatex">\(\mathcal{A} \models_{\mathcal{T}} C(a)\)</span> 。</li>
+</ul>
+<!-- - 一个 ABox $\mathcal{A}$ 是一致的当且仅当对任意个体名称 $a$ 均有 $\mathcal{A} \nvDash_{\mathcal{T}} \bot(a)$ 。 -->
+<ul>
 <li><span class="arithmatex">\(\mathcal{A} \models_{\mathcal{T}} C(a)\)</span> 当且仅当 <span class="arithmatex">\(\mathcal{A}\ \cup \{ \neg C(a) \}\)</span> 相对于 <span class="arithmatex">\(\mathcal{T}\)</span> 是不一致的，当且仅当 <span class="arithmatex">\(C_{\mathcal{A}}\ \cup \{ \neg C(a) \}\)</span> 相对于 <span class="arithmatex">\(\mathcal{T}\)</span> 是不一致的，当且仅当不存在一个 <span class="arithmatex">\(C_{\mathcal{A}}\ \cup \{ \neg C(a) \}\)</span> 和 <span class="arithmatex">\(\mathcal{T}\)</span> 的共同模型，当且仅当  <span class="arithmatex">\(C_{\mathcal{A}}\ \cup \{ \neg C(a) \}\)</span> 相对于 <span class="arithmatex">\(\mathcal{T}\)</span> 是不可满足的。</li>
 </ul>
 <h2 id="33-compound-inference-problems">3.3 复合推理问题(Compound Inference Problems)</h2>
@@ -417,10 +419,8 @@
 <li>Realization (抽象化)：给定一个 ABox <span class="arithmatex">\(\mathcal{A}\)</span> ，一个 TBox <span class="arithmatex">\(\mathcal{T}\)</span> 以及个体实例 <span class="arithmatex">\(a\)</span> ，计算 <span class="arithmatex">\(\mathcal{T}\)</span> 中满足 <span class="arithmatex">\(\mathcal{A} \models_{\mathcal{T}} A(a)\)</span> 的概念名称 <span class="arithmatex">\(A\)</span> 构成的集合，记为 <span class="arithmatex">\(R_{\mathcal{A},\mathcal{T}}(a)\)</span>，并用包含关系 <span class="arithmatex">\(\sqsubseteq_{\mathcal{T}}\)</span> 找到最小的。</li>
 <li>Retrieval (实例化)：给定一个 ABox <span class="arithmatex">\(\mathcal{A}\)</span> ，一个 TBox <span class="arithmatex">\(\mathcal{T}\)</span> 以及概念 <span class="arithmatex">\(C\)</span> ，计算 <span class="arithmatex">\(\mathcal{A}\)</span> 中满足 <span class="arithmatex">\(\mathcal{A} \models_{\mathcal{T}} C(a)\)</span> 的个体实例 <span class="arithmatex">\(a\)</span> 构成的集合，记为 <span class="arithmatex">\(\mathcal{I}_{\mathcal{A},\mathcal{T}}(C)\)</span> 。</li>
 </ul>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>既然复杂推理可以归结为简单问题，那为何需要研究复合推理问题？</p>
-</div>
+<!-- !!! Question
+    既然复杂推理可以归结为简单问题，那为何需要研究复合推理问题？ -->
 
 
 

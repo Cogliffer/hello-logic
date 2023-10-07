@@ -444,13 +444,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#2213-tbox" class="md-nav__link">
-    2.2.1.3 \(TBox\) 和模态逻辑的关系 \(^{*}\)
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -550,7 +543,7 @@ role 有人直译为“角色”，有人更一般的翻译为“关系”，而
 \]</div>
 <div class="admonition tips">
 <p class="admonition-title">Tips</p>
-<p>在计算机的字符串模式匹配中，" . " 表示匹配任何单个字符，例如用模式 "&lt;.&gt;" 就能匹配 "fne&lt;f>oej&lt;g>ihu&lt;o>aeu" 得到 {f,g,o} 。这里 <span class="arithmatex">\(\exists r . C\)</span> 和 <span class="arithmatex">\(\forall r . C\)</span> 可以看作作用在论域 <span class="arithmatex">\(\Delta^{\mathcal{I}}\)</span> 上的模式匹配。</p>
+<p>在计算机的字符串模式匹配中，" . " 表示匹配任何单个字符，例如用模式 "&lt;.&gt;" 就能匹配 "fne&lt;f>oej&lt;g>ihu&lt;o>aeu" 得到 {f,g,o} 。这里 <span class="arithmatex">\(\exists r . C\)</span> 和 <span class="arithmatex">\(\forall r . C\)</span> 可以看作作用在论域 <span class="arithmatex">\(\Delta^{\mathcal{I}}\)</span> 上的模式匹配， <span class="arithmatex">\(\exists r . C\)</span> 匹配出通过 <span class="arithmatex">\(r\)</span> 作用能够是 <span class="arithmatex">\(C\)</span> 的元素， <span class="arithmatex">\(\forall r . C\)</span> 匹配出所有 <span class="arithmatex">\(r\)</span> 作用后都是 <span class="arithmatex">\(C\)</span> 的元素。</p>
 </div>
 <!-- $(rDE)^{\mathcal{I}} = \{ (d,e)\ |\ d \in D,e \in E \textrm{ and } r(d,e) \}$
 
@@ -558,7 +551,7 @@ $(r.E)^{\mathcal{I}} = \{ (d,e)\ |\ d \in \Delta^{\mathcal{I}},e \in E \textrm{ 
 
 $(r..)^{\mathcal{I}} = \{ (d,e)\ |\ r(d,e), d,e \in \Delta^{\mathcal{I}} \}$ -->
 
-<p>通常，将 <span class="arithmatex">\(C^{\mathcal{I}}\)</span> 读作概念名称 <span class="arithmatex">\(C\)</span> 在解释 <span class="arithmatex">\(\mathcal{I}\)</span> 中的外延 (<span class="arithmatex">\(extension\)</span>)，若 <span class="arithmatex">\(C^{\mathcal{I}} \neq \emptyset\)</span> ，则称解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是概念描述 <span class="arithmatex">\(C\)</span> 的一个模型。</p>
+<p>通常，将 <span class="arithmatex">\(C^{\mathcal{I}}\)</span> 读作概念名称 <span class="arithmatex">\(C\)</span> 在解释 <span class="arithmatex">\(\mathcal{I}\)</span> 中的外延 (<span class="arithmatex">\(extension\)</span>)， <span class="arithmatex">\(C^{\mathcal{I}}\)</span> 中的元素称为 <span class="arithmatex">\(C\)</span> 的实例。若 <span class="arithmatex">\(C^{\mathcal{I}} \neq \emptyset\)</span> ，则称解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是概念描述 <span class="arithmatex">\(C\)</span> 的一个模型。</p>
 <!-- 若 $b \in \Delta^{\mathcal{I}}, (a,b) \in r^{\mathcal{I}}$，则将 $b$ 称作 $a$ 在解释 $\mathcal{I}$ 下的$\,\textit{r-filler}$。 -->
 
 <h3 id="213-directed-labeled-graph">2.1.3 有向标记图(Directed Labeled Graph)</h3>
@@ -625,30 +618,36 @@ $(r..)^{\mathcal{I}} = \{ (d,e)\ |\ r(d,e), d,e \in \Delta^{\mathcal{I}} \}$ -->
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><span class="arithmatex">\(Person \sqcap \exists uncle.Father \sqsubseteq \exists cousin.Person\)</span> 表示：所有有<em>当父亲的叔叔</em>的人都有表兄妹</p>
+<p><span class="arithmatex">\(Person \sqcap \exists uncle.Father \sqsubseteq \exists cousin.Person\)</span> 表示：如果一个人的叔叔为人父，那这个人有表兄妹。</p>
 </div>
 <div class="admonition notes">
 <p class="admonition-title">Notes</p>
 <p><span class="arithmatex">\(\mathcal{T}\)</span> 可以归结为有限个 <span class="arithmatex">\(GCI\)</span> 构成的集合。</p>
-<p>解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是蕴含式 <span class="arithmatex">\(C \rightarrow D\)</span> 的模型当且仅当 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(C \sqsubseteq D\)</span>。理解为：所有的 <span class="arithmatex">\(C\)</span> 都是 <span class="arithmatex">\(D\)</span> 。</p>
-<p>用描述逻辑表示三段论：大前提： <span class="arithmatex">\(C \sqsubseteq D\)</span> ；小前提： <span class="arithmatex">\(C(a)\)</span> ；结论： <span class="arithmatex">\(D(a)\)</span></p>
+<p>解释 <span class="arithmatex">\(\mathcal{I}\)</span> <strong>不</strong>是蕴含式 <span class="arithmatex">\(C \rightarrow D\)</span> 的模型当且仅当 <span class="arithmatex">\(C^{\mathcal{I}} = \top, D^{\mathcal{I}} = \emptyset\)</span> 。</p>
+<p>若 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(C \sqsubseteq D\)</span> ，则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是蕴含式 <span class="arithmatex">\(C \rightarrow D\)</span> 的模型。理解为：所有的 <span class="arithmatex">\(C\)</span> 都是 <span class="arithmatex">\(D\)</span> 。</p>
+<p>用描述逻辑表示三段论：大前提： <span class="arithmatex">\(C \sqsubseteq D\)</span> ；小前提： <span class="arithmatex">\(C(a)\)</span> ；结论： <span class="arithmatex">\(D(a)\)</span> 。</p>
 </div>
-<h4 id="2213-tbox">2.2.1.3 <span class="arithmatex">\(TBox\)</span> 和模态逻辑的关系 <span class="arithmatex">\(^{*}\)</span></h4>
-<div class="arithmatex">\[
+<!-- #### 2.2.1.3 $TBox$ 和模态逻辑的关系 $^{*}$
+
+$$
 C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} \neg D \sqcup E
-\]</div>
-<p>其中， <span class="arithmatex">\(\mathcal{T}\)</span> 是由 <span class="arithmatex">\(GCIs\)</span> 构成的集合， <span class="arithmatex">\(U^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}\)</span> ，于是 <span class="arithmatex">\(C_{\mathcal{T}}^{\mathcal{I}} := \Delta^{\mathcal{I}}\)</span></p>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>为何不是</p>
-<div class="arithmatex">\[
-C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} E
-\]</div>
-<p>这样定义的话，如果解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(C_{\mathcal{T}}\)</span> 则也满足 <span class="arithmatex">\(\mathcal{T}\)</span> 。</p>
-<p>作者提到和 universal modality 有关。</p>
-</div>
+$$
+
+其中， $\mathcal{T}$ 是由 $GCIs$ 构成的集合， $U^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}$ ，于是 $C_{\mathcal{T}}^{\mathcal{I}} := \Delta^{\mathcal{I}}$
+
+!!! Question
+    为何不是
+
+    $$
+    C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} E
+    $$
+
+    这样定义的话，如果解释 $\mathcal{I}$ 满足 $C_{\mathcal{T}}$ 则也满足 $\mathcal{T}$ 。
+
+    作者提到和 universal modality 有关。 -->
+
 <h3 id="222-aboxassertional-formalism">2.2.2 <span class="arithmatex">\(ABox\)</span>（assertional formalism）</h3>
-<p>设有可数无穷个个体名称 <span class="arithmatex">\(a,b,c\)</span> 等等， <span class="arithmatex">\(ABox\)</span> 是形如 <span class="arithmatex">\(C(a),\ r(a,b)\)</span> 的断言的有限集合，其中 <span class="arithmatex">\(C\)</span> 是概念描述， <span class="arithmatex">\(r\)</span> 是作用描述。</p>
+<p>设有可数无穷个个体名称 <span class="arithmatex">\(a,b,c\)</span> 等等， <span class="arithmatex">\(ABox\)</span> 是形如 <span class="arithmatex">\(C(a),\ r(a,b)\)</span> 的断言的有限集合，其中 <span class="arithmatex">\(C\)</span> 是概念名称， <span class="arithmatex">\(r\)</span> 是作用名称。</p>
 <ul>
 <li>对每个个体 <span class="arithmatex">\(a\)</span> 解释为 <span class="arithmatex">\(a^{\mathcal{I}} \in \Delta^{\mathcal{I}}\)</span> ，通常遵守唯一名称假设（ <span class="arithmatex">\(a \neq b 蕴含 a^{\mathcal{I}} \neq b^{\mathcal{I}}\)</span> ）。</li>
 <li>如果 <span class="arithmatex">\(a^{\mathcal{I}} \in C^{\mathcal{I}}\)</span> 则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足概念断言 <span class="arithmatex">\(C(a)\)</span> 。</li>
@@ -657,9 +656,12 @@ C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} E
 </ul>
 <p><span class="arithmatex">\(ABox\)</span> 和模态逻辑的关系 <span class="arithmatex">\(^{*}\)</span></p>
 <div class="arithmatex">\[
-C_\mathcal{A} := \sqcap_{D(a)\in\mathcal{A}} \Big( \exists u.(a\sqcap D) \Big) \sqcap \sqcap_{r(a,b)\in\mathcal{A}} \Big( \exists u.(a\sqcap \exists r.b) \Big)
+C_\mathcal{A} := \sqcap_{D(a)\in\mathcal{A}} \Big( \exists u.(a'\sqcap D) \Big) \sqcap \sqcap_{r(a,b)\in\mathcal{A}} \Big( \exists u.(a'\sqcap \exists r.b') \Big)
 \]</div>
-<p>其中 <span class="arithmatex">\(u^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}\)</span> ，并且假设每个个体名都存在一个同名的名词（nominals）。于是任意一个 <span class="arithmatex">\(C_{\mathcal{A}}\)</span> 的模型也是 <span class="arithmatex">\(\mathcal{A}\)</span> 的模型。事实上名词比 <span class="arithmatex">\(ABox\)</span> 具有更强的表达力。 </p>
+<p>其中 <span class="arithmatex">\(u^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}\)</span> ，假设对于每个个体名 <span class="arithmatex">\(a\)</span> 都存在一个同名的专名 <span class="arithmatex">\(a'\)</span> 。于是任意一个 <span class="arithmatex">\(C_{\mathcal{A}}\)</span> 的模型也是 <span class="arithmatex">\(\mathcal{A}\)</span> 的模型。 </p>
+<div class="arithmatex">\[
+C_\mathcal{A}^{\mathcal{I}} := \sqcap_{D(a)\in\mathcal{A}} \Big( \exists u.(a'\sqcap D) \Big)^{\mathcal{I}} \sqcap \sqcap_{r(a,b)\in\mathcal{A}} \Big( \exists u.(a'\sqcap \exists r.b') \Big)^{\mathcal{I}}
+\]</div>
 <h3 id="223-kb">2.2.3 用知识库 KB 刻画语义模型 <span class="arithmatex">\(^{*}\)</span></h3>
 <p>In another area of DL research, its model theory, we investigate which kinds of semantic structure, i.e., interpretations or models, we can describe in a KB <span class="arithmatex">\(^{[2]}\)</span>. </p>
 <h2 id="_1">参考文献</h2>

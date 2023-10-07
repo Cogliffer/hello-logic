@@ -400,6 +400,7 @@
     &amp; \forall x (Teacher(x) \Leftrightarrow Person(x) \land \exists y (teaches(x, y) \land Course(y))),\\
     &amp; \forall x (Student(x) \Leftrightarrow Person(x) \land \exists y (attends(x, y) \land Course(y))),\\
     &amp; \forall x ((\exists y \, teaches(x, y)) \Rightarrow \neg Student(x)),\\
+    &amp; \forall x (LazyStudent(x) \Leftrightarrow Student(x) \land \forall y (attends(x, y) \rightarrow \neg Course(y))),\\
     &amp; Person(\text{Plato}),\\
     &amp; Person(\text{Aristotle}),\\
     &amp; Course(\text{LogicFrontiers}),\\
@@ -409,18 +410,22 @@
 \]</div>
 <p>用描述逻辑可以表示为：</p>
 <div class="arithmatex">\[
-\begin{align}
+\begin{align*}
     &amp; TBox : \\
     &amp; \quad Teacher \equiv Person \sqcap \exists teaches.Course,\\
     &amp; \quad Student \equiv Person \sqcap \exists attends.Course,\\
     &amp; \quad \exists teaches.\top \sqsubseteq \neg Student,\\
+    &amp; \quad LazyStudent \equiv Student \sqcap \forall attends.\neg Course\\
     &amp; ABox : \\
     &amp; \quad Person(\text{Plato}),\\
     &amp; \quad Person(\text{Aristotle}),\\
     &amp; \quad Course(\text{LogicFrontiers}),\\
     &amp; \quad attends(\text{Aristotle}, \text{LogicFrontiers}),\\
     &amp; \quad teaches(\text{Plato}, \text{LogicFrontiers})\\
-\end{align}
+    &amp; 推出 :\\
+    &amp; \quad Teacher(\text{Plato})\\
+    &amp; \quad Student(\text{Aristotle}),\\
+\end{align*}
 \]</div>
 <p>能从这个知识库中推出亚里士多德是学生，因为亚里士多德是一个参加逻辑前沿课程的人，这个过程可以形式化的完成。</p>
 <h2 id="_3">哲学</h2>

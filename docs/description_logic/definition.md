@@ -68,7 +68,7 @@ $$
 $$
 
 !!! Tips
-    在计算机的字符串模式匹配中，" . " 表示匹配任何单个字符，例如用模式 "<.>" 就能匹配 "fne<f\>oej<g\>ihu<o\>aeu" 得到 {f,g,o} 。这里 $\exists r . C$ 和 $\forall r . C$ 可以看作作用在论域 $\Delta^{\mathcal{I}}$ 上的模式匹配。
+    在计算机的字符串模式匹配中，" . " 表示匹配任何单个字符，例如用模式 "<.>" 就能匹配 "fne<f\>oej<g\>ihu<o\>aeu" 得到 {f,g,o} 。这里 $\exists r . C$ 和 $\forall r . C$ 可以看作作用在论域 $\Delta^{\mathcal{I}}$ 上的模式匹配， $\exists r . C$ 匹配出通过 $r$ 作用能够是 $C$ 的元素， $\forall r . C$ 匹配出所有 $r$ 作用后都是 $C$ 的元素。
 
 <!-- $(rDE)^{\mathcal{I}} = \{ (d,e)\ |\ d \in D,e \in E \textrm{ and } r(d,e) \}$
 
@@ -76,7 +76,7 @@ $(r.E)^{\mathcal{I}} = \{ (d,e)\ |\ d \in \Delta^{\mathcal{I}},e \in E \textrm{ 
 
 $(r..)^{\mathcal{I}} = \{ (d,e)\ |\ r(d,e), d,e \in \Delta^{\mathcal{I}} \}$ -->
 
-通常，将 $C^{\mathcal{I}}$ 读作概念名称 $C$ 在解释 $\mathcal{I}$ 中的外延 ($extension$)，若 $C^{\mathcal{I}} \neq \emptyset$ ，则称解释 $\mathcal{I}$ 是概念描述 $C$ 的一个模型。
+通常，将 $C^{\mathcal{I}}$ 读作概念名称 $C$ 在解释 $\mathcal{I}$ 中的外延 ($extension$)， $C^{\mathcal{I}}$ 中的元素称为 $C$ 的实例。若 $C^{\mathcal{I}} \neq \emptyset$ ，则称解释 $\mathcal{I}$ 是概念描述 $C$ 的一个模型。
 <!-- 若 $b \in \Delta^{\mathcal{I}}, (a,b) \in r^{\mathcal{I}}$，则将 $b$ 称作 $a$ 在解释 $\mathcal{I}$ 下的$\,\textit{r-filler}$。 -->
 
 ### 2.1.3 有向标记图(Directed Labeled Graph)
@@ -157,11 +157,13 @@ $\mathcal{AL}\ :\ C,D \longrightarrow A\ |\ \top\ |\ \bot\ |\ \neg A\ |\ C \sqca
 !!! Notes
     $\mathcal{T}$ 可以归结为有限个 $GCI$ 构成的集合。
     
-    解释 $\mathcal{I}$ 是蕴含式 $C \rightarrow D$ 的模型当且仅当 $\mathcal{I}$ 满足 $C \sqsubseteq D$。理解为：所有的 $C$ 都是 $D$ 。
+    解释 $\mathcal{I}$ **不**是蕴涵式 $C \rightarrow D$ 的模型当且仅当 $C^{\mathcal{I}} = \top, D^{\mathcal{I}} = \emptyset$ 。
+    
+    若 $\mathcal{I}$ 满足 $C \sqsubseteq D$ ，则解释 $\mathcal{I}$ 是蕴含式 $C \rightarrow D$ 的模型。理解为：所有的 $C$ 都是 $D$ 。
 
-    用描述逻辑表示三段论：大前提： $C \sqsubseteq D$ ；小前提： $C(a)$ ；结论： $D(a)$
+    用描述逻辑表示三段论：大前提： $C \sqsubseteq D$ ；小前提： $C(a)$ ；结论： $D(a)$ 。
 
-#### 2.2.1.3 $TBox$ 和模态逻辑的关系 $^{*}$
+<!-- #### 2.2.1.3 $TBox$ 和模态逻辑的关系 $^{*}$
 
 $$
 C_{\mathcal{T}} := \forall U. \bigsqcup_{D \sqsubseteq E \in \mathcal{T}} \neg D \sqcup E
@@ -178,13 +180,13 @@ $$
 
     这样定义的话，如果解释 $\mathcal{I}$ 满足 $C_{\mathcal{T}}$ 则也满足 $\mathcal{T}$ 。
 
-    作者提到和 universal modality 有关。
+    作者提到和 universal modality 有关。 -->
 
 ### 2.2.2 $ABox$（assertional formalism）
 
-设有可数无穷个个体名称 $a,b,c$ 等等， $ABox$ 是形如 $C(a),\ r(a,b)$ 的断言的有限集合，其中 $C$ 是概念描述， $r$ 是作用描述。
+设有可数无穷个个体名称 $a,b,c$ 等等， $ABox$ 是形如 $C(a),\ r(a,b)$ 的断言的有限集合，其中 $C$ 是概念名称， $r$ 是作用名称。
 
-- 对每个个体 $a$ 解释为 $a^{\mathcal{I}} \in \Delta^{\mathcal{I}}$ ，通常遵守唯一名称假设（ $a \neq b 蕴含 a^{\mathcal{I}} \neq b^{\mathcal{I}}$ ）。
+- 对每个个体 $a$ 解释为 $a^{\mathcal{I}} \in \Delta^{\mathcal{I}}$ ，通常遵守唯一名称假设（ $a \neq b 蕴涵 a^{\mathcal{I}} \neq b^{\mathcal{I}}$ ）。
 - 如果 $a^{\mathcal{I}} \in C^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足概念断言 $C(a)$ 。
 - 如果 $(a^{\mathcal{I}},b^{\mathcal{I}}) \in r^{\mathcal{I}}$ 则解释 $\mathcal{I}$ 满足作用断言 $r(a,b)$ 。
 - 如果解释 $\mathcal{I}$ 满足 $ABox\ \mathcal{A}$ 中的所有断言，则解释 $\mathcal{I}$ 是 $\mathcal{A}$ 的模型。
@@ -192,10 +194,14 @@ $$
 $ABox$ 和模态逻辑的关系 $^{*}$
 
 $$
-C_\mathcal{A} := \sqcap_{D(a)\in\mathcal{A}} \Big( \exists u.(a\sqcap D) \Big) \sqcap \sqcap_{r(a,b)\in\mathcal{A}} \Big( \exists u.(a\sqcap \exists r.b) \Big)
+C_\mathcal{A} := \sqcap_{D(a)\in\mathcal{A}} \Big( \exists u.(a'\sqcap D) \Big) \sqcap \sqcap_{r(a,b)\in\mathcal{A}} \Big( \exists u.(a'\sqcap \exists r.b') \Big)
 $$
 
-其中 $u^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}$ ，并且假设每个个体名都存在一个同名的名词（nominals）。于是任意一个 $C_{\mathcal{A}}$ 的模型也是 $\mathcal{A}$ 的模型。事实上名词比 $ABox$ 具有更强的表达力。 
+其中 $u^{\mathcal{I}} = \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}}$ ，假设对于每个个体名 $a$ 都存在一个同名的专名 $a'$ 。于是任意一个 $C_{\mathcal{A}}$ 的模型也是 $\mathcal{A}$ 的模型。 
+
+$$
+C_\mathcal{A}^{\mathcal{I}} := \sqcap_{D(a)\in\mathcal{A}} \Big( \exists u.(a'\sqcap D) \Big)^{\mathcal{I}} \sqcap \sqcap_{r(a,b)\in\mathcal{A}} \Big( \exists u.(a'\sqcap \exists r.b') \Big)^{\mathcal{I}}
+$$
 
 ### 2.2.3 用知识库 KB 刻画语义模型 $^{*}$
 

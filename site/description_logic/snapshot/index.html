@@ -427,6 +427,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    附录. 一些例子
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -499,7 +506,7 @@
 <p>一般的 <span class="arithmatex">\(TBox\)</span> 的模型：general concept inclusion axioms (GCIs)： <span class="arithmatex">\(GCI\)</span> 是形如 <span class="arithmatex">\(C \sqsubseteq D\)</span> 的形式，其中 <span class="arithmatex">\(C,D\)</span> 都是（复合）概念描述。如果 <span class="arithmatex">\(C^{\mathcal{I}} \subseteq D^{\mathcal{I}}\)</span> 则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(C \sqsubseteq D\)</span> 。如果解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(A \sqsubseteq C,\ C \sqsubseteq A\)</span> 则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足概念定义 <span class="arithmatex">\(A \equiv C\)</span> 。有限个 <span class="arithmatex">\(GCI\)</span> 构成的集合是 <span class="arithmatex">\(\mathcal{T}\)</span> 。如果解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(TBox\ \mathcal{T}\)</span> 中的所有概念定义，则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是 <span class="arithmatex">\(\mathcal{T}\)</span> 的模型。</p>
 <h3 id="6-abox">6. <span class="arithmatex">\(Abox\)</span></h3>
 <p>设有可数无穷个个体名称 <span class="arithmatex">\(a,b,c\)</span> 等等， <span class="arithmatex">\(ABox\)</span> 是形如 <span class="arithmatex">\(C(a),\ r(a,b)\)</span> 的断言的有限集合，其中 <span class="arithmatex">\(C\)</span> 是概念描述， <span class="arithmatex">\(r\)</span> 是作用描述。对每个个体 <span class="arithmatex">\(a\)</span> 解释为 <span class="arithmatex">\(a^{\mathcal{I}} \in \Delta^{\mathcal{I}}\)</span> ，通常遵守唯一名称假设（ <span class="arithmatex">\(a \neq b 蕴含 a^{\mathcal{I}} \neq b^{\mathcal{I}}\)</span> ）。如果 <span class="arithmatex">\(a^{\mathcal{I}} \in C^{\mathcal{I}}\)</span> 则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足概念断言 <span class="arithmatex">\(C(a)\)</span> 。如果 <span class="arithmatex">\((a^{\mathcal{I}},b^{\mathcal{I}}) \in r^{\mathcal{I}}\)</span> 则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足作用断言 <span class="arithmatex">\(r(a,b)\)</span> 。如果解释 <span class="arithmatex">\(\mathcal{I}\)</span> 满足 <span class="arithmatex">\(ABox\ \mathcal{A}\)</span> 中的所有断言，则解释 <span class="arithmatex">\(\mathcal{I}\)</span> 是 <span class="arithmatex">\(\mathcal{A}\)</span> 的模型。</p>
-<h2 id="7">7. 推理</h2>
+<h3 id="7">7. 推理</h3>
 <p>T 推理(Terminological Reasoning)</p>
 <ul>
 <li>可满足 (Satisfiability)：如果存在一个概念描述 <span class="arithmatex">\(C\)</span> 和一个 TBox <span class="arithmatex">\(\mathcal{T}\)</span> 的共同模型时，那么 <span class="arithmatex">\(C\)</span> 相对于 <span class="arithmatex">\(\mathcal{T}\)</span> 是可满足的。</li>
@@ -517,7 +524,7 @@
 <li>Realization (抽象化)：给定一个 ABox <span class="arithmatex">\(\mathcal{A}\)</span> ，一个 TBox <span class="arithmatex">\(\mathcal{T}\)</span> 以及个体实例 <span class="arithmatex">\(a\)</span> ，计算 <span class="arithmatex">\(\mathcal{T}\)</span> 中满足 <span class="arithmatex">\(\mathcal{A} \models_{\mathcal{T}} A(a)\)</span> 的概念名称 <span class="arithmatex">\(A\)</span> 构成的集合，记为 <span class="arithmatex">\(R_{\mathcal{A},\mathcal{T}}(a)\)</span>，并用包含关系 <span class="arithmatex">\(\sqsubseteq_{\mathcal{T}}\)</span> 找到最小的。</li>
 <li>Retrieval (实例化)：给定一个 ABox <span class="arithmatex">\(\mathcal{A}\)</span> ，一个 TBox <span class="arithmatex">\(\mathcal{T}\)</span> 以及概念 <span class="arithmatex">\(C\)</span> ，计算 <span class="arithmatex">\(\mathcal{A}\)</span> 中满足 <span class="arithmatex">\(\mathcal{A} \models_{\mathcal{T}} C(a)\)</span> 的个体实例 <span class="arithmatex">\(a\)</span> 构成的集合，记为 <span class="arithmatex">\(\mathcal{I}_{\mathcal{A},\mathcal{T}}(C)\)</span> 。</li>
 </ul>
-<h2 id="8">8. 具体域</h2>
+<h3 id="8">8. 具体域</h3>
 <ul>
 <li>抽象域 (abstract domain)：论域 <span class="arithmatex">\(\Delta^{\mathcal{I}}\)</span> 。</li>
 <li>具体域 (concrete domain)：一个具体域 <span class="arithmatex">\(\mathcal{D}\)</span> 是一个有序对 <span class="arithmatex">\((\Delta^{\mathcal{D}}, \Phi^{\mathcal{D}})\)</span> ，其中 <span class="arithmatex">\(\Delta^{\mathcal{D}}\)</span> 是非空集合， <span class="arithmatex">\(\Phi^{\mathcal{D}}\)</span> 是由谓词名称构成的集合，并且对于 <span class="arithmatex">\(n\)</span> 元谓词 <span class="arithmatex">\(P \in \Phi^{\mathcal{D}}\)</span> ，有 <span class="arithmatex">\(P^{\mathcal{D}} \subseteq (\Delta^{\mathcal{D}})^{n}\)</span> 。</li>
@@ -534,7 +541,7 @@
     &amp; \qquad \qquad \qquad \qquad \qquad  u_i(d)^{\mathcal{I}} = x_i\ (1 \le i \le n)\ 并且\ (x_1,x_2,\cdots,x_n) \in P^{\mathcal{I}} \}
 \end{align*}
 \]</div>
-<h2 id="9-mathcalalch_">9. 属性描述逻辑 <span class="arithmatex">\(\mathcal{ALCH}_@\)</span></h2>
+<h3 id="9-mathcalalch_">9. 属性描述逻辑 <span class="arithmatex">\(\mathcal{ALCH}_@\)</span></h3>
 <p><span class="arithmatex">\(\textsf{N}_\textsf{C}\)</span> ： 概念名称的集合；<span class="arithmatex">\(\textsf{N}_\textsf{R}\)</span> ： 作用名称的集合；<span class="arithmatex">\(\textsf{N}_\textsf{I}\)</span> ： 个体名称的集合；<span class="arithmatex">\(\textsf{N}_\textsf{V}\)</span> ： 变量的集合</p>
 <p><span class="arithmatex">\(\textbf{S}\)</span> ：说明的集合，可以是如下表达式：</p>
 <ul>
@@ -578,7 +585,7 @@
     (\forall R . C)^{\mathcal{I,Z}} &amp; = \{ d \in \Delta^{\mathcal{I}} | 对于每一个 e \in \Delta^{\mathcal{I}} ，如果 (d,e) \in R^{\mathcal{I,Z}} 那么 e \in C^{\mathcal{I,Z}} \}。\\
 \end{align*}
 \]</div>
-<h2 id="10">10. 亚里士多德形而上学</h2>
+<h3 id="10">10. 亚里士多德形而上学</h3>
 <p><strong>“是”的逻辑功能</strong></p>
 <ul>
 <li>判断的联结词：其形式是“ S ”是“ P ”，直称判断是最简单、最基本的判断。</li>
@@ -588,8 +595,56 @@
 <p><strong>实体与属性</strong></p>
 <p>主词和谓词分属两类逻辑范畴，主词所属的范畴是“实体”，谓词所属的范畴是“属性”。亚里士多德把范畴数量归纳为十个：除“实体”外，其他九个分别是实体的数量、性质、关系、位置、时间、姿态、状态、活动、受动。只有实体可以充当主词，其它九个范畴都是用来表述主词的谓词。就实体和属性的关系而言，实体是独立存在，不依赖其它东西而存在；属性必须依附于实体才能存在。</p>
 <p><strong>第一实体和第二实体</strong></p>
-<p>判断的主词可以被分为通名和专名：专名只能作为主词来使用；通名也可以用作谓词。专名指示个别事物，是第一实体，而通名指示种和属，是第二实体。</p>
+<p>判断的主词可以被分为通名和专名：专名指示个别事物，是第一实体，而通名指示种和属，是第二实体。专名只能作为主词来使用；通名也可以用作谓词。</p>
 <p><em>本节所有内容摘抄自 赵敦华《西方哲学史》 pp. 79-82</em></p>
+<h3 id="_1">附录. 一些例子</h3>
+<p><strong>基于 <span class="arithmatex">\(\mathcal{ALC}\)</span> 的知识库的例子：</strong></p>
+<div class="arithmatex">\[
+\begin{align*}
+    &amp; TBox : \\
+    &amp; \quad Teacher \equiv Person \sqcap \exists teaches.Course,\\
+    &amp; \quad Student \equiv Person \sqcap \exists attends.Course,\\
+    &amp; \quad \exists teaches.\top \sqsubseteq \neg Student,\\
+    &amp; \quad LazyStudent \equiv Student \sqcap \forall attends.\neg Course\\
+\end{align*}
+\]</div>
+<div class="arithmatex">\[
+\begin{align*}
+    &amp; ABox : \\
+    &amp; \quad Person(\text{Plato}),\\
+    &amp; \quad Person(\text{Aristotle}),\\
+    &amp; \quad Course(\text{LogicFrontiers}),\\
+    &amp; \quad attends(\text{Aristotle}, \text{LogicFrontiers}),\\
+    &amp; \quad teaches(\text{Plato}, \text{LogicFrontiers})\\
+\end{align*}
+\]</div>
+<p><strong>含有循环的 <span class="arithmatex">\(Tbox\)</span></strong> ： <span class="arithmatex">\(Human \equiv Adam \sqcup Eve \sqcup \exists parent.Human\)</span></p>
+<p><strong><span class="arithmatex">\(GCI\)</span>的例子</strong> ： <span class="arithmatex">\(Person \sqcap \exists uncle.Father \sqsubseteq \exists cousin.Person\)</span> 表示：如果一个人的叔叔为人父，那这个人有表兄妹。</p>
+<p><strong>具体域</strong> <span class="arithmatex">\(Q = (\mathbb{Q}, \Phi^{Q})\)</span> ，其中 <span class="arithmatex">\(\mathbb{Q}\)</span> 是有理数域， <span class="arithmatex">\(\Phi^{Q}\)</span> 包含谓词：</p>
+<ol>
+<li>对任意 <span class="arithmatex">\(P \in \{ &lt;, \le, =, \ne, \ge, &gt; \}\)</span> 和任意 <span class="arithmatex">\(q \in \mathbb{Q}\)</span> 有一元谓词 <span class="arithmatex">\(P_q\)</span> ，且 <span class="arithmatex">\((P_q)^{Q} = \{q' \in \mathbb{Q} | q' P q \}\)</span> 。</li>
+<li>二元谓词 <span class="arithmatex">\(\{ &lt;, \le, =, \ne, \ge, &gt; \}\)</span> 。</li>
+<li>三元谓词 <span class="arithmatex">\(+\)</span> ，且 <span class="arithmatex">\((+)^{Q} = \{(q_1, q_2, q_3) \in \mathbb{Q}^3 | q_1 + q_2 = q_3\}\)</span> 。</li>
+</ol>
+<p>在 <span class="arithmatex">\(\mathcal{ALC}(Q)\)</span> 中：</p>
+<ol>
+<li>
+<p>“ 青少年是 10 - 19 岁之间的人 ” 可以表示为： <span class="arithmatex">\(Teenager \equiv Human\ \sqcap &gt;_{10} (age)\ \sqcap &lt;_{19} (age)\)</span> 。</p>
+</li>
+<li>
+<p>“ 所有人的年龄都比他父母的年龄小 ” 可以表示为： <span class="arithmatex">\(\top \sqsubseteq\ ( &lt;(age, mother \circ age)\ \sqcap &lt;(age, father \circ age) )\)</span> 。</p>
+</li>
+</ol>
+<p><strong>属性描述逻辑 <span class="arithmatex">\(\mathcal{ALCH}_@\)</span></strong></p>
+<p><span class="arithmatex">\(ABox : \textrm{awarded}(\textrm{Agostini}, \textrm{Nobel Prize}) @[ \textrm{year}:2023]\)</span></p>
+<p>闭说明 <span class="arithmatex">\([\textrm{year} : R.\textrm{year} ]\)</span> 表示将 R 中所有属性为 <span class="arithmatex">\(\textrm{year}\)</span> 的属性值对提取出来构成的关系的集合。</p>
+<p>在通常描述逻辑中有公理： <span class="arithmatex">\(\exists \textrm{awarded}.\textrm{Award} \sqsubseteq \exists \textrm{known_for}.\top\)</span></p>
+<p>在 <span class="arithmatex">\(\mathcal{ALCH}_@\)</span> 中 <span class="arithmatex">\(\exists \textrm{awarded}@X.\textrm{Award}@X \sqsubseteq \exists \textrm{known_for}@ \lfloor \textrm{year} : X.\textrm{year} \rfloor .\top\)</span> ，指派 <span class="arithmatex">\(\mathcal{Z} = \{X\rightarrow \{(\textrm{year},2023)\} \}\)</span> 。</p>
+<p>在 2023 年获奖的人，都是在这一年因某个东西而著称的人。</p>
+<p>给定论域 <span class="arithmatex">\(\Delta^{\mathcal{I}} = \{ \textrm{Agostini},\textrm{Nobel Prize},\textrm{2023},\textrm{year},\textrm{attosecond pulses} \}\)</span> </p>
+<p><span class="arithmatex">\(\textrm{Award}^{\mathcal{I}} = \{ (\textrm{Nobel Prize},\{(\textrm{year},2023)\}) \}\)</span></p>
+<p><span class="arithmatex">\(\textrm{awarded}^{\mathcal{I}} = \{ (\textrm{Agostini},\textrm{Nobel Prize},\{(\textrm{year},2023)\}) \}\)</span></p>
+<p><span class="arithmatex">\(\textrm{known_for}^{\mathcal{I}} = \{ (\textrm{Agostini},\textrm{attosecond pulses},\{(\textrm{year},2023)\}) \}\)</span></p>
 
 
 
