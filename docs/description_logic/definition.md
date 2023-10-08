@@ -18,10 +18,10 @@
 
 **概念模型（concept patterns）**：含有变量的概念描述。
 
-<details>
+<!-- <details>
 <summary>“ role ”为何翻译为“作用”？</summary>
 role 有人直译为“角色”，有人更一般的翻译为“关系”，而“作用”是更恰当的翻译。理由如下，在大英百科全书中 role 有词条：“a function or part performed especially in a particular operation or process”，其中 function 可以翻译为作用，另外， role 本质上是算子，算子就是作用于对象之上的，因此，role 翻译为“作用”更为恰当。
-</details>
+</details> -->
 
 ## 2.1 $\mathcal{ALC}$
 

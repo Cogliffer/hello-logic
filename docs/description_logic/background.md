@@ -12,7 +12,7 @@
 
 ## 1.4 学者
 
-![Franz Baader](assert/Franz%20Baader.jpeg)
+<!-- ![Franz Baader](assert/Franz%20Baader.jpeg) -->
 
 [Franz Baader](https://tu-dresden.de/ing/informatik/thi/lat/die-professur/franz-baader)，德累斯顿工业大学（TU Dresden）理论计算机科学教授
 
