@@ -97,6 +97,11 @@ $\mathcal{M}, \omega \vDash \mathbf{T^N} C \Longleftrightarrow there\ exist\ a\ 
 $\mathcal{M}, \omega \vDash \mathbf{T^W} C \Longleftrightarrow there\ exist\ a\ concept\ D\ where\ \mathcal{M},\omega \vDash D\ and\ (D,C)\in R^C$
 显然的，严格可以想到则可以想到，可以想到则宽泛可以想到
 
+这个逻辑是一种 $\exist\Diamond\exist$ 的打包，很弱，但是思维就是这么灵活。
+是否可以用一长串 $\exist$ 来表示所有复杂的现象？
+
+完全性是什么样的？读 Y. Wang 关于打包的判定性综合研究。
+
 可视化，用超图表示概念关系
 
 是否是 well-defined ？

@@ -1,0 +1,1 @@
+$\varphi ::= p\ |\ \bot\ |\ \neg \varphi\ |\ \varphi_1 \land \varphi_2\ |\ Pr_{\lesseqqgtr t}(\varphi)\ |\ Pr_{\lesseqqgtr t}(\varphi_1 / \varphi_2)$

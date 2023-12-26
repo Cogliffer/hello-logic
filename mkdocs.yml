@@ -32,3 +32,5 @@ nav:
     - 6. 当代进展: description_logic/present/index.html
     - 7. 哲学洞察: description_logic/philosophy/index.html
     - 附录 : description_logic/snapshot/index.html
+  - 第 14 章 &nbsp; 非单调逻辑:
+    - 0. 总览: Non-monotonic Logic/NML/index.html
