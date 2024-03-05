@@ -1,0 +1,25 @@
+
+$\begin{matrix}
+    1&0\\0&1
+\end{matrix}
+\quad
+\begin{pmatrix}
+    1&0\\0&1
+\end{pmatrix}
+\quad
+\begin{bmatrix}
+    1&0\\0&1
+\end{bmatrix}
+\quad
+\begin{Bmatrix}
+    1&0\\0&1
+\end{Bmatrix}
+\quad
+\begin{vmatrix}
+    1&0\\0&1
+\end{vmatrix}
+\quad
+\begin{Vmatrix}
+    1&0\\0&1
+\end{Vmatrix}
+$
