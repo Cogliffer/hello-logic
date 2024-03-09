@@ -1,4 +1,15 @@
 
+<style>
+    end {
+        display: block;
+        text-align: right;
+        position: relative;
+        top: -20px;
+    }
+</style>
+
+$\mathbb{R}$ con not be coded to $\mathbb{N}$, how to compute on the real number?
+
 *computable function*
 - *zero function* $\mathbf{0}(x) = 0, \forall x\in\mathbb{N}$.
 - *successor function* $s(x) = x + 1, \forall x\in\mathbb{N}$.
@@ -25,10 +36,10 @@ p^{'}_i = \begin{cases}
 *subprogram*
 - for every program $P=(p_1,p_2,\cdots,p_n)$, there exists a smallest number $\rho(P)$ such that $\forall u>\rho(P)$ register $R_u$ never used when the running of program $P$.
 - $P[l_1,l_2,\cdots,l_n\rightarrow l] \equiv_{def} (T(l_1,1),T(l_2,2),\cdots,T(l_n,n),Z(n+1),Z(n+2),\cdots,Z(\rho(P)),P,T(1,l))$
-(1) $T(l_1,1),T(l_2,2),\cdots,T(l_n,n)$
-(2) $Z(n+1),Z(n+2),\cdots,Z(\rho(P))$
-(3) $P$
-(4) $T(1,l)$
+1| $T(l_1,1),T(l_2,2),\cdots,T(l_n,n)$
+2| $Z(n+1),Z(n+2),\cdots,Z(\rho(P))$
+3| $P$
+4| $T(1,l)$
 generally, $\forall\rho\in\mathbb{N}, P[l_1,l_2,\cdots,l_n\rightarrow l:\rho] \equiv_{def} (T(l_1,1),T(l_2,2),\cdots,T(l_n,n),Z(n+1),Z(n+2),\cdots,Z(\rho),P,T(1,l))$
 
 **Theorem** The composition of computable functions is computable.
@@ -37,11 +48,62 @@ Proof. Assume $\mathbf{x} = (x_1,x_2,\cdots,x_n),\mathbf{y} = (y_1,y_2,\cdots,y_
 $\rho\equiv_{def} \mathrm{Max}\{\rho(P),\rho(Q_1),\rho(Q_2),\cdots,\rho(Q_n)\}$
 
 set the $\mathbf{y}$ as initial configuration.
-
-(1) $T(1,\rho+1),T(2,\rho+2),\cdots,T(m,\rho+m)$
-(2) $Q_1[\rho+1,\rho+2,\cdots,\rho+m\rightarrow\rho+m+1:\rho],Q_2[\rho+1,\rho+2,\cdots,\rho+m\rightarrow\rho+m+2:\rho],\cdots,Q_n[\rho+1,\rho+2,\cdots,\rho+m\rightarrow\rho+m+n:\rho]$
-(3) $P[\rho+m+1,\rho+m+2,\cdots,\rho+m+n\rightarrow 1:\rho]$
-
+1| $T(1,\rho+1),T(2,\rho+2),\cdots,T(m,\rho+m)$
+2| $Q_1[\rho+1,\rho+2,\cdots,\rho+m\rightarrow\rho+m+1:\rho],Q_2[\rho+1,\rho+2,\cdots,\rho+m\rightarrow\rho+m+2:\rho],\cdots,Q_n[\rho+1,\rho+2,\cdots,\rho+m\rightarrow\rho+m+n:\rho]$
+3| $P[\rho+m+1,\rho+m+2,\cdots,\rho+m+n\rightarrow 1:\rho]$ <end>$\Box$</end>
 *recursion function*
+**Defination** Given any functions $f(\mathbf{x}),g(\mathbf{x},k,l),\mathbf{x} = (x_1,x_2,\cdots,x_n)$ there is a *recursion function* $h(\mathbf{x},k)$ defined by
+$$
+\begin{align*}
+    & h(\mathbf{x},0) = f(\mathbf{x}) \\
+    & h(\mathbf{x},k+1) = g(\mathbf{x},k,h(\mathbf{x},k))
+\end{align*}
+$$
 
-**Theorem** computable
+
+**Theorem** The recursion function $h(\mathbf{x},k)$ defined by computable function $f(\mathbf{x}),g(\mathbf{x},k,l),\mathbf{x} = (x_1,x_2,\cdots,x_n)$ is computable.
+Proof. Assume program $P(\mathbf{x})\downarrow f(\mathbf{x}),Q(\mathbf{x},k,l)\downarrow g(\mathbf{x},k,l)$
+$\rho = \mathrm{Max}(\rho(P),\rho(Q))$
+set the $(\mathbf{x},k)$ as initial configuration.
+1| $T(1,\rho+1),T(2,\rho+2),\cdots,T(n,\rho+n),T(n+1,\rho+n+1)$
+2| $P[\rho+1,\rho+2,\cdots,\rho+n\rightarrow\rho+n+2:\rho]$
+3| $Z(\rho+n+3)$
+4| $J(\rho+n+1,\rho+n+3,8)$
+5| $Q(\rho+1,\rho+2,\cdots,\rho+n+2\rightarrow\rho+n+2:\rho)$
+6| $S(\rho+n+3)$
+7| $J(1,1,4)$
+8| $T(\rho+n+2,1)$
+
+*normal computable function*
+$x+y$. $\mathit{Proof}$. $f(x)=x,g(x,y,z)=z+1,h(x,y)$.
+$xy$
+$x^y$ 
+$x-1=\begin{cases}
+    x-1 & x>1 \\
+    0 & x=0
+\end{cases}$
+$x-y=\begin{cases}
+    x-y & x\ge y \\
+    0 & \text{otherwise}
+\end{cases}$
+$\overline{sg}(x)=\begin{cases}
+    1 & x=0 \\
+    0 & x\neq 0
+\end{cases}$
+$|x-y|$
+$x!$
+$\mathrm{min}(x,y)$
+$\mathrm{max}(x,y)$
+$\mathrm{rm}(x,y)=$ remainder when $y$ is divided by $x$.
+$\mathrm{qt}(x,y)=$ quotient when $y$ is divided by $x$.
+$\mathrm{div}(x,y)=\begin{cases}
+    1 & x\mid y\\
+    0 & x\nmid y
+\end{cases}$
+
+*piecewise function*
+$g(\mathbf{x}) = \begin{matrix}
+    g
+\end{matrix}$
+
+*Algebra of decidability*
