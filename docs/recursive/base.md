@@ -6,7 +6,7 @@
         position: relative;
         top: -20px;
     }
-</style>
+</style> 
 
 *unlimited register machine (URM)* by Shepherdson & Sturgis [1963]
 - *(URM)* A URM is a binary tuple $(R,P)$ where
@@ -14,7 +14,7 @@
 - *(program)* A *program* $P$ is a finite collection of *instructions*, there are four kind of instructions:
 (1) *Zero instruction*. $Z(n),n\in\mathbb{N}$ change the content of $R_n$ to $0$, denoted by $r_n = 0$.
 (2) *Successor instruction*. $S(n),n\in\mathbb{N}$ change the content of $R_n$ to $r_n+1$,denoted by $r_n = r_n+1$.
-(3) *Transfer instruction*. $T(m,n),m,n\in\mathbb{N}$ change the content of $R_n$ by $r_m$,denoted by $r_n = r_m$.
+(3*) *Transfer instruction*. $T(m,n),m,n\in\mathbb{N}$ change the content of $R_n$ by $r_m$,denoted by $r_n = r_m$.
 (4) *Jump instruction*. $J(m,n,p),m,n,p\in\mathbb{N}$, to do judge if $r_m=r_n$ then go to the $p$th instruction otherwise go to the next instruction in $P$, denoted by $r_m=r_n\ ?\Rightarrow p\ ;\ \text{pass}$
 
 *lemma* These four kind of instructions are independent of each other.
@@ -22,7 +22,7 @@ Proof. First, the last instruction Jump is independent of other three instructio
 
 (more important question) weather there have a instructions could be a list of other instructions?
 <!-- - I lost the most important question, why -->
-If only use Zero and Successor, Transfer can not be constructed. If add the Jump, then Transfer can be constructed as following.
+*If only use Zero and Successor, Transfer can not be constructed. If add the Jump, then Transfer can be constructed as following.
 
 ```
     #Transfer(m,n)
@@ -55,15 +55,19 @@ If for some $(a_1,a_2,\cdots,a_n)$ the program holds $P(a_1,a_2,\cdots)\downarro
 
 <!-- $P(a_1,a_2,\cdots,a_n)\downarrow b$ if and only if $f(a_1,a_2,\cdots,a_n) = b$ -->
 
-读书很容易不看例子，觉得浪费时间不如直接把握抽象形式，但貌似会缺少点什么
+denotation
+$\mathscr{C}$ : The class of URM-computable functions 
+$\mathscr{C}_n$ : The class of URM-computable $n$-ary functions 
+
+<!-- 读书很容易不看例子，觉得浪费时间不如直接把握抽象形式，但貌似会缺少点什么 -->
 
 *predicates*
 - $M(x_1,x_2,\cdots,x_n),n\in\mathbb{N}$ is an $n$-ary predicate of natural numbers.
 
 *characteristic function*
-- a *characteristic function* $c_M(\mathbf{x})$ of $M$ is a function where
+- a *characteristic function* $c_M(\boldsymbol{x})$ of $M$ is a function where
 $$
-c_M(\mathbf{x})=
+c_M(\boldsymbol{x})=
 \begin{cases}
 1, & \text{if } c_M \text{ is true.} \\
 0, & \text{if } c_M \text{ is false.}\\
@@ -75,3 +79,10 @@ $$
 - A *coding* of a domain $D$ of objects is an explicit and effective injection $\alpha:D\rightarrow\mathbb{N}$.
 - An object $d\in D$ is coded by the natural number $\alpha(d)$.
 - If there is a function $f:D\rightarrow D$, then $f^{\star} = \alpha \circ f \circ \alpha^{-1}$ maps the code of any object $d\in Dom(f)$ to the code of $f(d)$.
+
+
+*URM with input instruction
+add an input tube and a enter key
+$I(n)$ is the input instruction that wait for a input end with a enter key
+example:$(I(1),J(1,2,4),J(1,1,1))$ loop until input a $0$ at the first register
+thus the delta time between two instruction is need to be cared

@@ -88,7 +88,7 @@ $$\begin{align*}
 (4) $\Rightarrow$ (1)
 Given $\phi$ suppose
 $$\begin{align*}
-    \mathrm{Cons}(\Gamma\cup\{\phi\}) & \Rightarrow\phi\in\Gamma\text{ or (not both) }\neg\phi\in\Gamma \text{ by (3)}\\
+    \mathrm{Cons}(\Gamma\cup\{\phi\}) & \Rightarrow\phi\in\Gamma\text{ or (not both) }\neg\phi\in\Gamma \text{ by (4)}\\
     & \text{if }\phi\in\Gamma\text{ then it is directly get (1)}\\
     & \text{if }\neg\phi\in\Gamma\text{ then }\Gamma\vdash\neg\phi\Rightarrow\overline{\mathrm{Cons}}(\Gamma\cup\{\phi\})\\
     & \text{where }\overline{\mathrm{Cons}}(\Gamma\cup\{\phi\})\text{ is a contradicty to }\mathrm{Cons}(\Gamma\cup\{\phi\})
@@ -128,10 +128,22 @@ $</end>
 $\mathrm{MaxCons}(\Gamma)\Rightarrow\mathrm{Satisfiable}(\Gamma),\Gamma\subseteq\mathcal{L_0}$
 
 **Theorem**
-$\mathrm{Cons}(\Gamma)\Rightarrow\exist\mathrm{MaxCons}(\Gamma^\ast),\Gamma\subseteq\Gamma^\ast\subseteq\mathcal{L_0}$
+$\mathrm{Cons}(\Gamma)\Rightarrow\exist\Gamma^\ast,\mathrm{MaxCons}(\Gamma^\ast),\Gamma\subseteq\Gamma^\ast\subseteq\mathcal{L_0}$
 
 **Theorem Completeness**
 $\mathrm{Cons}(\Gamma)\Rightarrow\mathrm{Satisfiable}(\Gamma),\Gamma\subseteq\mathcal{L_0}$
+
+
+*logically implies*
+$\phi\in\Gamma\in\mathcal{L_0}$
+$\nu$ is truth assignment
+$(\forall\nu(\nu\vDash\Gamma\Rightarrow\nu\vDash\phi))\Rightarrow(\Gamma\vDash\phi)$
+
+$\Gamma\cup\{\neg\phi\}$ is not cons
+$\exist \Gamma_0\subseteq\Gamma$ and $\Gamma_0$ is finite
+$\Gamma_0\cup\{\neg\phi\}$ is not cons
+
+$\Gamma\vDash\phi\Leftrightarrow\Gamma\vdash\phi$
 
 我们需要将多个命题合并为一个命题，但这样分情况的时候就会有大量重复
  
