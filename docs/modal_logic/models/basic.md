@@ -79,3 +79,4 @@ $\omega\ \overleftrightarrow{\_\_}_n\ \omega'$ denote that $\omega,\omega'$ are 
 (4) $uZ_{i+1}u'\wedge Ru'v'\Rightarrow\exist v(Ruv\wedge vZ_{i}v')$
 
 $\omega\ \overleftrightarrow{\_\_}_n\ \omega'\Leftrightarrow\omega,\omega'$ agree on all modal formulas of degree at most $n$
+$\omega\ \overleftrightarrow{\_\_}_n\ \omega'\Leftrightarrow\mathfrak{M},\omega\vDash\phi\text{ iff }\mathfrak{M'},\omega'\vDash\phi$
