@@ -24,3 +24,5 @@ $\begin{matrix}
 \end{Vmatrix}
 $
 $\hspace{-1mm}$
+$\to$
+$$
