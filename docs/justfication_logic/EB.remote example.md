@@ -2,9 +2,9 @@
 ## 外部证明(remote)
 
 ### Example B.1
-任给公式$P$和系统$\Gamma$，在系统$\mathbf{S4_f}$中证明，如果$P$在$\Gamma$中（$P$是$\Gamma$中的定理），那么对于任意公式$F$，可证$F\rightarrow P$在$\Gamma$上为真。语言不能表达这个命题，但是从模型上的满足关系来看这是显然的，即证明，如果$\mathcal{M},\Gamma\vDash P$，那么可证$\mathcal{M},\Gamma\vDash F\rightarrow P$，根据满足关系的定义立刻得到可证。
+任给命题符号$P$和系统$\Gamma$，在系统$\mathbf{S4_f}$中证明，如果$P$在$\Gamma$中（$P$是$\Gamma$中的定理），那么对于任意公式$F$，可证$F\rightarrow P$在$\Gamma$上为真。语言不能表达这个命题，但是从模型上的满足关系来看这是显然的，即证明，如果$\mathcal{M},\Gamma\vDash P$，那么可证$\mathcal{M},\Gamma\vDash F\rightarrow P$，根据满足关系的定义立刻得到可证。
 ### Example B.2
-任给公式$P$和系统$\Gamma$，在系统$\text{hybrid-}\mathbf{S4_f}$中证明，如果$P$在$\Gamma$中（$P$是$\Gamma$中的定理），那么对于任意公式$F$，可证$F\rightarrow P$在$\Gamma$上为真。通过用混合算子表达满足关系，可以直接表达这一命题，并在公理系统上给出证明。Let $\mathcal{V}(i)=\Gamma$, we try to proof $@_iP\rightarrow\Box @_i(F\rightarrow P)$ is a theorem.
+任给命题符号$P$和系统$\Gamma$，在系统$\text{hybrid-}\mathbf{S4_f}$中证明，如果$P$在$\Gamma$中（$P$是$\Gamma$中的定理），那么对于任意公式$F$，可证$F\rightarrow P$在$\Gamma$上为真。通过用混合算子表达满足关系，可以直接表达这一命题，并在公理系统上给出证明。Let $\mathcal{V}(i)=\Gamma$, we try to proof $@_iP\rightarrow\Box @_i(F\rightarrow P)$ is a theorem.
 **Proof.**
 $$\begin{align*}
     &(1)\ P\rightarrow(F\rightarrow P) \quad TAUT \\
@@ -13,7 +13,7 @@ $$\begin{align*}
     &(4)\ @_iP\rightarrow\Box @_i(F\rightarrow P) \quad 2,3\\
 \end{align*}$$
 ### Example B.3
-任给公式$P$和系统$\Gamma$，在系统$\text{hybrid-}\mathbf{S4_f}$中证明，如果$P$在$\Gamma$中（$P$是$\Gamma$中的定理），那么对于任意公式$F$，可证$F\rightarrow P$在$\Gamma$上为真。Let $\mathcal{V}(i)=\Gamma$, we try to proof $@_iP\rightarrow dcf_i:@_i(F\rightarrow P)$ is a theorem where $d:(@_i(P\rightarrow(F\rightarrow P))\rightarrow(@_iP\rightarrow @_i(F\rightarrow P))), c:@_i(P\rightarrow(F\rightarrow P)), f_i:@_iP$.
+任给命题符号$P$和系统$\Gamma$，在系统$\text{hybrid-}\mathbf{S4_f}$中证明，如果$P$在$\Gamma$中（$P$是$\Gamma$中的定理），那么对于任意公式$F$，可证$F\rightarrow P$在$\Gamma$上为真。Let $\mathcal{V}(i)=\Gamma$, we try to proof $@_iP\rightarrow dcf_i:@_i(F\rightarrow P)$ is a theorem where $d:(@_i(P\rightarrow(F\rightarrow P))\rightarrow(@_iP\rightarrow @_i(F\rightarrow P))), c:@_i(P\rightarrow(F\rightarrow P)), f_i:@_iP$.
 **Proof.**
 $$\begin{align*}
     &(1)\ @_iP\rightarrow f_i:@_iP\quad \text{remote fact checker}\\

@@ -44,7 +44,7 @@ $$\begin{align*}
 证明的思路是将$\mathbf{LP}$中的定理外化到$\text{hybrid-}\mathbf{S4_f}$中，然后利用$\text{hybrid-}\mathbf{S4_f}$中的公理和规则给出证明再用混合算子$@_\mathbf{LP}$内化到$\mathbf{LP}$中。
 
 ### Example C.2
-在$\text{hybrid-}\mathbf{LPS4_f}$上用公理系统证明$\mathbf{LP}$的导出引理的简化版。即证任给$\mathbf{LP}$语言中的公式$P,Q$，如果$P,P\hat{\rightarrow}Q$是$\mathbf{LP}$中的定理，那么$Q$也是$\mathbf{LP}$中的定理。注意到下面三种表达是等价的
+在$\text{hybrid-}\mathbf{S4_f}$上用公理系统证明$\mathbf{LP}$的导出引理的简化版。即证任给$\mathbf{LP}$语言中的公式$P,Q$，如果$P,P\hat{\rightarrow}Q$是$\mathbf{LP}$中的定理，那么$Q$也是$\mathbf{LP}$中的定理。注意到下面三种表达是等价的
 $$\begin{align*}
     &(1)\ @_iP\rightarrow (@_i(P\hat{\rightarrow} Q)\rightarrow\Box @_iQ)\\
     &(2)\ @_iP\rightarrow (@_i(P\hat{\rightarrow} Q)\rightarrow @_iQ)\\
@@ -62,7 +62,7 @@ $$\begin{align*}
 \end{align*}$$
 进一步可以通过演绎定理，证明完整的导出引理，不过我们不再补充这些繁琐的细节，而是考虑如何在我们的语言中给出这个证明过程，也就是给出一个具体的闭项证明了导出引理，作为内化定理的一个例子。
 ### Example C.3
-在证明之前先引入项上的函数来简化证明。设$F\rightarrow M$为公理，我们有如下推理
+在证明之前先引入项上的函数来简化证明。设$F\rightarrow M$为公理，在$\text{hybrid-}\mathbf{LPS4_f}$中，我们有如下推理
 $$\begin{align*}
     &(1)\ c:@_i(F\rightarrow M)\quad \text{Iterated remote axiom necessitation}\\
     &(2)\ d:\big(@_i(F\rightarrow M)\rightarrow (@_iF\rightarrow @_iM)\big)\quad K_@,\text{Iterated axiom necessitation}\\
