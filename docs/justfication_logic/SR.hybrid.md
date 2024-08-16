@@ -1,5 +1,5 @@
 
-
+## 参考文献中的公理系统
 ## The basic hybrid language $\mathcal{H}(@)$
 Language: 
 $F::= i\ |\ p\ |\ \bot\ |\ \neg F\ |\ F\land F\ |\ \Box F\ |\ @_i F$
@@ -55,7 +55,7 @@ $$\begin{align*}
     & (\text{Iterated remote axiom necessitation})\quad \text{Let }i\text{ be any nominal. }\text{If }X\text{ is an axiom}\\
     &\text{and }c_1, c_2,\cdots, c_n\text{ are constants, }\text{then }c_1 : c_2 : \cdots : c_n : @_iX
 \end{align*}$$
-
+<!-- 
 公理系统中并没有$\text{\text{dual back}}$公理，这是因为如果$@_iF$是定理，尽管是可证的，但是并没有公理能够给出具体的证明。不过存在证明的事实能够被下面的内化定理捕获。
 **Theorem.** (Internalization) If $F$ is a theorem of basic hybird-$\mathsf{JT}$, then there is a closed justification term $t$ such that $t:F$ is also a theorem. 简写为：$Theorem(F)\Rightarrow(\exist t)(Colsed(t)\land Theorem(t:F))$
 从与模态逻辑hybird-$\mathsf{T}$对应的角度看，内化定理对应必然化规则。从内化证明结构的角度来看，这个定理表明了basic hybird-$\mathsf{JT}$中的定理都有这个系统中项的语言可以表达的证明。
@@ -70,4 +70,4 @@ $$\begin{align*}
 
 [Fitting,2010]中，作者在含有$Factivity$公理的 basic hybird-$\mathsf{JT}$ 中证明了内化定理，并证明了 basic hybird-$\mathsf{JT}$ 与 basic hybrid-$\mathsf{T}$ 之间的实现定理，[Rui Zhu, Xinwen Liu,2015]中，作者不借助$Factivity$公理证明了 basic hybird-$\mathsf{J}$ 的内化定理。
 
-这个系统可以作为一个逻辑的上层语义
+这个系统可以作为一个逻辑的上层语义 -->

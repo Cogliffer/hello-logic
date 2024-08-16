@@ -35,13 +35,13 @@ $$\begin{align*}
     &(6)\ @_iP\rightarrow \Box @_i(Q\hat{\rightarrow} P)\quad 1,5
 \end{align*}$$
 
-借助具体公式进一步分析内部可证和外部可证。第一个例子可证是指$\mathbf{LP}$中的可证，。我们不严格的称为内部可证和外部可证的区别。
+<!-- 借助具体公式进一步分析内部可证和外部可证。第一个例子可证是指$\mathbf{LP}$中的可证，。我们不严格的称为内部可证和外部可证的区别。
 
 两个证明都是从$\mathbf{LP}$的公理$P\hat{\rightarrow}(Q\hat{\rightarrow} P)$通过外化定理，得到$\text{hybrid-}\mathbf{S4_f}$上的定理$P\rightarrow(Q\hat{\rightarrow} P)$。
 
 混合算子能够做到，在一个公理系统中推理另一个公理系统的定理。就是需要内化和外化公理。混合算子相当于一个标签，标明了当前推理所在的公理系统
 
-证明的思路是将$\mathbf{LP}$中的定理外化到$\text{hybrid-}\mathbf{S4_f}$中，然后利用$\text{hybrid-}\mathbf{S4_f}$中的公理和规则给出证明再用混合算子$@_\mathbf{LP}$内化到$\mathbf{LP}$中。
+证明的思路是将$\mathbf{LP}$中的定理外化到$\text{hybrid-}\mathbf{S4_f}$中，然后利用$\text{hybrid-}\mathbf{S4_f}$中的公理和规则给出证明再用混合算子$@_\mathbf{LP}$内化到$\mathbf{LP}$中。 -->
 
 ### Example C.2
 在$\text{hybrid-}\mathbf{S4_f}$上用公理系统证明$\mathbf{LP}$的导出引理的简化版。即证任给$\mathbf{LP}$语言中的公式$P,Q$，如果$P,P\hat{\rightarrow}Q$是$\mathbf{LP}$中的定理，那么$Q$也是$\mathbf{LP}$中的定理。注意到下面三种表达是等价的

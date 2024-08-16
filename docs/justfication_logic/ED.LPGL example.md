@@ -18,11 +18,11 @@ $$\begin{align*}
 \end{align*}$$
 
 ### Example D.2
-记公理系统$\text{hybrid-}\mathbf{S4_f}$的公式构成为
+设下层逻辑$\mathbf{LPGL}$采用[Example D.1]的记号，记上层逻辑$\text{hybrid-}\mathbf{S4_f}$的公式构成为
 $$\begin{align*}
     F::= i\ |\ P\ |\ \hat{\neg} F\ |\ F\hat{\rightarrow} F\ |\ \hat{\Box} F\ |\ @_i F
 \end{align*}$$
-外化公理：$\neg P\rightarrow\hat{\neg} P,(P\rightarrow Q)\hat{\rightarrow}(P\hat{\rightarrow} Q)$
+外化公理：$\neg P\rightarrow\hat{\neg} P,(P\rightarrow Q)\hat{\rightarrow}(P\hat{\rightarrow} Q)$ 用符号$(*)$在推理行结尾标记。
 Let $@_i$ be $@_\mathbf{LPGL}$, we try to proof $@_i(u:\Box P\rightarrow P) $ is a theorem.
 **Proof.** 
 $$\begin{align*}
@@ -50,18 +50,11 @@ $$\begin{align*}
     &(16)\ @_i(u:\Box P\rightarrow P)\quad \text{reflexivity rule}\ on\ \mathbf{LPGL}
 \end{align*}$$
 
-我们没法使用下层逻辑的规则，但是公理可以用，规则被外化到主语言中了，用term上的函数表示
-
-
-用term内化了模型中系统的可证的公式的具体的证明过程，这是有趣的。因为term提供了一种证明的核心直觉，非常的简洁，清晰的刻画了证明的关键步骤。
-term不仅能够内化外部证明，也能在给出下层系统之后，内化内部证明
-成为可以用的推理规则
-
 ### Example D.3
-下层逻辑$\mathbf{LPGL}$：
+设上层逻辑$\text{hybrid-}\mathbf{S4_f}$采用[Example D.2]的记号，记下层逻辑$\mathbf{LPGL}$公式构成为：
 $\hat{u}::= c\ |\ x\ |\ (u\cdot u)\ |\ (u+u)\ |\ !u$
 $P::= p\ |\ \neg P\ |\ P\rightarrow P\ |\ \Box P\ |\ \hat{u}:P$
-函数：
+函数：（函数符号的使用方法见附录[Example C.3]）
 $ f_{nec}(t)$ 对应$\mathbf{LPGL}$中的$NEC$规则；
 $ f_{r}(t)$ 对应$\mathbf{LPGL}$中的$\text{reflexivity rule}$规则；
 $ f_{k}(t)$ 对应$\mathbf{LPGL}$中的$K$规则；
@@ -108,11 +101,6 @@ $$\begin{align*}
     &(10)\ o:@_i\Big((\neg\Box P\rightarrow\Box(\hat{u}:\Box P\rightarrow P))\rightarrow\\
     &\qquad\big((\Box P\rightarrow\Box(\hat{u}:\Box P\rightarrow P))\rightarrow\Box(\hat{u}:\Box P\rightarrow P)\big)\Big)\quad TAUT \ on\ \mathbf{LPGL} \\
     &(11)\ \underline{\underline{o}\,\underline{\underline{\underline{m}\,\underline{d}c}h}\tilde{j}}\tilde{n}: @_i\Box(\hat{u}:\Box P\rightarrow P)\quad\qquad 10,(*),g_k,8,g_k,9,application\\
-    &(12)\ f_r\Big(\underline{\underline{o}\,\underline{\underline{\underline{m}\,\underline{d}c}h}\tilde{j}}\tilde{n}\Big): @_i\Box(\hat{u}:\Box P\rightarrow P)\quad\qquad\qquad 11,\text{reflexivity rule} \\
+    &(12)\ f_r\Big(\underline{\underline{o}\,\underline{\underline{\underline{m}\,\underline{d}c}h}\tilde{j}}\tilde{n}\Big): @_i(\hat{u}:\Box P\rightarrow P)\quad\qquad\qquad 11,\text{reflexivity rule} \\
 \end{align*}$$
 
-这个例子体现出混合算子的必要性。让系统中的定理转化为公理系统中的定理。从而能够公理化方法推理。
-
-四个例子构成平行关系，总结内化定理。
-
-给出的证明项，要求都是从公理出发的，这保证了证明的可靠性，不会出现跳步
