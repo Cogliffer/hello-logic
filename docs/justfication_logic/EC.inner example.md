@@ -60,7 +60,7 @@ $$\begin{align*}
     &(5)\ @_i((P\hat{\rightarrow} Q)\hat{\rightarrow} Q)\rightarrow(@_i(P\hat{\rightarrow} Q)\rightarrow @_i Q)\quad 4,@NEC,K_@\\
     &(6)\ @_iP\rightarrow (@_i(P\hat{\rightarrow} Q)\rightarrow @_iQ)\quad 3,5
 \end{align*}$$
-进一步可以通过演绎定理，证明完整的导出引理，不过我们不再补充这些繁琐的细节，而是考虑如何在我们的语言中给出这个证明过程，也就是给出一个具体的闭项证明了导出引理，作为内化定理的一个例子。
+<!-- 由于有NEC规则，没有演绎定理。进一步可以通过演绎定理，证明完整的导出引理，不过我们不再补充这些繁琐的细节，而是考虑如何在我们的语言中给出这个证明过程，也就是给出一个具体的闭项证明了导出引理，作为内化定理的一个例子。 -->
 ### Example C.3
 在证明之前先引入项上的函数来简化证明。设$F\rightarrow M$为公理，在$\text{hybrid-}\mathbf{LPS4_f}$中，我们有如下推理
 $$\begin{align*}
