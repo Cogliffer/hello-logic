@@ -18,7 +18,7 @@ $$\begin{align*}
 \end{align*}$$
 
 ### Example D.2
-设下层逻辑$\mathbf{LPGL}$采用[Example D.1]的记号，记上层逻辑$\text{hybrid-}\mathbf{S4_f}$的公式构成为
+设下层逻辑$\mathbf{LPGL}$采用[Example D.1]的记号，记上层逻辑$\text{hybrid-}\mathbf{S4}$的公式构成为
 $$\begin{align*}
     F::= i\ |\ P\ |\ \hat{\neg} F\ |\ F\hat{\rightarrow} F\ |\ \hat{\Box} F\ |\ @_i F
 \end{align*}$$
@@ -51,7 +51,7 @@ $$\begin{align*}
 \end{align*}$$
 
 ### Example D.3
-设上层逻辑$\text{hybrid-}\mathbf{S4_f}$采用[Example D.2]的记号，记下层逻辑$\mathbf{LPGL}$公式构成为：
+设上层逻辑$\text{hybrid-}\mathbf{S4}$采用[Example D.2]的记号，记下层逻辑$\mathbf{LPGL}$公式构成为：
 $\hat{u}::= c\ |\ x\ |\ (u\cdot u)\ |\ (u+u)\ |\ !u$
 $P::= p\ |\ \neg P\ |\ P\rightarrow P\ |\ \Box P\ |\ \hat{u}:P$
 函数：（函数符号的使用方法见附录[Example C.3]）
@@ -78,11 +78,11 @@ $$\begin{align*}
 
 ### Example D.4
 
-上层逻辑$\text{hybrid-}\mathbf{LPS4_f}$：
+上层逻辑$\text{hybrid-}\mathbf{LPS4}$：
 $t::= c\ |\ x\ |\ t\cdot t\ |\ t+t\ |\ !t\ |\ !_it\ |\ ?_it\ |\ f_{nec}(t)\ |\ f_r(t)$
 $F::= i\ |\ P\ |\ \hat{\neg} F\ |\ F\hat{\rightarrow} F\ |\ \hat{\Box} F\ |\ @_i F\ |\ t:F$
 并使用函数$ g_{nec}(t)$,$ g_{k}(t)$简化证明过程：
-$ g_{k}(t)$ 对应$\text{hybrid-}\mathbf{LPS4_f}$中的$K_@$规则；
+$ g_{k}(t)$ 对应$\text{hybrid-}\mathbf{LPS4}$中的$K_@$规则；
 同时为了书写的紧凑，使用符号$\underline{t}$表示函数$g_k(t)$，符号$\tilde{t}$表示函数$f_kf_{nec}(t)$
 **Proof.** Let $@_i$ be $@_\mathbf{LPGL}$
 $$\begin{align*}
