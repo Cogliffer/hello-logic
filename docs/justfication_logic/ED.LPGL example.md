@@ -5,6 +5,7 @@ $$\begin{align*}
     &P::= p\ |\ \neg P\ |\ P\rightarrow P\ |\ \Box P\ |\ u:P
 \end{align*}$$
 we try to proof $\mathbf{LPGL}\vdash u:\Box P\rightarrow P$
+
 **Proof.**
 $$\begin{align*}
     &(1)\ u:\Box P\rightarrow\Box P\quad Factivity\quad\\
@@ -22,8 +23,9 @@ $$\begin{align*}
 $$\begin{align*}
     F::= i\ |\ P\ |\ \hat{\neg} F\ |\ F\hat{\rightarrow} F\ |\ \hat{\Box} F\ |\ @_i F
 \end{align*}$$
-外化公理：$\neg P\rightarrow\hat{\neg} P,(P\rightarrow Q)\hat{\rightarrow}(P\hat{\rightarrow} Q)$ 用符号$(*)$在推理行结尾标记。
+外化公理：$\neg P\rightarrow\hat{\neg} P,(P\rightarrow Q)\hat{\rightarrow}(P\hat{\rightarrow} Q)$ 用符号$(*)$在推理行结尾标记。<br>
 Let $@_i$ be $@_\mathbf{LPGL}$, we try to proof $@_i(u:\Box P\rightarrow P) $ is a theorem.
+
 **Proof.** 
 $$\begin{align*}
     &(1)\ @_i(u:\Box P\rightarrow\Box P) \quad Factivity\ on\ \mathbf{LPGL}\\
@@ -51,13 +53,13 @@ $$\begin{align*}
 \end{align*}$$
 
 ### Example D.3
-设上层逻辑$\text{hybrid-}\mathbf{S4}$采用[Example D.2]的记号，记下层逻辑$\mathbf{LPGL}$公式构成为：
-$\hat{u}::= c\ |\ x\ |\ (u\cdot u)\ |\ (u+u)\ |\ !u$
-$P::= p\ |\ \neg P\ |\ P\rightarrow P\ |\ \Box P\ |\ \hat{u}:P$
-函数：（函数符号的使用方法见附录[Example C.3]）
-$ f_{nec}(t)$ 对应$\mathbf{LPGL}$中的$NEC$规则；
-$ f_{r}(t)$ 对应$\mathbf{LPGL}$中的$\text{reflexivity rule}$规则；
-$ f_{k}(t)$ 对应$\mathbf{LPGL}$中的$K$规则；
+设上层逻辑$\text{hybrid-}\mathbf{S4}$采用[Example D.2]的记号，记下层逻辑$\mathbf{LPGL}$公式构成为：<br>
+$\hat{u}::= c\ |\ x\ |\ (u\cdot u)\ |\ (u+u)\ |\ !u$<br>
+$P::= p\ |\ \neg P\ |\ P\rightarrow P\ |\ \Box P\ |\ \hat{u}:P$<br>
+函数：（函数符号的使用方法见附录[Example C.3]）<br>
+$ f_{nec}(t)$ 对应$\mathbf{LPGL}$中的$NEC$规则；<br>
+$ f_{r}(t)$ 对应$\mathbf{LPGL}$中的$\text{reflexivity rule}$规则；<br>
+$ f_{k}(t)$ 对应$\mathbf{LPGL}$中的$K$规则；<br>
 $$\begin{align*}
     &(1)\ c:(\hat{u}:\Box P\rightarrow\Box P) \quad Factivity \\
     &(2)\ d:((\hat{u}:\Box P\rightarrow\Box P)\rightarrow(\neg\Box P\rightarrow\neg \hat{u}:\Box P)) \quad TAUT  \\
@@ -78,12 +80,12 @@ $$\begin{align*}
 
 ### Example D.4
 
-上层逻辑$\text{hybrid-}\mathbf{LPS4}$：
-$t::= c\ |\ x\ |\ t\cdot t\ |\ t+t\ |\ !t\ |\ !_it\ |\ ?_it\ |\ f_{nec}(t)\ |\ f_r(t)$
-$F::= i\ |\ P\ |\ \hat{\neg} F\ |\ F\hat{\rightarrow} F\ |\ \hat{\Box} F\ |\ @_i F\ |\ t:F$
-并使用函数$ g_{nec}(t)$,$ g_{k}(t)$简化证明过程：
-$ g_{k}(t)$ 对应$\text{hybrid-}\mathbf{LPS4}$中的$K_@$规则；
-同时为了书写的紧凑，使用符号$\underline{t}$表示函数$g_k(t)$，符号$\tilde{t}$表示函数$f_kf_{nec}(t)$
+上层逻辑$\text{hybrid-}\mathbf{LPS4}$：<br>
+$t::= c\ |\ x\ |\ t\cdot t\ |\ t+t\ |\ !t\ |\ !_it\ |\ ?_it\ |\ f_{nec}(t)\ |\ f_r(t)$<br>
+$F::= i\ |\ P\ |\ \hat{\neg} F\ |\ F\hat{\rightarrow} F\ |\ \hat{\Box} F\ |\ @_i F\ |\ t:F$<br>
+并使用函数$ g_{nec}(t)$,$ g_{k}(t)$简化证明过程：<br>
+$ g_{k}(t)$ 对应$\text{hybrid-}\mathbf{LPS4}$中的$K_@$规则；<br>
+同时为了书写的紧凑，使用符号$\underline{t}$表示函数$g_k(t)$，符号$\tilde{t}$表示函数$f_kf_{nec}(t)$<br>
 **Proof.** Let $@_i$ be $@_\mathbf{LPGL}$
 $$\begin{align*}
     &(1)\ c:@_i(\hat{u}:\Box P\rightarrow\Box P) \quad Factivity\ on\ \mathbf{LPGL}\\

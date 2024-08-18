@@ -12,7 +12,9 @@ $$\begin{align*}
     F::=P\ |\ \neg F\ |\ F\rightarrow F\ |\ \Box F
 \end{align*}$$
 外化公理：$\hat{\neg} P\rightarrow\neg P,(P\hat{\rightarrow} Q)\rightarrow(P\rightarrow Q)$
+
 $(1)$ 任给$\mathbf{LP}$语言中的公式$P$，在系统$\text{hybrid-}\mathbf{S4_f}$中证明，如果$P$在$\mathbf{LP}$中（$P$是$\mathbf{LP}$中的定理），那么对于任意$\mathbf{LP}$语言中的公式$Q$，在$\mathbf{LP}$中可证$Q\hat{\rightarrow}P$。这个陈述的正确性使用命题逻辑上的导出引理立即得到，即已知$\mathbf{LP}\vdash P,\mathbf{LP}\vdash P\hat{\rightarrow}(Q\hat{\rightarrow} P)$，由导出引理，得$\mathbf{LP}\vdash Q\hat{\rightarrow} P$。现在将用$\text{hybrid-}\mathbf{S4_f}$的公理系统证明这个陈述，Let $@_i$ be $@_\mathbf{LP}$, we try to proof $@_iP\rightarrow @_i\Box(Q\hat{\rightarrow} P)$ is a theorem.
+
 **Proof.**
 $$\begin{align*}
     &(1)\ @_i\big(P\hat{\rightarrow}(Q\hat{\rightarrow} P)\big)\quad TAUT\ on\ \mathbf{LP}\\
@@ -25,6 +27,7 @@ $$\begin{align*}
 \end{align*}$$
 
 $(2)$ 任给$\mathbf{LP}$语言中的公式$P$，在系统$\text{hybrid-}\mathbf{S4_f}$中证明，如果$P$在$\mathbf{LP}$中（$P$是$\mathbf{LP}$中的定理），那么对于任意$\mathbf{LP}$语言中的公式$Q$，可证$Q\hat{\rightarrow}P$在$\mathbf{LP}$中。Let $@_i$ be $@_\mathbf{LP}$, we try to proof $@_iP\rightarrow \Box @_i(Q\hat{\rightarrow} P)$ is a theorem.
+
 **Proof.**
 $$\begin{align*}
     &(1)\ @_iP\rightarrow\Box @_iP\quad \text{dual back}\\
@@ -51,6 +54,7 @@ $$\begin{align*}
     &(3)\ @_iP\rightarrow (@_i(P\hat{\rightarrow} Q)\rightarrow @_i\Box Q)\\
 \end{align*}$$
 Let $@_i$ be $@_\mathbf{LP}$, we try to proof $@_iP\rightarrow (@_i(P\hat{\rightarrow} Q)\rightarrow @_iQ)$ is a theorem.
+
 **Proof.**
 $$\begin{align*}
     &(1)\ @_i\big(P\hat{\rightarrow}((P\hat{\rightarrow} Q)\hat{\rightarrow} Q)\big)\quad TAUT\ on\ \mathbf{LP}\\
@@ -61,6 +65,7 @@ $$\begin{align*}
     &(6)\ @_iP\rightarrow (@_i(P\hat{\rightarrow} Q)\rightarrow @_iQ)\quad 3,5
 \end{align*}$$
 <!-- 由于有NEC规则，没有演绎定理。进一步可以通过演绎定理，证明完整的导出引理，不过我们不再补充这些繁琐的细节，而是考虑如何在我们的语言中给出这个证明过程，也就是给出一个具体的闭项证明了导出引理，作为内化定理的一个例子。 -->
+
 ### Example C.3
 在证明之前先引入项上的函数来简化证明。设$F\rightarrow M$为公理，在$\text{hybrid-}\mathbf{LPS4_f}$中，我们有如下推理
 $$\begin{align*}
@@ -79,6 +84,7 @@ $$\begin{align*}
 像 Example A.4 and B.4 中一样，每次对公理实例引入常项证明时都使用了$\text{Iterated axiom necessitation}\ and\ \text{Iterated remote axiom necessitation}$规则，为了简化书写在下述证明过程中省略了标注。
 
 Let $@_i$ be $@_\mathbf{LP}$, we try to proof $h\big(f_k(d)c\big)f_k(e):\big(@_iP\rightarrow (@_i(P\hat{\rightarrow} Q)\rightarrow @_iQ)\big)$ is a theorem where $c,d,e,h$ defined as follow.
+
 **Proof.** 
 $$\begin{align*}
     &(1)\ c:@_i\big(P\hat{\rightarrow}((P\hat{\rightarrow} Q)\hat{\rightarrow} Q)\big)\quad TAUT\ on\ \mathbf{LP}\\

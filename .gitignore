@@ -13,9 +13,11 @@
 .*.lb
 
 *.pdf
+*.html
 
 .site
 docs/homework/
+docs/justfication_logic/node_modules
 
 ## Intermediate documents:
 *.dvi

@@ -28,10 +28,10 @@ $$\begin{align*}
 
 ## $\mathcal{JH(@)}$ with $t:F$ and $@_i$
 [Melvin Fitting, Justification logics and hybrid logics, 2010]
-[Rui Zhu, Xinwen Liu, The Minimal System of Justification Logic with names, 2015]
-Language: 
-$t::= c\ |\ x\ |\ t\cdot t\ |\ t+t\ |\ f_i\ |\ !_it\ |\ ?_it$
-$F::= i\ |\ P\ |\ \neg F\ |\ F\rightarrow F\ |\ @_i F\ |\ t:F$
+[Rui Zhu, Xinwen Liu, The Minimal System of Justification Logic with names, 2015]<br>
+Language: <br>
+$t::= c\ |\ x\ |\ t\cdot t\ |\ t+t\ |\ f_i\ |\ !_it\ |\ ?_it$<br>
+$F::= i\ |\ P\ |\ \neg F\ |\ F\rightarrow F\ |\ @_i F\ |\ t:F$<br>
 Axioms:
 $$\begin{align*}
     &(TAUT)\\
