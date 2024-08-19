@@ -21,7 +21,7 @@ $$\begin{align*}
 \end{align*}$$
 Rules: $(\text{MP, NEC, Iterated axiom necessitation})$<br>
 $\qquad\ ^*(\text{reflexivity rule}) \qquad \Box F/F$<br>
-$\text{Lob schema}$公理与$T$公理是不相容的，因为对于任意的$F$有证明序列$\Box F\rightarrow F,\Box(\Box F\rightarrow F),\Box(\Box F\rightarrow F)\rightarrow\Box F,\Box F,F$，但是$\textbf{LPGL}$中可以具有$\text{reflexivity rule}$。<br>
+$\text{Lob schema}$公理与$T$公理是不一致的，因为对于任意的$F$有证明序列$\Box F\rightarrow F,\Box(\Box F\rightarrow F),\Box(\Box F\rightarrow F)\rightarrow\Box F,\Box F,F$，但是$\textbf{LPGL}$中可以具有$\text{reflexivity rule}$。<br>
 
 ### 算数语义：
 $$\begin{align*}

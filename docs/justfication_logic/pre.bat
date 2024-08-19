@@ -8,4 +8,6 @@ del /q "temp\*.pdf"
 
 node convert-html-to-pdf.js
 
+del /q "*.pdf"
+
 node mergePdfs.js
