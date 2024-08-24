@@ -11,8 +11,39 @@
 现在从头开始重写def parse_latex(latex_str):函数。思路是这样的，要逐层解析。如果开头是否定符号则解析为否定公式，如果开头是Box则解析为模态公式，如果都不是则是蕴含式，需要寻找到正确的蕴含符号出现的位置，要依次计数左括号和右括号出现的次数，当相等时，其后面的蕴含符号就是正确的蕴含符号。只重写这个函数
 修改item为content，定义一个证据检验器，包括MP检验，必然化规则检验，和替换检验。justification声明为三个中的哪一个，如果是MP，则检验content是否是长度为2的list，并且这两个步骤是当前证明中当前步骤前面的步骤，并检验是否符合MP规则的使用。如果是或必然化规则，则检验content是否是一个数字，并且这个数字是当前证明中当前步骤前面的步骤，并检验是否符合必然化规则的使用。如果是替换，检验content是否是一个合法的替换类（当前要首先定义替换类，并实现替换在公式类formula和latex上的替换函数），然后检验替换的结果是否是当前步骤的公式
 
+sympy 库内置功能主要集中在经典逻辑（命题逻辑和一阶逻辑）上
+Wolfram Mathematica（MMA）的逻辑功能主要集中在经典逻辑（命题逻辑和一阶逻辑）上
+交互式证明助手（如Coq和Isabelle）和自动定理证明器（如SAT求解器和SMT求解器）
+类型理论（如亚伯拉罕·罗宾逊（Abraham Robinson）提出的模型理论中的非标准分析和类型理论）提供了一种新的公理化方法
 
-
-
-
-
+生成一个模态逻辑中公式的公理化证明（latex）。可以用PL中的公理
+PL_Axioms = {
+    Implication([Prop("p"), Implication([Prop("q"), Prop("p")])]),  # 公理 1
+    Implication([
+        Implication([Prop("p"), Implication([Prop("q"), Prop("r")])]),
+        Implication([Implication([Prop("p"), Prop("q")]), Implication([Prop("p"), Prop("r")])])
+    ]),  # 公理 2
+    Implication([Not(Prop("p")), Implication([Prop("p"), Prop("q")])])  # 公理 3
+}
+和模态K公理
+K_Axiom = {Implication([
+    Box(Implication([Prop("p"), Prop("q")])),
+    Implication([Box(Prop("p")), Box(Prop("q"))])
+])}
+推理使用MP规则和必然化规则（NEC），以及替换（S）来生成新的证明行，如果使用了替换，则用字典定义这个替换
+每一个证明行按照下面的模式
+&（编号）\ （公式）\quad (（依据）, （公式索引序列）)
+如果依据是公理，则只将依据替换为Axiom，不需要公式索引
+如果是MP，则将依据替换为MP，并添加公式索引序列
+如&(8)\ P \rightarrow \Box Q \quad \text{(MP, 4, 7)}
+如果是必然化规则，则将依据替换为NEC，并添加公式索引
+如果是替换，则将依据替换为S，并添加替换字典变量对应的字符串
+证明序列最终整合到一个如下的例子的latex
+r"""
+\begin{align*}
+    &(8)\ P \rightarrow \Box Q \quad \text{(MP, 4, 7)} \\
+\end{align*}
+"""
+证明步从零0开始
+注意蕴含式使用括号避免歧义
+生成的例子要有替换
