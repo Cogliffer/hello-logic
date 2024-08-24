@@ -105,12 +105,12 @@ def modus_ponens(formula1, formula2):
     # 检查 formula1 是否为蕴含公式 (A → B)
     if isinstance(formula1, Implication):
         if formula2 == formula1.subformulas[0]:
-            return formula1.subformulas[0]
+            return formula1.subformulas[1]
     
     # 检查 formula2 是否为蕴含公式 (A → B)
     if isinstance(formula2, Implication):
         if formula1 == formula2.subformulas[0]:
-            return formula2.subformulas[0]
+            return formula2.subformulas[1]
     
     return None
 
