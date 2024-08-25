@@ -96,7 +96,7 @@ PL_Axioms = {
         Implication([Prop("p"), Implication([Prop("q"), Prop("r")])]),
         Implication([Implication([Prop("p"), Prop("q")]), Implication([Prop("p"), Prop("r")])])
     ]),  # 公理 2
-    Implication([Not(Prop("p")), Implication([Prop("p"), Prop("q")])])  # 公理 3
+    Implication([Implication([Not(Prop("p")),Not(Prop("q"))]), Implication([Prop("q"), Prop("p")])])  # 公理 3
 }
 
 def modus_ponens(formula1, formula2):
@@ -187,10 +187,10 @@ class ProofStep:
 
     def __str__(self):
         if self.justification.type == "Axiom":
-            return f"{self.formula}     ({self.justification})"
+            return f"{self.formula}  \\quad   ({self.justification})"
         else:
             content_str = ", ".join(map(str, self.content))
-            return f"{self.formula}     ({self.justification}, {content_str})"
+            return f"{self.formula}  \\quad   ({self.justification}, {content_str})"
 
 
 # 创建证明序列
@@ -202,7 +202,7 @@ class ProofSequence:
         self.steps.append(ProofStep(formula, justification, content))
     
     def __str__(self):
-        return "\n".join([str(i)+") "+str(step) for i, step in enumerate(self.steps)])
+        return "\\\\\n".join(["&("+str(i)+")\\ "+str(step) for i, step in enumerate(self.steps)])
 
 
 class ProofValidator:

@@ -1,4 +1,4 @@
-from Modal_K import *
+from Modal_J import *
 
 
 PL_replacements = {
@@ -25,10 +25,6 @@ def parse_latex_ML(latex_str):
     
     # 去除外部的空格
     latex_str = latex_str.strip()
-
-    # 移除外部括号
-    if latex_str.startswith('(') and latex_str.endswith(')'):
-        latex_str = latex_str[1:-1]
 
     # 处理蕴含符号
     bracket_level = 0
@@ -62,6 +58,11 @@ def parse_latex_ML(latex_str):
         subformula = parse_latex_ML(latex_str[4:].strip())
         return Box(subformula)
     
+    # 移除外部括号
+    if latex_str.startswith('(') and latex_str.endswith(')'):
+        latex_str = latex_str[1:-1]
+        return parse_latex_ML(latex_str)
+    
     # 如果不是 \neg、\Box 或 \rightarrow，处理为命题变量
     return Prop(latex_str)
 
@@ -73,33 +74,33 @@ def parse_latex_proof(latex):
     proof_sequence = ProofSequence()
     
     # 正则表达式用于提取每一行的公式、推理规则及其依赖步骤
-    step_pattern = re.compile(r'&\((\d+)\)\\\s*(.*?)\s*\\quad\s*\\text\{(.*?)\}')
+    step_pattern = re.compile(r'&\((\d+)\)\\\s*(.*?)\s*\\quad\s*\\text\{\((.*?)\)\}')
     
     for match in step_pattern.finditer(latex):
         step_number = int(match.group(1))
         formula_str = match.group(2)
-        justification_str = match.group(3)
-        if justification_str.startswith('(') and justification_str.endswith(')'):
-            justification_str = justification_str[1:-1]
-        justification_str, *content_strs = justification_str.split(",")
+        justification_str, *content_strs = match.group(3).split(",")
         
         # 使用parse_latex_ML解析公式
         formula = parse_latex_ML(formula_str.strip())
         
-        # 处理内容
-        content = [int(c) for c in content_strs] if content_strs else None
-        
         # 创建 Justification 对象
         if justification_str == "Axiom":
-            justification_obj = Justification("Axiom", "Axiom")
-        elif justification_str == "Substitution":
-            justification_obj = Justification("Substitution", "Substitution")
-        elif justification_str.startswith("MP"):
-            justification_obj = Justification("Modus Ponens", "Rule", modus_ponens, check_modus_ponens)
+            justification_obj = A
+            content = None
+        elif justification_str == "TAUT":
+            justification_obj = Justification("TAUT", "Axiom")
+            content = None
+        elif justification_str == "S":
+            s = content_strs[0].strip()
+            s = globals()[s]
+            i = int(content_strs[1])
+            justification_obj = S
+            content = [s, i]
         else:
             # 处理其他规则或公理
-            justification_parts = justification_str.split(", ")
-            justification_obj = Justification(justification_parts[0], "Rule", *justification_parts[1:])
+            content = [int(c) for c in content_strs] if content_strs else None
+            justification_obj = globals()[justification_str]
         
         proof_sequence.add_step(formula, justification_obj, content)
     
@@ -107,21 +108,43 @@ def parse_latex_proof(latex):
 
 # LaTeX代码示例
 latex_code = r"""
-\begin{align*}
-    &(0)\ p \rightarrow (q \rightarrow p) \quad \text{(Axiom)} \\
-    &(1)\ (p \rightarrow (q \rightarrow r)) \rightarrow ((p \rightarrow q) \rightarrow (p \rightarrow r)) \quad \text{(Axiom)} \\
-    &(2)\ \neg p \rightarrow (p \rightarrow q) \quad \text{(Axiom)} \\
-    &(3)\ \Box(p \rightarrow q) \rightarrow (\Box p \rightarrow \Box q) \quad \text{(Axiom)} \\
-    &(4)\ p \rightarrow (q \rightarrow r) \quad \text{(S, 2)} \\
-    &(5)\ \Box(p_1) \quad \text{(S, 2)} \\
-    &(6)\ \Box(p_1 \rightarrow q) \quad \text{(NEC, 4)} \\
-    &(7)\ \Box(p_1) \rightarrow \Box(q) \quad \text{(MP, 3, 6)} \\
-    &(8)\ p \rightarrow \Box q \quad \text{(MP, 1, 4)} \\
-\end{align*}
+$$\begin{align*}
+    &(0)\ (\neg (p \rightarrow \neg q))\rightarrow p \quad \text{(TAUT)} \\
+    &(1)\ \Box((\neg (p \rightarrow \neg q))\rightarrow p) \quad \text{(NEC, 0)} \\
+    &(2)\ \Box(p \rightarrow q) \rightarrow (\Box p \rightarrow \Box q) \quad \text{(Axiom, K)} \\
+    &(3)\ \Box((\neg (p \rightarrow \neg q)) \rightarrow p) \rightarrow (\Box (\neg (p \rightarrow \neg q)) \rightarrow \Box p) \quad \text{(S, s1, 2)} \\
+    &(4)\ \Box (\neg (p \rightarrow \neg q)) \rightarrow \Box p \quad \text{(MP, 1, 3)}\\
+    &(5)\ (\neg (p \rightarrow \neg q))\rightarrow q \quad \text{(TAUT)} \\
+    &(6)\ \Box((\neg (p \rightarrow \neg q))\rightarrow q) \quad \text{(NEC, 5)} \\
+    &(7)\ \Box((\neg (p \rightarrow \neg q)) \rightarrow q) \rightarrow (\Box (\neg (p \rightarrow \neg q)) \rightarrow \Box q) \quad \text{(S, s2, 2)} \\
+    &(8)\ \Box (\neg (p \rightarrow \neg q)) \rightarrow \Box q \quad \text{(MP, 6, 7)}\\
+    &(9)\ (p \rightarrow q)\rightarrow ((p\rightarrow r)\rightarrow(p\rightarrow\neg(q\rightarrow\neg r))) \quad \text{(TAUT)} \\
+    &(10)\ (\Box (\neg (p \rightarrow \neg q)) \rightarrow \Box p)\rightarrow ((\Box (\neg (p \rightarrow \neg q))\rightarrow \Box q)\rightarrow(\Box (\neg (p \rightarrow \neg q))\rightarrow\neg(\Box p\rightarrow\neg \Box q))) \quad \text{(S, s3, 9)} \\
+    &(11)\ (\Box (\neg (p \rightarrow \neg q))\rightarrow \Box q)\rightarrow(\Box (\neg (p \rightarrow \neg q))\rightarrow\neg(\Box p\rightarrow\neg \Box q)) \quad \text{(MP, 4, 10)} \\
+    &(12)\ \Box (\neg (p \rightarrow \neg q))\rightarrow\neg(\Box p\rightarrow\neg \Box q) \quad \text{(MP, 8, 11)} \\
+\end{align*}$$
 """
+s1 = MKSubstitution({
+    "p": Not(Implication([Prop("p"), Not(Prop("q"))])),
+    "q": Prop("p")
+},"s1")
+s2 = MKSubstitution({
+    "p": Not(Implication([Prop("p"), Not(Prop("q"))])),
+},"s2")
+s3 = MKSubstitution({
+    "p": Box(Not(Implication([Prop("p"), Not(Prop("q"))]))),
+    "q": Box(Prop("p")),
+    "r": Box(Prop("q"))
+},"s3")
 
 # 解析LaTeX代码
-proof_sequence = parse_latex_proof(latex_code)
+proof = parse_latex_proof(latex_code)
 
 # 打印证明序列
-print(proof_sequence)
+print(proof,"\n")
+
+jproof = MJProofSequence()
+jproof.convert_from_ML(proof)
+print(jproof)
+
+print("\\\\\n&".join([str(eq) for eq in jproof.equations]))

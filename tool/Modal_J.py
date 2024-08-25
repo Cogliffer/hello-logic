@@ -33,23 +33,60 @@ class TBox(Formula):
     def forget(self):
         return Box(self.subformulas[0].forget())
 
+# 定义符号
+class Var:
+    """表示一个变元"""
+    def __init__(self, num):
+        self.num = num
+    
+    def __str__(self):
+        return "x_{" + str(self.num) + "}"
+
+    def __mul__(self, other):
+        """定义两个 Var 实例的点积"""
+        if isinstance(other, Var):
+            # 返回一个格式化的字符串，表示这两个变量的点乘
+            return Dot(self, other)
+
+# 定义表达式
+class Dot:
+    """表示一个变元的点积"""
+    def __init__(self, t1, t2):
+        self.t1 = t1
+        self.t2 = t2
+    
+    def __str__(self):
+        return "(" + str(self.t1) + " · " + str(self.t2) + ")"
+
+#定义项
+class Term:
+    """表示一个项"""
+    def __init__(self, term):
+        self.term = term
+
+    def __str__(self):
+        return str(self.term)
+
+class Equation:
+    """表示一个等式"""
+    def __init__(self, left, right):
+        self.left = left
+        self.right = right
+
+    def __str__(self):
+        return str(self.left) + " = " + str(self.right)
 
 
 class VariableSequence:
     """定义一个变元序列，并管理已使用的变元"""
     def __init__(self, max_length):
         self.max_length = max_length
-        self.variable_list = [f"x_{i+1}" for i in range(max_length)]
+        self.unused_variable = [Var(i+1) for i in range(max_length)]
         self.used_variables = set()
 
     def get_unused_variable(self):
         """获取一个尚未使用的变元"""
-        # for var in self.variable_list:
-        #     if var not in self.used_variables:
-        #         self.used_variables.add(var)
-        #         return var
-        # raise ValueError("No unused variables left!")
-        return self.variable_list.pop(0)
+        return self.unused_variable.pop(0)
 
 # class JProp(Prop):
 #     """命题变量"""
@@ -84,7 +121,7 @@ Implication.forget = forget
 #     """模态逻辑中的 Box 算子"""
 def replace_box_with_unused_var(self, vars):
     unused_var = vars.get_unused_variable()
-    return TBox(self.subformulas[0].replace_box_with_unused_var(vars), term=unused_var)
+    return TBox(self.subformulas[0].replace_box_with_unused_var(vars), term=Term(unused_var))
 Box.replace_box_with_unused_var = replace_box_with_unused_var
 
 def check_T_Necessitation(formulas):
@@ -99,6 +136,36 @@ MJ = Logic({
     "Rules": {MP},
 })
 
+def equal_equations(formulas1:list, formulas2:list):
+    """两个公式序列相同的变元条件"""
+    if len(formulas1) != len(formulas2):
+        return
+    for formula1, formula2 in zip(formulas1, formulas2):
+        if formula1.forget() != formula2.forget():
+            return
+    equations = set()
+    for formula1, formula2 in zip(formulas1, formulas2):
+        if isinstance(formula1, TBox) and isinstance(formula2, TBox):
+            equations.add(Equation(formula1.term, formula2.term))
+        if not isinstance(formula1, Prop) and not isinstance(formula2, Prop):
+            f = equal_equations(formula1.subformulas, formula2.subformulas)
+            equations |= equal_equations(formula1.subformulas, formula2.subformulas)
+    return equations
+
+
+def MJ_modus_ponens(formula1, formula2):
+    """应用 Modus Ponens 规则，返回推导出的公式"""
+    # 检查 formula1 是否为蕴含公式 (A → B)
+    if isinstance(formula1, Implication):
+        if formula2 == formula1.subformulas[0]:
+            return formula1.subformulas[1], equal_equations([formula2] , [formula1.subformulas[0]])
+    
+    # 检查 formula2 是否为蕴含公式 (A → B)
+    if isinstance(formula2, Implication):
+        if formula1 == formula2.subformulas[0]:
+            return formula2.subformulas[1], equal_equations([formula1] , [formula2.subformulas[0]])
+    
+    return None
 
 class MJSubstitution(Substitution):
 
@@ -126,23 +193,34 @@ class MJSubstitution(Substitution):
     
 
 class MJProofSequence(ProofSequence):
+    def __init__(self): 
+        super().__init__()
+        self.equations = set()
 
     def convert_from_ML(self, proof):
         var = VariableSequence(100)
+        def instance_of_K_Axiom():
+            j1 = var.unused_variable.pop(0)
+            j2 = var.unused_variable.pop(0)
+            var.unused_variable = [j1,j2,j1 * j2] + var.unused_variable
+            K, = K_Axiom
+            return K.replace_box_with_unused_var(var)
         for step in proof.steps:
             if step.justification.type == "Axiom":
                 if step.formula in PL_Axioms:
                     self.steps.append(step)
                 elif step.formula in MK.Axioms:
-                    j1 = var.variable_list.pop(0)
-                    j2 = var.variable_list.pop(0)
-                    var.variable_list = [j1,j2,j1+"·"+j2] + var.variable_list
-                    self.add_step(step.formula.replace_box_with_unused_var(var), step.justification, step.content)
+                    self.add_step(instance_of_K_Axiom(), step.justification, step.content)
+                elif step.justification.name == "TAUT":
+                    self.steps.append(step)
             elif step.justification.type == "Substitution":
-                i = step.content[0]
-                s = step.content[1]
+                s = step.content[0]
                 js = MJSubstitution(s.substitutions, s.name, var)
-                f = js.apply(self.steps[i].formula)
+                i = step.content[1]
+                if self.steps[i].formula.forget() in K_Axiom:
+                    f = js.apply(instance_of_K_Axiom())
+                else:
+                    f = js.apply(self.steps[i].formula)
                 self.add_step(f,S, step.content) 
             elif step.justification.type == "Rule" and step.justification.name == "Necessitation":
                 i = step.content[0]
@@ -152,8 +230,9 @@ class MJProofSequence(ProofSequence):
             elif step.justification.type == "Rule" and step.justification.name == "Modus Ponens":
                 i1 = step.content[0]
                 i2 = step.content[1]
-                f = modus_ponens(self.steps[i1].formula, self.steps[i2].formula)
+                f, eq = MJ_modus_ponens(self.steps[i1].formula, self.steps[i2].formula)
                 self.add_step(f, MP, step.content)
+                self.equations.update(eq)
 
 
 # # 示例公式
@@ -166,7 +245,7 @@ class MJProofSequence(ProofSequence):
 
 # print(new_formula)  # 应该输出: (□_{x_1}P → □_{x_2}¬Q)
 
-jproof = MJProofSequence()
-jproof.convert_from_ML(proof)
-print(proof,"\n")
-print(jproof)
+# jproof = MJProofSequence()
+# jproof.convert_from_ML(proof)
+# print(proof,"\n")
+# print(jproof)
