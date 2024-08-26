@@ -26,27 +26,47 @@ def parse_latex_ML(latex_str):
     # 去除外部的空格
     latex_str = latex_str.strip()
 
-    # 处理蕴含符号
+    # 处理二元算子
     bracket_level = 0
     main_operator_index = -1
+    imply_index = -1
+    and_index = -1
+    or_index = -1
     
-    # 查找最外层的蕴含符号
+    # 查找最外层的二元算子
     for i in range(len(latex_str)):
         char = latex_str[i]
-        t = latex_str[i:i+11]
+        imply_ = latex_str[i:i+11]
+        and_ = latex_str[i:i+5]
+        or_ = latex_str[i:i+3]
         if char == '(':
             bracket_level += 1
         elif char == ')':
             bracket_level -= 1
-        elif bracket_level == 0 and latex_str[i:i+11] == r'\rightarrow':
-            main_operator_index = i
+        elif bracket_level == 0 and imply_ == r'\rightarrow':
+            imply_index = i
             break
+        elif bracket_level == 0 and and_ == r'\land':
+            and_index = i
+            break
+        elif bracket_level == 0 and or_ == r'\lor':
+            or_index = i
+            break
+        
 
-    # 如果找到了蕴含符号，分割公式并递归解析
-    if main_operator_index != -1:
-        left = latex_str[:main_operator_index].strip()
-        right = latex_str[main_operator_index + 11:].strip()  # 10 是 "\rightarrow" 的长度
+    # 如果找到了二元算子，分割公式并递归解析
+    if imply_index != -1:
+        left = latex_str[:imply_index].strip()
+        right = latex_str[imply_index + 11:].strip()
         return Implication([parse_latex_ML(left), parse_latex_ML(right)])
+    elif and_index != -1:
+        left = latex_str[:and_index].strip()
+        right = latex_str[and_index + 5:].strip()
+        return And([parse_latex_ML(left), parse_latex_ML(right)])
+    elif or_index != -1:
+        left = latex_str[:or_index].strip()
+        right = latex_str[or_index + 4:].strip()
+        return Or([parse_latex_ML(left), parse_latex_ML(right)])
     
     # 处理否定符号
     if latex_str.startswith(r'\neg'):
@@ -109,33 +129,36 @@ def parse_latex_proof(latex):
 # LaTeX代码示例
 latex_code = r"""
 $$\begin{align*}
-    &(0)\ (\neg (p \rightarrow \neg q))\rightarrow p \quad \text{(TAUT)} \\
-    &(1)\ \Box((\neg (p \rightarrow \neg q))\rightarrow p) \quad \text{(NEC, 0)} \\
+    &(0)\ (p\land q)\rightarrow p \quad \text{(TAUT)} \\
+    &(1)\ \Box((p\land q)\rightarrow p) \quad \text{(NEC, 0)} \\
     &(2)\ \Box(p \rightarrow q) \rightarrow (\Box p \rightarrow \Box q) \quad \text{(Axiom, K)} \\
-    &(3)\ \Box((\neg (p \rightarrow \neg q)) \rightarrow p) \rightarrow (\Box (\neg (p \rightarrow \neg q)) \rightarrow \Box p) \quad \text{(S, s1, 2)} \\
-    &(4)\ \Box (\neg (p \rightarrow \neg q)) \rightarrow \Box p \quad \text{(MP, 1, 3)}\\
-    &(5)\ (\neg (p \rightarrow \neg q))\rightarrow q \quad \text{(TAUT)} \\
-    &(6)\ \Box((\neg (p \rightarrow \neg q))\rightarrow q) \quad \text{(NEC, 5)} \\
-    &(7)\ \Box((\neg (p \rightarrow \neg q)) \rightarrow q) \rightarrow (\Box (\neg (p \rightarrow \neg q)) \rightarrow \Box q) \quad \text{(S, s2, 2)} \\
-    &(8)\ \Box (\neg (p \rightarrow \neg q)) \rightarrow \Box q \quad \text{(MP, 6, 7)}\\
-    &(9)\ (p \rightarrow q)\rightarrow ((p\rightarrow r)\rightarrow(p\rightarrow\neg(q\rightarrow\neg r))) \quad \text{(TAUT)} \\
-    &(10)\ (\Box (\neg (p \rightarrow \neg q)) \rightarrow \Box p)\rightarrow ((\Box (\neg (p \rightarrow \neg q))\rightarrow \Box q)\rightarrow(\Box (\neg (p \rightarrow \neg q))\rightarrow\neg(\Box p\rightarrow\neg \Box q))) \quad \text{(S, s3, 9)} \\
-    &(11)\ (\Box (\neg (p \rightarrow \neg q))\rightarrow \Box q)\rightarrow(\Box (\neg (p \rightarrow \neg q))\rightarrow\neg(\Box p\rightarrow\neg \Box q)) \quad \text{(MP, 4, 10)} \\
-    &(12)\ \Box (\neg (p \rightarrow \neg q))\rightarrow\neg(\Box p\rightarrow\neg \Box q) \quad \text{(MP, 8, 11)} \\
+    &(3)\ \Box((p\land q) \rightarrow p) \rightarrow (\Box (p\land q) \rightarrow \Box p) \quad \text{(S, s1, 2)} \\
+    &(4)\ \Box (p\land q) \rightarrow \Box p \quad \text{(MP, 1, 3)}\\
+    &(5)\ (p\land q)\rightarrow q \quad \text{(TAUT)} \\
+    &(6)\ \Box((p\land q)\rightarrow q) \quad \text{(NEC, 5)} \\
+    &(7)\ \Box((p\land q) \rightarrow q) \rightarrow (\Box (p\land q) \rightarrow \Box q) \quad \text{(S, s2, 2)} \\
+    &(8)\ \Box (p\land q) \rightarrow \Box q \quad \text{(MP, 6, 7)}\\
+    &(9)\ (p \rightarrow q)\rightarrow ((p\rightarrow r)\rightarrow(p\rightarrow(q\land r))) \quad \text{(TAUT)} \\
+    &(10)\ (\Box (p\land q) \rightarrow \Box p)\rightarrow ((\Box (p\land q)\rightarrow \Box q)\rightarrow(\Box (p\land q)\rightarrow  (\Box p\land \Box q))) \quad \text{(S, s3, 9)} \\
+    &(11)\ (\Box (p\land q)\rightarrow \Box q)\rightarrow(\Box (p\land q)\rightarrow(\Box p\land \Box q)) \quad \text{(MP, 4, 10)} \\
+    &(12)\ \Box (p\land q)\rightarrow(\Box p\land \Box q) \quad \text{(MP, 8, 11)} \\
 \end{align*}$$
 """
 s1 = MKSubstitution({
-    "p": Not(Implication([Prop("p"), Not(Prop("q"))])),
+    "p": And([Prop("p"), Prop("q")]),
     "q": Prop("p")
 },"s1")
 s2 = MKSubstitution({
-    "p": Not(Implication([Prop("p"), Not(Prop("q"))])),
+    "p": And([Prop("p"), Prop("q")]),
 },"s2")
 s3 = MKSubstitution({
-    "p": Box(Not(Implication([Prop("p"), Not(Prop("q"))]))),
+    "p": Box(And([Prop("p"), Prop("q")])),
     "q": Box(Prop("p")),
     "r": Box(Prop("q"))
 },"s3")
+
+def standard(content):
+    return r"$$\begin{align*}"+"\n"+content+"\n"+r"\end{align*}$$"
 
 # 解析LaTeX代码
 proof = parse_latex_proof(latex_code)
@@ -145,6 +168,7 @@ print(proof,"\n")
 
 jproof = MJProofSequence()
 jproof.convert_from_ML(proof)
-print(jproof)
+print(standard(str(jproof)))
 
-print("\\\\\n&".join([str(eq) for eq in jproof.equations]))
+eq = "&"+"\\\\\n&".join([str(eq) for eq in jproof.equations])
+print(standard(eq))

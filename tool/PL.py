@@ -37,58 +37,95 @@ class Prop(Formula):
     def __hash__(self):
         return hash(self.name)
 
-class Not(Formula):
+class UnaryOperator(Formula):
     """表示逻辑非运算符"""
     dim = 1
 
     def __init__(self, formula):
-        super().__init__()
+        self.str = "¬"
+        self.latex = r"\neg"
         if isinstance(formula, Formula):
             self.subformulas = [formula]
         elif isinstance(formula, list) and len(formula) == 1:
             if isinstance(formula[0], Formula):
                 self.subformulas = formula
             else:
-                raise ValueError("Not expects a Formula type")
+                raise ValueError("{self.str} expects a Formula type")
         else:
-            raise ValueError("Not expects exactly one formula")
+            raise ValueError("{self.str} expects exactly one formula")
 
     def __str__(self):
-        return f"¬{self.subformulas[0]}"
+        return f"{self.str} {self.subformulas[0]}"
+
+    def latex(self):
+        return f"{self.latex} {self.subformulas[0]}"
 
     def __eq__(self, other):
-        if isinstance(other, Not):
+        if isinstance(other, type(self)):
             return self.subformulas == other.subformulas
         return False
 
     def __hash__(self):
         return hash((self.__class__, self.subformulas[0]))
 
-class Implication(Formula):
+class BinaryOperator(Formula):
     """表示逻辑蕴含运算符"""
     dim = 2
 
     def __init__(self, formulas):
-        super().__init__()
+        self.str = "→"
+        self.latex = r"\rightarrow"
         if isinstance(formulas, list) and len(formulas) == 2:
             if isinstance(formulas[0], Formula) and isinstance(formulas[0], Formula):
                 self.subformulas = formulas
             else:
-                raise ValueError("Implication expects Formulas")
+                raise ValueError(f"{self.str} expects Formulas")
         else:
-            raise ValueError("Implication expects a list of two formulas")
+            raise ValueError(f"{self.str} expects a list of two formulas")
 
     def __str__(self):
-        return f"({self.subformulas[0]} → {self.subformulas[1]})"
+        return f"({self.subformulas[0]} {self.str} {self.subformulas[1]})"
+    
+    def latex(self):
+        return f"({self.subformulas[0]} {self.latex} {self.subformulas[1]})"
 
     def __eq__(self, other):
-        if isinstance(other, Implication):
+        if isinstance(other, type(self)):
             return self.subformulas[0] == other.subformulas[0] and self.subformulas[1] == other.subformulas[1]
         return False
 
     def __hash__(self):
         return hash((self.__class__, self.subformulas[0], self.subformulas[1]))
 
+
+class Not(UnaryOperator):
+
+    def __init__(self, formula):
+        super().__init__(formula)
+        self.str = "¬"
+        self.latex = r"\neg"
+
+
+class And(BinaryOperator):
+
+    def __init__(self, formulas):
+        super().__init__(formulas)
+        self.str = "∧"
+        self.latex = r"\land"
+
+class Implication(BinaryOperator):
+    
+    def __init__(self, formulas):
+        super().__init__(formulas)
+        self.str = "→"
+        self.latex = r"\rightarrow"
+
+class Or(BinaryOperator):
+
+    def __init__(self, formulas):
+        super().__init__(formulas)
+        self.str = "∨"
+        self.latex = r"\lor"
 
 PL_Axioms = {
     Implication([Prop("p"), Implication([Prop("q"), Prop("p")])]),  # 公理 1
@@ -149,7 +186,7 @@ class Logic():
         self.Rules = self.Rules.union(rules_set)
 
 PL = Logic({
-    "Formulas": {Prop, Not, Implication},
+    "Formulas": {Prop, Not, Implication, And, Or},
     "Axioms": PL_Axioms,
     "Rules": {MP},
 })

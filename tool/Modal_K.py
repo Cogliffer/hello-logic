@@ -1,32 +1,12 @@
 from PL import *
 
 
-class Box(Formula):
-    """表示模态逻辑中的 Box 算子"""
-    dim = 1
-
+class Box(UnaryOperator):
+    
     def __init__(self, formula):
-        super().__init__()
-        if isinstance(formula, Formula):
-            self.subformulas = [formula]
-        elif isinstance(formula, list) and len(formula) == 1:
-            if isinstance(formula[0], Formula):
-                self.subformulas = formula
-            else:
-                raise ValueError("Box expects a Formula type")
-        else:
-            raise ValueError("Box expects exactly one formula")
-
-    def __str__(self):
-        return f"□{self.subformulas[0]}"
-
-    def __eq__(self, other):
-        if isinstance(other, Box):
-            return self.subformulas == other.subformulas
-        return False
-
-    def __hash__(self):
-        return hash((self.__class__, self.subformulas[0]))
+        super().__init__(formula)
+        self.str = "□"
+        self.latex = r"\Box"
 
 
 K_Axiom = {Implication([
@@ -41,7 +21,7 @@ def check_Necessitation(formulas):
 NEC = Justification("Necessitation", "Rule", Box, check_Necessitation)
 
 MK = Logic({
-    "Formulas": {Prop, Not, Implication, Box},
+    "Formulas": {Prop, Not, Implication, Box, And, Or},
     "Axioms": PL_Axioms.union(K_Axiom),
     "Rules": {MP, NEC},
 })

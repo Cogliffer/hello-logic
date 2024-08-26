@@ -1,35 +1,13 @@
 from Modal_K import *
 
-
-class TBox(Formula):
-    """表示模态逻辑中的 Box 算子"""
-    dim = 1
+class TBox(UnaryOperator):
 
     def __init__(self, formula, term):
-        super().__init__()
+        super().__init__(formula)
         self.term = term
-        if isinstance(formula, Formula):
-            self.subformulas = [formula]
-        elif isinstance(formula, list) and len(formula) == 1:
-            if isinstance(formula[0], Formula):
-                self.subformulas = formula
-            else:
-                raise ValueError("Box expects a Formula type")
-        else:
-            raise ValueError("Box expects exactly one formula")
+        self.str = "□_{"+str(self.term)+"} "
+        self.latex = r"\Box"+"_"+str(self.term)+" "
 
-    def __str__(self):
-        return "□_{"+str(self.term)+"} "+str(self.subformulas[0])
-
-    def __eq__(self, other):
-        if isinstance(other, TBox):
-            # return self.term == other.term and self.subformulas == other.subformulas
-            return self.subformulas == other.subformulas
-        return False
-
-    def __hash__(self):
-        return hash((self.__class__, self.subformulas[0]))
-    
     def forget(self):
         return Box(self.subformulas[0].forget())
 
@@ -88,8 +66,6 @@ class VariableSequence:
         """获取一个尚未使用的变元"""
         return self.unused_variable.pop(0)
 
-# class JProp(Prop):
-#     """命题变量"""
 def replace_box_with_unused_var(self, vars):
     return self  # 命题变量不需要替换
 Prop.replace_box_with_unused_var = replace_box_with_unused_var
@@ -97,8 +73,6 @@ def forget(self):
     return self  # 命题变量不需要忘记
 Prop.forget = forget
 
-# class JNot(Not):
-#     """逻辑非运算符"""
 def replace_box_with_unused_var(self, vars):
     return Not(self.subformulas[0].replace_box_with_unused_var(vars))
 Not.replace_box_with_unused_var = replace_box_with_unused_var
@@ -106,19 +80,15 @@ def forget(self):
     return Not(self.subformulas[0].forget())
 Not.forget = forget
 
-# class JImplication(Implication):
-#     """逻辑蕴含运算符"""
 def replace_box_with_unused_var(self, vars):
     left_replaced = self.subformulas[0].replace_box_with_unused_var(vars)
     right_replaced = self.subformulas[1].replace_box_with_unused_var(vars)
-    return Implication([left_replaced, right_replaced])
-Implication.replace_box_with_unused_var = replace_box_with_unused_var
+    return type(self)([left_replaced, right_replaced])
 def forget(self):
-    return Implication([self.subformulas[0].forget(), self.subformulas[1].forget()])
-Implication.forget = forget
+    return type(self)([self.subformulas[0].forget(), self.subformulas[1].forget()])
+BinaryOperator.replace_box_with_unused_var = replace_box_with_unused_var
+BinaryOperator.forget = forget
 
-# class JBox(Box):
-#     """模态逻辑中的 Box 算子"""
 def replace_box_with_unused_var(self, vars):
     unused_var = vars.get_unused_variable()
     return TBox(self.subformulas[0].replace_box_with_unused_var(vars), term=Term(unused_var))
@@ -131,7 +101,7 @@ def check_T_Necessitation(formulas):
 T_NEC = Justification("T_Necessitation", "Rule", TBox, check_T_Necessitation)
 
 MJ = Logic({
-    "Formulas": {Prop, Not, Implication, TBox},
+    "Formulas": {Prop, Not, Implication, TBox, And, Or},
     "Axioms": PL_Axioms,
     "Rules": {MP},
 })
@@ -155,6 +125,7 @@ def equal_equations(formulas1:list, formulas2:list):
 
 def MJ_modus_ponens(formula1, formula2):
     """应用 Modus Ponens 规则，返回推导出的公式"""
+    print(formula1,"\n", formula2)
     # 检查 formula1 是否为蕴含公式 (A → B)
     if isinstance(formula1, Implication):
         if formula2 == formula1.subformulas[0]:
@@ -206,6 +177,7 @@ class MJProofSequence(ProofSequence):
             K, = K_Axiom
             return K.replace_box_with_unused_var(var)
         for step in proof.steps:
+            # print(str(step.formula))
             if step.justification.type == "Axiom":
                 if step.formula in PL_Axioms:
                     self.steps.append(step)
@@ -233,6 +205,7 @@ class MJProofSequence(ProofSequence):
                 f, eq = MJ_modus_ponens(self.steps[i1].formula, self.steps[i2].formula)
                 self.add_step(f, MP, step.content)
                 self.equations.update(eq)
+            # print(str(self.steps[-1].formula))
 
 
 # # 示例公式
