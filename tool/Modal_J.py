@@ -208,6 +208,15 @@ class MJProofSequence(ProofSequence):
             # print(str(self.steps[-1].formula))
 
 
+class EquationSolver:
+
+    def __init__(self, equations, proof :MJProofSequence):
+        self.equations = equations
+        self.proof = proof
+
+    def solve(self):
+        pass
+
 # # 示例公式
 # var_seq = VariableSequence(max_length=100)
 # formula = Implication([Box(Prop("P")), Box(Not(Prop("Q")))])
