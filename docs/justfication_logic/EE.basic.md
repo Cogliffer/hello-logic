@@ -1,3 +1,6 @@
+实现定理的例子
+
+a proof of $\Box (p\land q)\rightarrow(\Box p\land \Box q)$ in $K$
 $$\begin{align*}
     &(0)\ (p\land q)\rightarrow p \quad \text{(TAUT)} \\
     &(1)\ \Box((p\land q)\rightarrow p) \quad \text{(NEC, 0)} \\
@@ -14,6 +17,7 @@ $$\begin{align*}
     &(12)\ \Box (p\land q)\rightarrow(\Box p\land \Box q) \quad \text{(MP, 8, 11)} \\
 \end{align*}$$
 
+a proof in $\Omega$
 $$\begin{align*}
 &(0)\ ((p ∧ q) → p)  \quad   (TAUT)\\
 &(1)\ □_{x_{1}}  ((p ∧ q) → p)  \quad   (T_Necessitation, 0)\\
@@ -29,11 +33,18 @@ $$\begin{align*}
 &(11)\ ((□_{x_{9}}  (p ∧ q) → □_{x_{11}}  q) → (□_{x_{9}}  (p ∧ q) → (□_{x_{10}}  p ∧ □_{x_{11}}  q)))  \quad   (Modus Ponens, 4, 10)\\
 &(12)\ (□_{x_{9}}  (p ∧ q) → (□_{x_{10}}  p ∧ □_{x_{11}}  q))  \quad   (Modus Ponens, 8, 11)
 \end{align*}$$
+where
 $$\begin{align*}
-x_{1} = x_{4}\\
+&x_{1} = x_{4}\\
 &x_{6} = x_{7}\\
 &(x_{4} · x_{5}) = x_{10}\\
 &x_{5} = x_{9}\\
 &x_{8} = x_{9}\\
 &(x_{7} · x_{8}) = x_{11}
+\end{align*}$$
+so
+$$\begin{align*}
+&□_{x_1} (p\land q) → p\\
+&□_{x_6} (p\land q) → q\\
+&□_{x_9}(p\land q) → (□_{x_1\cdot x_9}p\land □_{x_6\cdot x_9}q)\\
 \end{align*}$$
