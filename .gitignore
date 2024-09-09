@@ -12,7 +12,8 @@
 *.cb2
 .*.lb
 
-*.pdf
+# *.pdf
+docs/justfication_logic/temp/*.pdf
 *.html
 
 .site
