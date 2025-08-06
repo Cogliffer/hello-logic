@@ -48,3 +48,19 @@ $$\begin{align*}
 &□_{x_6} (p\land q) → q\\
 &□_{x_9}(p\land q) → (□_{x_1\cdot x_9}p\land □_{x_6\cdot x_9}q)\\
 \end{align*}$$
+
+a proof in $\mathsf{J}$
+
+$$\begin{align*}
+    & c:((X\land Y)\rightarrow X)\in CS,\\
+    & d:((X\land Y)\rightarrow Y)\in CS,\\
+    & \textbf{Theorem. }s:(X\land Y)\rightarrow ((c\cdot s):X\land (d\cdot s):Y)
+\end{align*}$$
+
+A modal $\mathcal{M}$ given by
+
+$\text{Lob schema}$公理与$T$公理是不一致的，因为对于任意的$F$有证明序列
+
+$\Box F\rightarrow F,\Box(\Box F\rightarrow F),\Box(\Box F\rightarrow F)\rightarrow\Box F,\Box F,F$
+
+$\mathcal{M} \vDash @_{\mathbf{GL}}\neg\Diamond P_T$, $P_T$ 为 $T$ 公式
